@@ -107,7 +107,6 @@
                 max-height: 60vh;
             }
         }
-
     </style>
 
 
@@ -127,13 +126,13 @@
             <div class="form-check">
                 <input class="form-check-input bg-dark" type="radio" name="radio-group" id="medical-radio">
                 <label class="form-check-label" for="medical-radio">
-                    Medical professional
+                    Medical Professional
                 </label>
             </div>
             <div class="form-check">
                 <input class="form-check-input bg-dark" type="radio" name="radio-group" id="company-radio" checked>
                 <label class="form-check-label" for="company-radio">
-                    Company
+                    Medical Company
                 </label>
             </div>
 
@@ -141,11 +140,10 @@
                 - email (email type)
                 - password (password type)
                 - name (text type)
-                - address (text type)
                 - phone number (tel type)
                 - medical license number (text type)
                 - speciality (text type)
-                - role (selection type -- doctor, office manager, or other)
+                - role (text type)
             -->
             <div id="medical-professional-fields">
                 <div class="form-floating form-group mt-3 mb-3">
@@ -161,29 +159,20 @@
                     <input type="text" class="form-control text-bg-dark" id="name" name="name" placeholder="Name">
                 </div>
                 <div class="form-floating form-group mt-3 mb-3">
-                    <label for="address"> Address</label>
-                    <input type="text" class="form-control text-bg-dark" id="address" name="address" placeholder="Address">
-                </div>
-                <div class="form-floating form-group mt-3 mb-3">
                     <label for="phone-number"> Phone Number</label>
                     <input type="tel" class="form-control text-bg-dark" id="phone-number" name="phone_number" placeholder="Phone Number">
-                </div>
-                <div class="form-floating form-group mt-3 mb-3">
-                    <label for="medical-license-number"> Medical License Number</label>
-                    <input type="text" class="form-control text-bg-dark" id="medical-license-number" name="medical_license_number" placeholder="Medical License Number">
                 </div>
                 <div class="form-floating form-group mt-3 mb-3">
                     <label for="speciality"> Speciality</label>
                     <input type="text" class="form-control text-bg-dark" id="speciality" name="speciality" placeholder="Speciality">
                 </div>
                 <div class="form-floating form-group mt-3 mb-3">
+                    <label for="medical-license-number"> Medical License Number</label>
+                    <input type="text" class="form-control text-bg-dark" id="medical-license-number" name="medical_license_number" placeholder="Medical License Number">
+                </div>
+                <div class="form-floating form-group mt-3 mb-3">
                     <label for="role"> Role</label>
-                    <select class="form-select text-bg-dark" id="role" name="role">
-                        <option value="empty">--</option>
-                        <option value="doctor">Doctor</option>
-                        <option value="office_manager">Office Manager</option>
-                        <option value="other">Other</option>
-                    </select>
+                    <input type="text" class="form-control text-bg-dark" id="role" name="role" placeholder="Role">
                 </div>
             </div>
 
@@ -193,7 +182,8 @@
                 - company name (text type)
                 - company address (text type)
                 - company phone number (tel type)
-                - industry (text type)
+                - sector (text type)
+                - speciality (text type)
             -->
             <div id="company-fields">
                 <div class="form-floating form-group mt-3 mb-3">
@@ -217,8 +207,12 @@
                     <input type="tel" class="form-control text-bg-dark" id="company-phone-number" name="company_phone_number" placeholder="Company Phone Number">
                 </div>
                 <div class="form-floating form-group mt-3 mb-3">
-                    <label for="industry"> Industry</label>
-                    <input type="text" class="form-control text-bg-dark" id="industry" name="industry" placeholder="Industry">
+                    <label for="sector"> Sector</label>
+                    <input type="text" class="form-control text-bg-dark" id="sector" name="sector" placeholder="Sector">
+                </div>
+                <div class="form-floating form-group mt-3 mb-3">
+                    <label for="speciality"> Speciality</label>
+                    <input type="text" class="form-control text-bg-dark" id="speciality" name="speciality" placeholder="speciality">
                 </div>
             </div>
 
@@ -243,8 +237,6 @@
             document.getElementById("medical-professional-fields").style.display = "none";
             document.getElementById("company-fields").style.display = "block";
         });
-
-        
     </script>
 
 </body>

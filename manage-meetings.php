@@ -64,12 +64,13 @@
                 </table>
             </div>
 
-            <h4>Medical Company</h4>
+            <h4>Medical Companies</h4>
             <div class="table-responsive" style="overflow-x: auto;">
                 <table class="table table-striped table-bordered">
                     <thead class="text-bg-dark">
                         <tr>
                             <th>Company Name</th>
+                            <th>Sector</th>
                             <th>Speciality</th>
                             <th> Practice Name</th>
                             <th> Practice Location</th>
@@ -85,16 +86,19 @@
                             <td>Placeholder text</td>
                             <td>Placeholder text</td>
                             <td>Placeholder text</td>
-                        </tr>
-                        <tr class="text-decoration-underline" style="cursor:pointer;">
-                            <td>Placeholder text</td>
-                            <td>Placeholder text</td>
-                            <td>Placeholder text</td>
-                            <td>Placeholder text</td>
-                            <td>Placeholder text</td>
                             <td>Placeholder text</td>
                         </tr>
                         <tr class="text-decoration-underline" style="cursor:pointer;">
+                            <td>Placeholder text</td>
+                            <td>Placeholder text</td>
+                            <td>Placeholder text</td>
+                            <td>Placeholder text</td>
+                            <td>Placeholder text</td>
+                            <td>Placeholder text</td>
+                            <td>Placeholder text</td>
+                        </tr>
+                        <tr class="text-decoration-underline" style="cursor:pointer;">
+                            <td>Placeholder text</td>
                             <td>Placeholder text</td>
                             <td>Placeholder text</td>
                             <td>Placeholder text</td>

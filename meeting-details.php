@@ -10,10 +10,10 @@
                 </div>
                 <div class="card-body">
                     <div>
-                        <p><strong>Organizer Name:</strong> <a href = "#"> John Doe </a></p>
                         <p><strong>Time:</strong> May 10th, 2023 at 12:00 PM</p>
+                        <p><strong>Organizer Name:</strong> <a href = "#"> John Doe </a></p>
                         <p><strong>Practice Name:</strong> <a href = "#"> XYZ Medical Group </a> </p>
-                        <p><strong>Location of Practice:</strong> 123 Main Street, Suite 100</p>
+                        <p><strong>Practice Location:</strong> 123 Main Street, Suite 100</p>
                         <p><strong>Food Preferences:</strong> Vegetarian</p>
                         <p><strong>Status:</strong> Confirmed</p>
                     </div>
