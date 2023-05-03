@@ -23,7 +23,7 @@
             <!-- <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"> -->
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                 <div style="padding-right:20px;">
-                    <a href="/" class="d-flex align-items-center px-3 fw-bold mb-2 mb-lg-0 text-white text-decoration-none">
+                    <a href="homepage.php" class="d-flex align-items-center px-3 fw-bold mb-2 mb-lg-0 text-white text-decoration-none">
                         <img class="bi me-2" width="40" height="32" src="https://www.svgrepo.com/show/38705/location-pin.svg" style="filter: invert(1);">
                         Scheduling Platform
                     </a>
@@ -32,9 +32,9 @@
                 <!--Navbar -->
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                     <li><a id="homepage" href="homepage.php" class="nav-link px-2 text-white">Home</a></li>
-                    <li><a id="schedule-meeting" href="schedule-meeting.php" class="nav-link px-2 text-white">Schedule Meeting</a></li>
-                    <li><a href="#" class="nav-link px-2 text-white">Manage Meetings</a></li>
-                    <li><a href="#" class="nav-link px-2 text-white">Manage Preferences</a></li>
+                    <li><a id="connect" href="connect.php" class="nav-link px-2 text-white">Connect</a></li>
+                    <li><a id="manage-meetings" href="manage-meetings.php" class="nav-link px-2 text-white">Manage Meetings</a></li>
+                    <li><a id="manage-preferences" href="manage-preferences.php" class="nav-link px-2 text-white">Manage Preferences</a></li>
                 </ul>
 
                 <!-- Login and Sign-up buttons -->
