@@ -16,7 +16,7 @@ if (url.includes("homepage")) {
     document.getElementById("manage-meetings").classList.remove("text-white");
     // add the text-secondary class
     document.getElementById("manage-meetings").classList.add("text-secondary");
-} else if (url.includes("manage-preferences")) {
+} else if (url.includes("user-details")) {
     // remove the text-white class
     document.getElementById("manage-preferences").classList.remove("text-white");
     // add the text-secondary class
