@@ -14,6 +14,8 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sign-in/">
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -66,6 +68,7 @@
             -webkit-overflow-scrolling: touch;
         }
 
+        /* position label to the top of the input*/
         .form-floating.form-group label {
             position: absolute;
             top: -10px;
@@ -76,7 +79,69 @@
             transition: all 0.2s ease-out;
         }
 
-        
+        .form-signin {
+            max-width: 330px;
+            padding: 15px;
+            margin: 0 auto;
+            overflow-y: auto;
+            /* add this line */
+        }
+
+        /* make the form scrollable on small screens */
+        @media (min-width: 576px) {
+            .form-signin {
+                max-height: 80vh;
+            }
+        }
+
+        /* make the form scrollable on medium screens */
+        @media (min-width: 992px) {
+            .form-signin {
+                max-height: 70vh;
+            }
+        }
+
+        /* make the form scrollable on large screens */
+        @media (min-width: 1200px) {
+            .form-signin {
+                max-height: 60vh;
+            }
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-dialog {
+            margin: auto;
+            max-width: 500px;
+            padding: 20px;
+            border: none;
+            border-radius: 10px;
+            background-color: #fff;
+        }
+
+        .modal-dialog-centered {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
     </style>
 
 
@@ -88,29 +153,107 @@
 
     <main class="form-signin w-100 m-auto">
         <form>
-            <!-- <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
             <img class="bi me-2 mb-2" width="60" src="https://www.svgrepo.com/show/38705/location-pin.svg" style="filter: invert(1);">
             <h1 class="h3 mb-3 fw-normal">Sign up</h1>
 
             <!-- radio button for type of user-->
-            <label> I am a... </label>
+            <p class="mb-2"> I am a... </p>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                <label class="form-check-label" for="flexRadioDefault1">
-                    Doctor
+                <input class="form-check-input bg-dark" type="radio" name="radio-group" id="medical-radio">
+                <label class="form-check-label" for="medical-radio">
+                    Medical professional
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                    Provider
+                <input class="form-check-input bg-dark" type="radio" name="radio-group" id="company-radio" checked>
+                <label class="form-check-label" for="company-radio">
+                    Company
                 </label>
             </div>
 
-            <!-- form fields for email and password, no form floating-->
-            <div class="form-floating form-group">
-                <label for="email"> Email Address</label>
-                <input type="email" class="form-control text-bg-dark" id="email" placeholder="Email Address">
+            <!-- fields for medical professional
+                - email (email type)
+                - password (password type)
+                - name (text type)
+                - address (text type)
+                - phone number (tel type)
+                - medical license number (text type)
+                - speciality (text type)
+                - role (selection type -- doctor, office manager, or other)
+            -->
+            <div id="medical-professional-fields">
+                <div class="form-floating form-group mt-3 mb-3">
+                    <label for="email"> Email Address</label>
+                    <input type="email" class="form-control text-bg-dark" id="email" name="email " placeholder="Email Address">
+                </div>
+                <div class="form-floating form-group mt-3 mb-3">
+                    <label for="password"> Password</label>
+                    <input type="password" class="form-control text-bg-dark" id="password" name="password" placeholder="Password">
+                </div>
+                <div class="form-floating form-group mt-3 mb-3">
+                    <label for="name"> Name</label>
+                    <input type="text" class="form-control text-bg-dark" id="name" name="name" placeholder="Name">
+                </div>
+                <div class="form-floating form-group mt-3 mb-3">
+                    <label for="address"> Address</label>
+                    <input type="text" class="form-control text-bg-dark" id="address" name="address" placeholder="Address">
+                </div>
+                <div class="form-floating form-group mt-3 mb-3">
+                    <label for="phone-number"> Phone Number</label>
+                    <input type="tel" class="form-control text-bg-dark" id="phone-number" name="phone_number" placeholder="Phone Number">
+                </div>
+                <div class="form-floating form-group mt-3 mb-3">
+                    <label for="medical-license-number"> Medical License Number</label>
+                    <input type="text" class="form-control text-bg-dark" id="medical-license-number" name="medical_license_number" placeholder="Medical License Number">
+                </div>
+                <div class="form-floating form-group mt-3 mb-3">
+                    <label for="speciality"> Speciality</label>
+                    <input type="text" class="form-control text-bg-dark" id="speciality" name="speciality" placeholder="Speciality">
+                </div>
+                <div class="form-floating form-group mt-3 mb-3">
+                    <label for="role"> Role</label>
+                    <select class="form-select text-bg-dark" id="role" name="role">
+                        <option value="empty">--</option>
+                        <option value="doctor">Doctor</option>
+                        <option value="office_manager">Office Manager</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- fields for company
+                - email (email type)
+                - password (password type)
+                - company name (text type)
+                - company address (text type)
+                - company phone number (tel type)
+                - industry (text type)
+            -->
+            <div id="company-fields">
+                <div class="form-floating form-group mt-3 mb-3">
+                    <label for="email"> Email Address</label>
+                    <input type="email" class="form-control text-bg-dark" id="email" name="email " placeholder="Email Address">
+                </div>
+                <div class="form-floating form-group mt-3 mb-3">
+                    <label for="password"> Password</label>
+                    <input type="password" class="form-control text-bg-dark" id="password" name="password" placeholder="Password">
+                </div>
+                <div class="form-floating form-group mt-3 mb-3">
+                    <label for="company-name"> Company Name</label>
+                    <input type="text" class="form-control text-bg-dark" id="company-name" name="company_name" placeholder="Company Name">
+                </div>
+                <div class="form-floating form-group mt-3 mb-3">
+                    <label for="company-address"> Company Address</label>
+                    <input type="text" class="form-control text-bg-dark" id="company-address" name="company_address" placeholder="Company Address">
+                </div>
+                <div class="form-floating form-group mt-3 mb-3">
+                    <label for="company-phone-number"> Company Phone Number</label>
+                    <input type="tel" class="form-control text-bg-dark" id="company-phone-number" name="company_phone_number" placeholder="Company Phone Number">
+                </div>
+                <div class="form-floating form-group mt-3 mb-3">
+                    <label for="industry"> Industry</label>
+                    <input type="text" class="form-control text-bg-dark" id="industry" name="industry" placeholder="Industry">
+                </div>
             </div>
 
             <button class="w-100 btn btn-lg btn-warning" type="submit">Sign Up</button>
@@ -119,7 +262,25 @@
     </main>
 
 
+    <script>
+        // hide medical professional fields on load
+        document.getElementById("medical-professional-fields").style.display = "none";
 
-</body>`
+        // show medical professional fields when medical professional radio button is selected
+        document.getElementById("medical-radio").addEventListener("click", function() {
+            document.getElementById("medical-professional-fields").style.display = "block";
+            document.getElementById("company-fields").style.display = "none";
+        });
+
+        // show company fields when company radio button is selected
+        document.getElementById("company-radio").addEventListener("click", function() {
+            document.getElementById("medical-professional-fields").style.display = "none";
+            document.getElementById("company-fields").style.display = "block";
+        });
+
+        
+    </script>
+
+</body>
 
 </html>
