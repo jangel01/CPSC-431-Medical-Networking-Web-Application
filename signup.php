@@ -108,45 +108,11 @@
             }
         }
 
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.4);
-        }
-
-        .modal-dialog {
-            margin: auto;
-            max-width: 500px;
-            padding: 20px;
-            border: none;
-            border-radius: 10px;
-            background-color: #fff;
-        }
-
-        .modal-dialog-centered {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-content {
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-        }
-
-        .modal-body {
-            padding: 20px;
-        }
     </style>
 
 
     <!-- Custom styles for this template -->
-    <link href="sign-in.css" rel="stylesheet">
+    <link href="sign-in-and-up.css" rel="stylesheet">
 </head>
 
 <body class="text-center text-bg-dark">
