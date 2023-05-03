@@ -14,8 +14,6 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sign-in/">
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
