@@ -93,7 +93,7 @@
             <p class="mb-2"> I am a... </p>
             <div class="form-check">
                 <input class="form-check-input bg-dark" type="radio" name="radio-group" id="medical-radio">
-                <label class="form-check-label" for="medical-radio">
+                <label class="form-check-label" for="medical-radio" checked>
                     Medical Professional
                 </label>
             </div>
