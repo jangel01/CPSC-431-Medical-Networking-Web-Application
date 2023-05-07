@@ -88,10 +88,11 @@
 <body class="text-center text-bg-dark">
 
     <main class="form-signin w-100 m-auto">
-        <form>
+        <form id = "login-form" method = "POST" action = "signin.inc.php">
             <img class="bi me-2 mb-2" width="60" src="https://www.svgrepo.com/show/38705/location-pin.svg" style="filter: invert(1);">
             <h1 class="h3 mb-3 fw-normal">Sign in</h1>
 
+            <p class = "mb-2"> Don't have an account? <a class = "text-white"href = "signup.php"> Sign up</a></p>
             <!-- form fields for email and password -->
             <div class="form-floating form-group mt-3 mb-3">
                 <label for="email"> Email Address</label>
@@ -109,7 +110,27 @@
 
 
     <script>
+        // grab elements
+        const loginForm = document.querySelector('#login-form');
+        const email = document.querySelector('#email');
+        const password = document.querySelector('#password');
 
+        // handle error validation for form
+        loginForm.addEventListener('submit', (e) => {
+            // prevent default action
+            e.preventDefault();
+
+            // check if email is empty
+            if (email.value === "") {
+                alert('Please enter your email address');
+                e.preventDefault();
+            } else if (password.value === "") {
+                alert('Please enter your password');
+                e.preventDefault();
+            }
+
+            e.preventDefault();
+        });
 
     </script>
 

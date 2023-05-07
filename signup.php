@@ -86,19 +86,20 @@
 <body class="text-center text-bg-dark">
 
     <main class="form-signin w-100 m-auto">
-        <form id = "reg-form">
+        <form id = "reg-form" method = "POST" action = "includes/signup.inc.php">
             <img class="bi me-2 mb-2" width="60" src="https://www.svgrepo.com/show/38705/location-pin.svg" style="filter: invert(1);">
             <h1 class="h3 mb-3 fw-normal">Sign up</h1>
             <!-- radio button for type of user-->
+            <p class = "mb-2"> Already have an account? <a class = "text-white"href = "signin.php"> Sign in</a></p>
             <p class="mb-2"> I am a... </p>
             <div class="form-check">
-                <input class="form-check-input bg-dark" type="radio" name="radio-group" id="medical-radio">
-                <label class="form-check-label" for="medical-radio" checked>
+                <input class="form-check-input bg-dark" type="radio" name="radio_group" id="medical-radio" value = "medical_professional"checked>
+                <label class="form-check-label" for="medical-radio">
                     Medical Professional
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input bg-dark" type="radio" name="radio-group" id="company-radio">
+                <input class="form-check-input bg-dark" type="radio" name="radio_group" id="company-radio" value = "medical_company">
                 <label class="form-check-label" for="company-radio">
                     Medical Company
                 </label>
@@ -115,32 +116,32 @@
             -->
             <div id="medical-professional-fields">
                 <div class="form-floating form-group mt-3 mb-3">
-                    <label for="email"> Email Address</label>
-                    <input type="email" class="form-control text-bg-dark" id="email" name="email " placeholder="Email Address">
+                    <label for="medical-professional-email"> Email Address</label>
+                    <input type="email" class="form-control text-bg-dark" id="medical-professional-email" name="medical_professional_email" placeholder="Email Address">
                 </div>
                 <div class="form-floating form-group mt-3 mb-3">
-                    <label for="password"> Password</label>
-                    <input type="password" class="form-control text-bg-dark" id="password" name="password" placeholder="Password">
+                    <label for="medical-professional-password"> Password</label>
+                    <input type="password" class="form-control text-bg-dark" id="medical-professional-password" name="medical_professional_password" placeholder="Password">
                 </div>
                 <div class="form-floating form-group mt-3 mb-3">
-                    <label for="name"> Name</label>
-                    <input type="text" class="form-control text-bg-dark" id="name" name="name" placeholder="Name">
+                    <label for="medical-professional-name"> Name</label>
+                    <input type="text" class="form-control text-bg-dark" id="medical-professional-name" name="medical_professional_name" placeholder="Name">
                 </div>
                 <div class="form-floating form-group mt-3 mb-3">
-                    <label for="phone-number"> Phone Number</label>
-                    <input type="tel" class="form-control text-bg-dark" id="phone-number" name="phone_number" placeholder="Phone Number">
+                    <label for="medical-professional-phone-number"> Phone Number</label>
+                    <input type="tel" class="form-control text-bg-dark" id="medical-professional-phone-number" name="medical_professional_phone_number" placeholder="Phone Number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
                 </div>
                 <div class="form-floating form-group mt-3 mb-3">
-                    <label for="speciality"> Speciality</label>
-                    <input type="text" class="form-control text-bg-dark" id="speciality" name="speciality" placeholder="Speciality">
+                    <label for="medical-professional-speciality"> Specialty</label>
+                    <input type="text" class="form-control text-bg-dark" id="medical-professional-specialty" name="medical_professional_specialty" placeholder="Speciality">
                 </div>
                 <div class="form-floating form-group mt-3 mb-3">
-                    <label for="medical-license-number"> Medical License Number</label>
-                    <input type="text" class="form-control text-bg-dark" id="medical-license-number" name="medical_license_number" placeholder="Medical License Number">
+                    <label for="medical-professional-license-number"> Medical License Number</label>
+                    <input type="text" class="form-control text-bg-dark" id="medical-professional-license-number" name="medical_professional_license_number" placeholder="Medical License Number">
                 </div>
                 <div class="form-floating form-group mt-3 mb-3">
-                    <label for="role"> Role</label>
-                    <input type="text" class="form-control text-bg-dark" id="role" name="role" placeholder="Role">
+                    <label for="medical-professional-role"> Role</label>
+                    <input type="text" class="form-control text-bg-dark" id="medical-professional-role" name="medical_professional_role" placeholder="Role">
                 </div>
             </div>
 
@@ -148,43 +149,42 @@
                 - email (email type)
                 - password (password type)
                 - company name (text type)
-                - company address (text type)
                 - company phone number (tel type)
                 - sector (text type)
                 - speciality (text type)
             -->
             <div id="company-fields">
                 <div class="form-floating form-group mt-3 mb-3">
-                    <label for="company-email"> Company Email Address</label>
-                    <input type="email" class="form-control text-bg-dark" id="company-email" name="company_email " placeholder="Email Address">
+                    <label for="medical-company-email"> Company Email Address</label>
+                    <input type="email" class="form-control text-bg-dark" id="medical-company-email" name="medical_company_email" placeholder="Email Address">
                 </div>
                 <div class="form-floating form-group mt-3 mb-3">
-                    <label for="password"> Password</label>
-                    <input type="password" class="form-control text-bg-dark" id="password" name="password" placeholder="Password">
+                    <label for="medical-company-password"> Password</label>
+                    <input type="password" class="form-control text-bg-dark" id="medical-company-password" name="medical_company_password" placeholder="Password">
                 </div>
                 <div class="form-floating form-group mt-3 mb-3">
-                    <label for="company-name"> Company Name</label>
-                    <input type="text" class="form-control text-bg-dark" id="company-name" name="company_name" placeholder="Company Name">
+                    <label for="medical-company-name"> Company Name</label>
+                    <input type="text" class="form-control text-bg-dark" id="medical-company-name" name="medical_company_name" placeholder="Company Name">
                 </div>
                 <div class="form-floating form-group mt-3 mb-3">
-                    <label for="company-address"> Company Address</label>
-                    <input type="text" class="form-control text-bg-dark" id="company-address" name="company_address" placeholder="Company Address">
+                    <label for="medical-company-phone-number"> Company Phone Number</label>
+                    <input type="tel" class="form-control text-bg-dark" id="medical-company-phone-number" name="medical_company_phone_number" placeholder="Company Phone Number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
                 </div>
                 <div class="form-floating form-group mt-3 mb-3">
-                    <label for="company-phone-number"> Company Phone Number</label>
-                    <input type="tel" class="form-control text-bg-dark" id="company-phone-number" name="company_phone_number" placeholder="Company Phone Number">
+                    <label for="medical-company-address"> Company Address</label>
+                    <input type="text" class="form-control text-bg-dark" id="medical-company-address" name="medical_company_address" placeholder="Company Phone Number">
                 </div>
                 <div class="form-floating form-group mt-3 mb-3">
-                    <label for="sector"> Sector</label>
-                    <input type="text" class="form-control text-bg-dark" id="sector" name="sector" placeholder="Sector">
+                    <label for="medical-company-sector"> Sector</label>
+                    <input type="text" class="form-control text-bg-dark" id="medical-company-sector" name="medical_company_sector" placeholder="Sector">
                 </div>
                 <div class="form-floating form-group mt-3 mb-3">
-                    <label for="speciality"> Speciality</label>
-                    <input type="text" class="form-control text-bg-dark" id="speciality" name="speciality" placeholder="speciality">
+                    <label for="medical-company-speciality"> Specialty</label>
+                    <input type="text" class="form-control text-bg-dark" id="medical-company-specialty" name="medical_company_specialty" placeholder="speciality">
                 </div>
             </div>
 
-            <button class="w-100 btn btn-lg btn-warning" type="submit">Continue</button>
+            <button class="w-100 btn btn-lg btn-warning" name = "submit" type="submit">Continue</button>
             <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
         </form>
     </main>
@@ -196,6 +196,21 @@
         const companyRadio = document.getElementById("company-radio");
         const medicalProfessionalFields = document.getElementById("medical-professional-fields");
         const companyFields = document.getElementById("company-fields");
+        const regForm = document.getElementById("reg-form");
+        const medicalProfessionalEmail = document.getElementById("medical-professional-email");
+        const medicalProfessionalPassword = document.getElementById("medical-professional-password");
+        const medicalProfessionalName = document.getElementById("medical-professional-name");
+        const medicalProfessionalPhoneNumber = document.getElementById("medical-professional-phone-number");
+        const medicalProfessionalSpeciality = document.getElementById("medical-professional-specialty");
+        const medicalProfessionalLicenseNumber = document.getElementById("medical-professional-license-number");
+        const medicalProfessionalRole = document.getElementById("medical-professional-role");
+        const medicalCompanyEmail = document.getElementById("medical-company-email");
+        const medicalCompanyPassword = document.getElementById("medical-company-password");
+        const medicalCompanyName = document.getElementById("medical-company-name");
+        const medicalCompanyPhoneNumber = document.getElementById("medical-company-phone-number");
+        const medicalCompanyAddress = document.getElementById("medical-company-address");
+        const medicalCompanySector = document.getElementById("medical-company-sector");
+        const medicalCompanySpeciality = document.getElementById("medical-company-specialty");
 
         // on page load see which radio button is selected
         if (medicalRadio.checked) {
@@ -217,6 +232,59 @@
             medicalProfessionalFields.style.display = "none";
             companyFields.style.display = "block";
         });
+
+      
+        // handle error validation for the medical professional form and medical company form depending on which radio button is selected
+        regForm.addEventListener("submit", function(e) {
+            if (medicalRadio.checked) {
+                if (medicalProfessionalEmail.value === "") {
+                    e.preventDefault();
+                    alert("Please enter an email address");
+                } else if (medicalProfessionalPassword.value === "") {
+                    e.preventDefault();
+                    alert("Please enter a password");
+                } else if (medicalProfessionalName.value === "") {
+                    e.preventDefault();
+                    alert("Please enter a name");
+                } else if (medicalProfessionalPhoneNumber.value === "") {
+                    e.preventDefault();
+                    alert("Please enter a phone number");
+                } else if (medicalProfessionalSpeciality.value === "") {
+                    e.preventDefault();
+                    alert("Please enter a speciality");
+                } else if (medicalProfessionalLicenseNumber.value === "") {
+                    e.preventDefault();
+                    alert("Please enter a license number");
+                } else if (medicalProfessionalRole.value === "") {
+                    e.preventDefault();
+                    alert("Please enter a role");
+                } 
+            } else if (companyRadio.checked) {
+                if (medicalCompanyEmail.value === "") {
+                    e.preventDefault();
+                    alert("Please enter an email address");
+                } else if (medicalCompanyPassword.value === "") {
+                    e.preventDefault();
+                    alert("Please enter a password");
+                } else if (medicalCompanyName.value === "") {
+                    e.preventDefault();
+                    alert("Please enter a company name");
+                } else if (medicalCompanyPhoneNumber.value === "") {
+                    e.preventDefault();
+                    alert("Please enter a phone number");
+                } else if (medicalCompanyAddress.value === "") {
+                    e.preventDefault();
+                    alert("Please enter an address");
+                } else if (medicalCompanySector.value === "") {
+                    e.preventDefault();
+                    alert("Please enter a sector");
+                } else if (medicalCompanySpeciality.value === "") {
+                    e.preventDefault();
+                    alert("Please enter a speciality");
+                } 
+            }
+        });
+
     </script>
 
 </body>
