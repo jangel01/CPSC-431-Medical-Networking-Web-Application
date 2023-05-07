@@ -1,6 +1,9 @@
 <?php 
 
+// inport signup trait
+require_once '../traits/signup.trait.php';
 class MedCompSignUpContr extends MedCompSignUp {
+    use SignUpTrait;
     private $medCompEmail;
     private $medCompPassword;
     private $medCompName;
@@ -24,11 +27,11 @@ class MedCompSignUpContr extends MedCompSignUp {
             header("location: ../signup.php?error=emptyinput");
             exit();
         }
-        if ($this->invalidEmail()) {
+        if ($this->invalidEmail($this->medCompEmail)) {
             header("location: ../signup.php?error=invalidemail");
             exit();
         }
-        if ($this->emailTaken()) {
+        if ($this->emailTaken($this->medCompEmail)) {
             header("location: ../signup.php?error=emailtaken");
             exit();
         }
@@ -38,23 +41,6 @@ class MedCompSignUpContr extends MedCompSignUp {
 
     private function emptyInput() {
         if (empty($this->medCompEmail) || empty($this->medCompPassword) || empty($this->medCompName) || empty($this->medCompPhone) || empty($this->medCompSector) || empty($this->medCompSpecialty)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    private function invalidEmail() {
-        if (!filter_var($this->medCompEmail, FILTER_VALIDATE_EMAIL)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    // email taken ?
-    private function emailTaken() {
-        if ($this->checkUser($this->medCompEmail)) {
             return true;
         } else {
             return false;

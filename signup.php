@@ -150,8 +150,9 @@
                 - password (password type)
                 - company name (text type)
                 - company phone number (tel type)
-                - sector (text type)
-                - speciality (text type)
+                - company address (text type)
+                - company sector (text type)
+                - company speciality (text type)
             -->
             <div id="company-fields">
                 <div class="form-floating form-group mt-3 mb-3">
