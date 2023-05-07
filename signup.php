@@ -76,35 +76,6 @@
             pointer-events: none;
             transition: all 0.2s ease-out;
         }
-
-        .form-signin {
-            max-width: 330px;
-            padding: 15px;
-            margin: 0 auto;
-            overflow-y: auto;
-            /* add this line */
-        }
-
-        /* make the form scrollable on small screens */
-        @media (min-width: 576px) {
-            .form-signin {
-                max-height: 80vh;
-            }
-        }
-
-        /* make the form scrollable on medium screens */
-        @media (min-width: 992px) {
-            .form-signin {
-                max-height: 70vh;
-            }
-        }
-
-        /* make the form scrollable on large screens */
-        @media (min-width: 1200px) {
-            .form-signin {
-                max-height: 60vh;
-            }
-        }
     </style>
 
 
@@ -115,10 +86,9 @@
 <body class="text-center text-bg-dark">
 
     <main class="form-signin w-100 m-auto">
-        <form>
+        <form id = "reg-form">
             <img class="bi me-2 mb-2" width="60" src="https://www.svgrepo.com/show/38705/location-pin.svg" style="filter: invert(1);">
             <h1 class="h3 mb-3 fw-normal">Sign up</h1>
-
             <!-- radio button for type of user-->
             <p class="mb-2"> I am a... </p>
             <div class="form-check">
@@ -128,7 +98,7 @@
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input bg-dark" type="radio" name="radio-group" id="company-radio" checked>
+                <input class="form-check-input bg-dark" type="radio" name="radio-group" id="company-radio">
                 <label class="form-check-label" for="company-radio">
                     Medical Company
                 </label>
@@ -185,8 +155,8 @@
             -->
             <div id="company-fields">
                 <div class="form-floating form-group mt-3 mb-3">
-                    <label for="email"> Email Address</label>
-                    <input type="email" class="form-control text-bg-dark" id="email" name="email " placeholder="Email Address">
+                    <label for="company-email"> Company Email Address</label>
+                    <input type="email" class="form-control text-bg-dark" id="company-email" name="company_email " placeholder="Email Address">
                 </div>
                 <div class="form-floating form-group mt-3 mb-3">
                     <label for="password"> Password</label>
@@ -221,19 +191,31 @@
 
 
     <script>
-        // hide medical professional fields on load
-        document.getElementById("medical-professional-fields").style.display = "none";
+        // grab elements
+        const medicalRadio = document.getElementById("medical-radio");
+        const companyRadio = document.getElementById("company-radio");
+        const medicalProfessionalFields = document.getElementById("medical-professional-fields");
+        const companyFields = document.getElementById("company-fields");
+
+        // on page load see which radio button is selected
+        if (medicalRadio.checked) {
+            medicalProfessionalFields.style.display = "block";
+            companyFields.style.display = "none";
+        } else if (companyRadio.checked) {
+            medicalProfessionalFields.style.display = "none";
+            companyFields.style.display = "block";
+        }
 
         // show medical professional fields when medical professional radio button is selected
-        document.getElementById("medical-radio").addEventListener("click", function() {
-            document.getElementById("medical-professional-fields").style.display = "block";
-            document.getElementById("company-fields").style.display = "none";
+        medicalRadio.addEventListener("click", function() {
+            medicalProfessionalFields.style.display = "block";
+            companyFields.style.display = "none";
         });
 
         // show company fields when company radio button is selected
-        document.getElementById("company-radio").addEventListener("click", function() {
-            document.getElementById("medical-professional-fields").style.display = "none";
-            document.getElementById("company-fields").style.display = "block";
+        companyRadio.addEventListener("click", function() {
+            medicalProfessionalFields.style.display = "none";
+            companyFields.style.display = "block";
         });
     </script>
 

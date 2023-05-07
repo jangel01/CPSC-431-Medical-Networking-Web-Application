@@ -9,33 +9,39 @@
     </div>
     <div class="row">
         <div class="col-2 mb-2">
-            <select class="form-select" id="role" name="role">
+            <select class="form-select" id="search-filter" name="search-filter">
                 <option value="speciality">Speciality</option>
-                <option value="role">Medical professional</option>
-                <option value="other">Medical Company</option>
-                <option value="other">Practice Location</option>
+                <option value="medical_professional">Medical professional</option>
+                <option value="medical_company">Medical Company</option>
+                <option value="practice_location">Practice Location</option>
             </select>
         </div>
         <div class="col-10 mb-4">
-            <form>
+            <form id="search-form">
                 <div class="form-group">
                     <div class="input-group">
-
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Search...">
+                        <input type="text" class="form-control" id="search" placeholder="Search...">
                         <button type="button" class="btn btn-dark">Search</button>
                     </div>
-
                 </div>
             </form>
-
         </div>
     </div>
 
     <div class="row">
         <div class="col-12">
             <h2 class="mb-2"> Search Results</h2>
+        </div>
+    </div>
 
+    <div class="row">
+        <div class="col-12">
             <h4> Medical Professionals</h4>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
             <div class="table-responsive mb-3" style="overflow-x: auto;">
                 <table class="table table-striped table-bordered">
                     <thead class="text-bg-dark">
@@ -68,8 +74,17 @@
                     </tbody>
                 </table>
             </div>
+        </div>
+    </div>
 
-            <h4> Medical Companies</h4>
+    <div class="row">
+        <div class="col-12">
+            <h4> Medical Comanies</h4>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
             <div class="table-responsive" style="overflow-x: auto;">
                 <table class="table table-striped table-bordered">
                     <thead class="text-bg-dark">

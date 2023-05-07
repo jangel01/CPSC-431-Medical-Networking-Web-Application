@@ -25,23 +25,20 @@
 
                 <!-- Login and Sign-up buttons -->
                 <div class="ms-auto">
-                    <button type="button" class="btn btn-warning me-2">Sign up </button>
-                    <button type="button" class="btn btn-warning">Log in </button>
+                    <a href="signup.php" class="btn btn-warning me-2"> Sign Up</a>
+                    <a href="signin.php" class="btn btn-warning me-2"> Log In</a>
                 </div>
             </div>
         </div>
     </header>
 
-    <div class="bg-dark text-secondary px-4 py-5 text-center vh-100">
+    <div class="bg-dark text-secondary px-4 py-5 text-center" style="min-height: 90vh; display:flex; flex-direction: column; justify-content:center;">
         <div class="py-5">
-            <h1 id = "title" class="display-5 fw-bold text-white">Simplify you medical networking</h1>
+            <h1 id="title" class="display-5 fw-bold text-white">Simplify you medical networking</h1>
             <div class="col-lg-8 mx-auto">
-                <p id = "para" class="fs-5 mb-4">Say goodbye to cold-calling and back-and-forth emails. Streamline relationship building with medical providers and doctors using our scheduling platform: schedule breakfast and lunch meetings, customize food preferences, and gain access to a network of practices in your desired area. Get started today and experience the difference!</p>
+                <p id="para" class="fs-5 mb-4">Say goodbye to cold-calling and back-and-forth emails. Streamline relationship building with medical providers and doctors using our scheduling platform: schedule breakfast and lunch meetings, customize food preferences, and gain access to a network of practices in your desired area. Get started today and experience the difference!</p>
                 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                    <button type="button" class="btn btn-lg btn-warning">Get Started </button>
-
-                    <!-- <button type="button" class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold">Custom button</button>
-                    <button type="button" class="btn btn-outline-light btn-lg px-4">Secondary</button> -->
+                    <a href="signin.php" class="btn btn-lg btn-warning"> Get Started</a>
                 </div>
             </div>
         </div>
@@ -52,19 +49,6 @@
             <p class="text-center my-3">&copy; 2023 Scheduling Platform</p>
         </footer>
     </div>
-
-    <!-- <main class="px-3">
-        <h1>Cover your page.</h1>
-        <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
-        <p class="lead">
-            <a href="#" class="btn btn-lg btn-light fw-bold border-white bg-white">Learn more</a>
-        </p>
-    </main>
-
-    <footer class="mt-auto text-white-50">
-        <p>Cover template for <a href="https://getbootstrap.com/" class="text-white">Bootstrap</a>, by <a href="https://twitter.com/mdo" class="text-white">@mdo</a>.</p>
-    </footer>
-    </div> -->
 </body>
 
 </html>
