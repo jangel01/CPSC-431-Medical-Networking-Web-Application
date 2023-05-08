@@ -51,7 +51,6 @@ class Signin extends Dbh
             session_start();
             $_SESSION['user_id'] = $user[0]['user_id'];
             $_SESSION['user_type'] = $user[0]['user_type'];
-            echo "<script>console.log('" . $_SESSION['user_id'] . "');</script>";
         }
     }
 }

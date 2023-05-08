@@ -78,35 +78,6 @@
             pointer-events: none;
             transition: all 0.2s ease-out;
         }
-
-        .form-signin {
-            max-width: 330px;
-            padding: 15px;
-            margin: 0 auto;
-            overflow-y: auto;
-            /* add this line */
-        }
-
-        /* make the form scrollable on small screens */
-        @media (min-width: 576px) {
-            .form-signin {
-                max-height: 80vh;
-            }
-        }
-
-        /* make the form scrollable on medium screens */
-        @media (min-width: 992px) {
-            .form-signin {
-                max-height: 70vh;
-            }
-        }
-
-        /* make the form scrollable on large screens */
-        @media (min-width: 1200px) {
-            .form-signin {
-                max-height: 60vh;
-            }
-        }
     </style>
 
 
@@ -117,7 +88,7 @@
 <body class="text-center text-bg-dark">
 
     <main class="form-signin w-100 m-auto">
-        <form>
+        <form id = "practice-form">
             <img class="bi me-2 mb-2" width="60" src="https://www.svgrepo.com/show/38705/location-pin.svg" style="filter: invert(1);">
             <h1 class="h3 mb-3 fw-normal">Practice</h1>
 
@@ -162,7 +133,7 @@
                 </div>
             </div>
 
-            <button class="w-100 btn btn-lg btn-warning" type="submit">Sign up</button>
+            <button class="w-100 btn btn-lg btn-warning" type="submit">Add practice</button>
             <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
         </form>
     </main>
