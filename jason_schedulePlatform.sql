@@ -16,7 +16,7 @@ CREATE TABLE medical_practice (
 drop table if exists medical_professional;
 CREATE TABLE medical_professional (
   medical_professional_id INT AUTO_INCREMENT PRIMARY KEY,
-  medical_professional_email VARCHAR(255) NOT NULL,
+  medical_professional_email VARCHAR(255) NOT NULL UNIQUE,
   medical_professional_password VARCHAR(255) NOT NULL,
   medical_professional_name VARCHAR(255) NOT NULL,
   medical_professional_phone_number VARCHAR(20) NOT NULL,
@@ -30,7 +30,7 @@ CREATE TABLE medical_professional (
 drop table if exists medical_company;
 CREATE TABLE medical_company (
   medical_company_id INT AUTO_INCREMENT PRIMARY KEY,
-  medical_company_email VARCHAR(255) NOT NULL,
+  medical_company_email VARCHAR(255) NOT NULL UNIQUE,
   medical_company_password VARCHAR(255) NOT NULL,
   medical_company_name VARCHAR(255) NOT NULL,
   medical_company_phone_number VARCHAR(20) NOT NULL,
@@ -42,7 +42,7 @@ CREATE TABLE medical_company (
 select * from medical_professional;
 select * from medical_company;
 
-
+ SELECT medical_professional_email AS email FROM medical_professional WHERE medical_professional_email = "ccc@email.com" UNION SELECT medical_company_email AS email FROM medical_company WHERE medical_company_email = "ccc@email.com";
 
 
 

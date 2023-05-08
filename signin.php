@@ -1,3 +1,9 @@
+<?php session_start(); 
+if (isset($_SESSION['user_id'])) {
+    header("location: homepage.php");
+    exit();
+} 
+?>
 <!doctype html>
 <html lang="en">
 
@@ -88,7 +94,7 @@
 <body class="text-center text-bg-dark">
 
     <main class="form-signin w-100 m-auto">
-        <form id = "login-form" method = "POST" action = "signin.inc.php">
+        <form id = "signin-form" method = "POST" action = "includes/signin.inc.php">
             <img class="bi me-2 mb-2" width="60" src="https://www.svgrepo.com/show/38705/location-pin.svg" style="filter: invert(1);">
             <h1 class="h3 mb-3 fw-normal">Sign in</h1>
 
@@ -96,7 +102,7 @@
             <!-- form fields for email and password -->
             <div class="form-floating form-group mt-3 mb-3">
                 <label for="email"> Email Address</label>
-                <input type="email" class="form-control text-bg-dark" id="email" name="email " placeholder="Email Address">
+                <input type="email" class="form-control text-bg-dark" id="email" name="email" placeholder="Email Address">
             </div>
             <div class="form-floating form-group mt-3 mb-3">
                 <label for="password"> Password</label>
@@ -111,14 +117,12 @@
 
     <script>
         // grab elements
-        const loginForm = document.querySelector('#login-form');
+        const loginForm = document.querySelector('#signin-form');
         const email = document.querySelector('#email');
         const password = document.querySelector('#password');
 
         // handle error validation for form
         loginForm.addEventListener('submit', (e) => {
-            // prevent default action
-            e.preventDefault();
 
             // check if email is empty
             if (email.value === "") {
@@ -129,7 +133,6 @@
                 e.preventDefault();
             }
 
-            e.preventDefault();
         });
 
     </script>

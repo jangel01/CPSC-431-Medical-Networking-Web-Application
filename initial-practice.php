@@ -162,7 +162,7 @@
                 </div>
             </div>
 
-            <button class="w-100 btn btn-lg btn-warning" type="submit">Continue</button>
+            <button class="w-100 btn btn-lg btn-warning" type="submit">Sign up</button>
             <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
         </form>
     </main>

@@ -16,9 +16,10 @@ class MedCompSignUp extends Dbh {
     }
 
     protected function checkUser($email) {
-        $sql = "SELECT * FROM medical_company WHERE medical_company_email = ?";
+        $sql = "SELECT medical_professional_email AS email FROM medical_professional WHERE medical_professional_email = ? UNION SELECT medical_company_email AS email FROM medical_company WHERE medical_company_email = ?";
+       
         $stmt = $this->connect()->prepare($sql);
-        if (!$stmt->execute(array($email))) {
+        if (!$stmt->execute(array($email, $email))) {
             $stmt = null;
             header("location: ../signup.php?error=stmtfailed");
             exit();

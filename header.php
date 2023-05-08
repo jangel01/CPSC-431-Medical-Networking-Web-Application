@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header("Location: signin.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,8 +46,7 @@
 
                 <!-- Login and Sign-up buttons -->
                 <div class="ms-auto">
-                    <!-- <button type="button" class="btn btn-outline-light me-2">Login</button> -->
-                    <button type="button" class="btn btn-warning">Sign Out</button>
+                    <a href="includes/logout.inc.php" class="btn btn-warning">Sign Out</a>
                 </div>
             </div>
         </div>
