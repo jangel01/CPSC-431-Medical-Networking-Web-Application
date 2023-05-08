@@ -10,10 +10,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         include "../classes/dbh.classes.php";
         include "../classes/initial-practice.classes.php";
         include "../classes/initial-practice.contr.classes.php";
-        $initialPractice = new InitialPracticeContr($practice_name);
+
+        $initPractice = new PracticeContr($practice_name, $userId);
         
         // Running error handlers and setting up practice for user
-        $initialPractice->initialPractice();
 
         // redirect to next page
         header("location: ../homepage.php");
@@ -30,10 +30,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         include "../classes/dbh.classes.php";
         include "../classes/initial-practice.classes.php";
         include "../classes/initial-practice.contr.classes.php";
-        $initialPractice = new InitialPracticeContr($practice_name, $practice_type, $practice_specialty, $practice_email, $practice_address, $practice_phone);
+
+        $initPractice = new PracticeContr($practice_name, $userId, $practice_type, $practice_specialty, $practice_email, $practice_address, $practice_phone);
         
         // Running error handlers and setting up practice for user
-        $initialPractice->initialPractice();
 
         // redirect to next page
         header("location: ../homepage.php");

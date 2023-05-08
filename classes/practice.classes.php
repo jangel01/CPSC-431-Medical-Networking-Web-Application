@@ -2,7 +2,6 @@
 
 class Practice extends Dbh
 {
-
     // get all practices
     protected function getAllPractices()
     {
@@ -26,20 +25,54 @@ class Practice extends Dbh
         }
     }
 
-    // get user practice
-    // protected function getUserPracticeInfo($userId) {
-    //     $sql = "SELECT medical_practice_name, medical_practice_type, medical_pratice_specialty, medical_practice_email, medical_practice_address, medical_practice_phone_number
-    //     FROM medical_practice
-    //     JOIN medical_professional
-    //     ON medical_practice.medical_practice_id = medical_professional.medical_practice_id
-    //     WHERE medical_professional.medical_professional_id = ?;
-    //     ";
+    // get practice by practice name
+    protected function getPracticeByPracticeName($practiceName)
+    {
+        $sql = "SELECT * FROM medical_practice WHERE medical_practice_name = ?;";
 
-    //     $stmt = $this->connect()->prepare($sql);
-    // }
+        $stmt = $this->connect()->prepare($sql);
+        if (!$stmt->execute(array($practiceName))) {
+            $stmt = null;
+            $error = "stmtfailed";
+            $url = $_SERVER['REQUEST_URI'] . "?error=$error";
+            header("Location: ../$url");
+            exit();
+        }
 
-    // set practice -- new practice
-    protected function setPractice($practiceName, $practiceType, $practiceSpecialty, $practiceEmail, $practiceAddress, $practicePhone)
+        if($stmt->rowCount() == 0) {
+            $stmt = null;
+            exit();
+        } else {
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $results;
+        }
+    }
+    
+    // get practice from user id
+    protected function getPracticeByUserId($userId)
+    {
+        $sql = "SELECT medical_practice_name FROM medical_practice WHERE medical_practice_id = (SELECT medical_practice_id FROM medical_professional WHERE medical_professional_id = ?);";
+
+        $stmt = $this->connect()->prepare($sql);
+        if (!$stmt->execute(array($userId))) {
+            $stmt = null;
+            $error = "stmtfailed";
+            $url = $_SERVER['REQUEST_URI'] . "?error=$error";
+            header("Location: ../$url");
+            exit();
+        }
+
+        if($stmt->rowCount() == 0) {
+            $stmt = null;
+            exit();
+        } else {
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $results;
+        }
+    }
+
+    // insert a new practice
+    protected function addNewPractice($practiceName, $practiceType, $practiceSpecialty, $practiceEmail, $practiceAddress, $practicePhone)
     {
         $sql = "INSERT INTO medical_practice (medical_practice_name, medical_practice_type, medical_practice_specialty, medical_practice_email, medical_practice_address, medical_practice_phone_number)
         VALUES (?, ?, ?, ?, ?, ?);";
@@ -52,22 +85,41 @@ class Practice extends Dbh
             header("Location: ../$url");
             exit();
         }
+
+        $stmt = null;
     }
 
-    // set practice -- existing practice
-    protected function setPracticeExisting($practiceName)
+    // associate a practice with a user by updating medical_practice_id from medical_professional table
+    protected function associatePractice($practiceName, $userId)
     {
-        $sql = "INSERT INTO medical_practice (medical_practice_name)
-        VALUES (?);";
+        $sql = "UPDATE medical_professional SET medical_practice_id = (SELECT medical_practice_id FROM medical_practice WHERE medical_practice_name = ?) WHERE medical_professional_id = ?;";
 
         $stmt = $this->connect()->prepare($sql);
-        if (!$stmt->execute([$practiceName])) {
+        if (!$stmt->execute(array($practiceName, $userId))) {
             $stmt = null;
             $error = "stmtfailed";
             $url = $_SERVER['REQUEST_URI'] . "?error=$error";
             header("Location: ../$url");
             exit();
         }
+
+        $stmt = null;
     }
 
+    // update user practice 
+    protected function updateUserPractice($practiceName, $practiceType, $practiceSpecialty, $practiceEmail, $practiceAddress, $practicePhone, $userId)
+    {
+        $sql = "UPDATE medical_practice SET medical_practice_name = ?, medical_practice_type = ?, medical_practice_specialty = ?, medical_practice_email = ?, medical_practice_address = ?, medical_practice_phone_number = ? WHERE medical_practice_id = (SELECT medical_practice_id FROM medical_professional WHERE medical_professional_id = ?);";
+
+        $stmt = $this->connect()->prepare($sql);
+        if (!$stmt->execute(array($practiceName, $practiceType, $practiceSpecialty, $practiceEmail, $practiceAddress, $practicePhone, $userId))) {
+            $stmt = null;
+            $error = "stmtfailed";
+            $url = $_SERVER['REQUEST_URI'] . "?error=$error";
+            header("Location: ../$url");
+            exit();
+        }
+
+        $stmt = null;
+    }
 }
