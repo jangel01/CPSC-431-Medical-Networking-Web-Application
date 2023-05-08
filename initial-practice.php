@@ -88,25 +88,26 @@
 <body class="text-center text-bg-dark">
 
     <main class="form-signin w-100 m-auto">
-        <form id = "practice-form">
+        <form id="practice-form" method="POST" action="includes/initial-practice.inc.php">
             <img class="bi me-2 mb-2" width="60" src="https://www.svgrepo.com/show/38705/location-pin.svg" style="filter: invert(1);">
             <h1 class="h3 mb-3 fw-normal">Practice</h1>
 
             <div id="original-form">
                 <div class=" mt-3 mb-3">
                     <label for="practice-name" class="form-label mb-2 fw-bold">Practice Name</label>
-                    <select class="form-select text-bg-dark" id="practice-name" name="practice-bane">
+                    <select class="form-select text-bg-dark" id="practice-name-select" name="practice_name_select">
                         <option value="empty">--</option>
                         <option value="doctor">XYZ</option>
                         <option value="office_manager">123</option>
                         <option value="other">245</option>
                     </select>
-                    <p>Don't see your practice? <u id="add-practice" style = "cursor:pointer;">Try adding it. </u></p>
+                    <p>Don't see your practice? <u id="add-practice" name="add_practice" style="cursor:pointer;">Try adding it. </u></p>
                 </div>
             </div>
 
             <!-- show form if user clicks #add-practice-->
             <div id="new-practice-form">
+                <p><u id="back" name="back" style="cursor:pointer;">Back </u></p>
                 <div class="mt-3 mb-3">
                     <label for="practice-name" class="form-label mb-2 fw-bold">Practice Name</label>
                     <input name="practice_name" type="text" class="form-control text-bg-dark" id="practice-name">
@@ -116,8 +117,8 @@
                     <input name="practice_type" type="text" class="form-control text-bg-dark" id="practice-type">
                 </div>
                 <div class="mt-3 mb-3">
-                    <label for="practice-speciality" class="form-label mb-2 fw-bold">Practice Speciality</label>
-                    <input name="practice_speciality" type="text" class="form-control text-bg-dark" id="practice-speciality">
+                    <label for="practice-speciality" class="form-label mb-2 fw-bold">Practice Specialty</label>
+                    <input name="practice_specialty" type="text" class="form-control text-bg-dark" id="practice-specialty">
                 </div>
                 <div class="mt-3 mb-3">
                     <label for="practice-email" class="form-label mb-2 fw-bold">Practice Email</label>
@@ -129,7 +130,7 @@
                 </div>
                 <div class="mt-3 mb-3">
                     <label for="practice-phone" class="form-label mb-2 fw-bold">Practice Phone</label>
-                    <input name="practice_phone" type="tel" class="form-control text-bg-dark" id="practice-phone">
+                    <input name="practice_phone" type="tel" class="form-control text-bg-dark" id="practice-phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
                 </div>
             </div>
 
@@ -140,15 +141,27 @@
 
 
     <script>
-        // hide new practice form -- no jquery
-        document.getElementById("new-practice-form").style.display = "none";
+        // grab elements
+        const originalForm = document.getElementById("original-form");
+        const newPracticeForm = document.getElementById("new-practice-form");
+        const addPractice = document.getElementById("add-practice");
+        const back = document.getElementById("back");
 
-        // show new practice form if user clicks #add-practice
-        document.getElementById("add-practice").addEventListener("click", function() {
-            document.getElementById("new-practice-form").style.display = "block";
-            document.getElementById("original-form").style.display = "block";
+        // hide new practice form
+        newPracticeForm.style.display = "none";
+
+        // show new practice form if user clicks #add-practice and remove value from select
+        addPractice.addEventListener("click", function() {
+            newPracticeForm.style.display = "block";
+            originalForm.style.display = "none";
+            document.getElementById("practice-name-select").value = "empty";
         });
 
+        // if back is clicked, show original form
+        back.addEventListener("click", function() {
+            newPracticeForm.style.display = "none";
+            originalForm.style.display = "block";
+        });
     </script>
 
 </body>
