@@ -21,8 +21,8 @@ class PracticeContr extends Practice {
     }
 
     // add practice to medical_practice table 
-    public function addPractice() {
-        if (!$this->emptyValuesAll()) {
+    public function addNewPracticeContr() {
+        if (!$this->emptyValuesAll() && !$this->checkPracticeExist()) {
             $this->addNewPractice($this->practiceName, $this->practiceType, $this->practiceSpecialty, $this->practiceEmail, $this->practiceAddress, $this->practicePhone);
         } else {
             $error = "emptyvalues";
@@ -33,16 +33,20 @@ class PracticeContr extends Practice {
     }
 
     // associate practice with user
+    public function associatePracticeContr() {
+        $this->associatePractice($this->practiceName, $this->userId);
+    }
 
-
-    // check for empty values when only practice name and userId is given
-    private function emptyValuesPracticeOnly() {
-        if (empty($this->practiceName) || empty($this->userId)) {
+    // update user practice
+    public function updatePracticeContr() {
+        if (!$this->emptyValuesAll()) {
+            $this->updatePractice($this->practiceName, $this->userId);
+        } else {
             $error = "emptyvalues";
             $url = $_SERVER['REQUEST_URI'] . "?error=$error";
             header("Location: ../$url");
             exit();
-        }
+        } 
     }
 
     // check for empty values when all values are given

@@ -106,13 +106,13 @@ class Practice extends Dbh
         $stmt = null;
     }
 
-    // update user practice 
-    protected function updateUserPractice($practiceName, $practiceType, $practiceSpecialty, $practiceEmail, $practiceAddress, $practicePhone, $userId)
+    // update user pracctice id by practice name 
+    protected function updatePractice($practiceName, $userId)
     {
-        $sql = "UPDATE medical_practice SET medical_practice_name = ?, medical_practice_type = ?, medical_practice_specialty = ?, medical_practice_email = ?, medical_practice_address = ?, medical_practice_phone_number = ? WHERE medical_practice_id = (SELECT medical_practice_id FROM medical_professional WHERE medical_professional_id = ?);";
+        $sql = "UPDATE medical_professional SET medical_practice_id = (SELECT medical_practice_id FROM medical_practice WHERE medical_practice_name = ?) WHERE medical_professional_id = ?;";
 
         $stmt = $this->connect()->prepare($sql);
-        if (!$stmt->execute(array($practiceName, $practiceType, $practiceSpecialty, $practiceEmail, $practiceAddress, $practicePhone, $userId))) {
+        if (!$stmt->execute(array($practiceName, $userId))) {
             $stmt = null;
             $error = "stmtfailed";
             $url = $_SERVER['REQUEST_URI'] . "?error=$error";
