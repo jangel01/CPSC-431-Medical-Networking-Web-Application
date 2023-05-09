@@ -37,18 +37,6 @@ class PracticeContr extends Practice {
         $this->associatePractice($this->practiceName, $this->userId);
     }
 
-    // update user practice
-    public function updatePracticeContr() {
-        if (!$this->emptyValuesAll()) {
-            $this->updatePractice($this->practiceName, $this->userId);
-        } else {
-            $error = "emptyvalues";
-            $url = $_SERVER['REQUEST_URI'] . "?error=$error";
-            header("Location: ../$url");
-            exit();
-        } 
-    }
-
     // check for empty values when all values are given
     private function emptyValuesAll() {
         if (empty($this->practiceName) || empty($this->practiceType) || empty($this->practiceSpecialty) || empty($this->practiceEmail) || empty($this->practiceAddress) || empty($this->practicePhone) || empty($this->userId)) {

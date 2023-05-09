@@ -41,6 +41,9 @@ class Practice extends Dbh
 
         if($stmt->rowCount() == 0) {
             $stmt = null;
+            $error = "practicenotfound";
+            $url = $_SERVER['REQUEST_URI'] . "?error=$error";
+            header("Location: ../$url");
             exit();
         } else {
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -51,7 +54,7 @@ class Practice extends Dbh
     // get practice from user id
     protected function getPracticeByUserId($userId)
     {
-        $sql = "SELECT medical_practice_name FROM medical_practice WHERE medical_practice_id = (SELECT medical_practice_id FROM medical_professional WHERE medical_professional_id = ?);";
+        $sql = "SELECT * FROM medical_practice WHERE medical_practice_id = (SELECT medical_practice_id FROM medical_professional WHERE medical_professional_id = ?);";
 
         $stmt = $this->connect()->prepare($sql);
         if (!$stmt->execute(array($userId))) {
@@ -64,6 +67,9 @@ class Practice extends Dbh
 
         if($stmt->rowCount() == 0) {
             $stmt = null;
+            $error = "practicenotfound";
+            $url = $_SERVER['REQUEST_URI'] . "?error=$error";
+            header("Location: ../$url");
             exit();
         } else {
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -91,23 +97,6 @@ class Practice extends Dbh
 
     // associate a practice with a user by updating medical_practice_id from medical_professional table
     protected function associatePractice($practiceName, $userId)
-    {
-        $sql = "UPDATE medical_professional SET medical_practice_id = (SELECT medical_practice_id FROM medical_practice WHERE medical_practice_name = ?) WHERE medical_professional_id = ?;";
-
-        $stmt = $this->connect()->prepare($sql);
-        if (!$stmt->execute(array($practiceName, $userId))) {
-            $stmt = null;
-            $error = "stmtfailed";
-            $url = $_SERVER['REQUEST_URI'] . "?error=$error";
-            header("Location: ../$url");
-            exit();
-        }
-
-        $stmt = null;
-    }
-
-    // update user pracctice id by practice name 
-    protected function updatePractice($practiceName, $userId)
     {
         $sql = "UPDATE medical_professional SET medical_practice_id = (SELECT medical_practice_id FROM medical_practice WHERE medical_practice_name = ?) WHERE medical_professional_id = ?;";
 
