@@ -5,8 +5,8 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-// user details url
-$user_details_url = "user-details.php?id=" . $_SESSION['user_id'];
+// user details url -- user_type and user_id are passed as parameters
+$user_details_url = "user-details.php?user_type=" . $_SESSION['user_type'] . "&user_id=" . $_SESSION['user_id'];
 
 ?>
 <!DOCTYPE html>

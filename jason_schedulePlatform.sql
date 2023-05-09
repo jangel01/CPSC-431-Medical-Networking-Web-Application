@@ -43,10 +43,12 @@ CREATE TABLE medical_company (
   medical_company_availability_preferences varchar(255)
 );
 
+UPDATE medical_professional SET medical_professional_id = CONCAT('MP', medical_professional_id);
+UPDATE medical_company SET medical_company_id = CONCAT('MC', medical_company_id);
+
 select * from medical_professional;
 select * from medical_practice;
 select * from medical_company;
-
 
 
 
