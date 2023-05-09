@@ -1,3 +1,14 @@
+<?php 
+
+include "../classes/dbh.classes.php";
+include "../classes/initial-practice.classes.php";
+include "../classes/initial-practice.view.classes.php";
+
+$practices = new PracticeView();
+
+// get all practices
+$allPractices = $practices->getAllPracticesView();
+?>
 <!doctype html>
 <html lang="en">
 
@@ -97,9 +108,12 @@
                     <label for="practice-name" class="form-label mb-2 fw-bold">Practice Name</label>
                     <select class="form-select text-bg-dark" id="practice-name-select" name="practice_name_select">
                         <option value="empty">--</option>
-                        <option value="doctor">XYZ</option>
-                        <option value="office_manager">123</option>
-                        <option value="other">245</option>
+                        <?php
+                        // loop through all practices and display them as options
+                        foreach ($allPractices as $practice) {
+                            echo "<option value='" . $practice['practice_name'] . "'>" . $practice['practice_name'] . "</option>";
+                        }
+                        ?>
                     </select>
                     <p>Don't see your practice? <u id="add-practice" name="add_practice" style="cursor:pointer;">Try adding it. </u></p>
                 </div>
@@ -142,6 +156,7 @@
 
     <script>
         // grab elements
+        const practiceForm = document.getElementById("practice-form");
         const originalForm = document.getElementById("original-form");
         const newPracticeForm = document.getElementById("new-practice-form");
         const addPractice = document.getElementById("add-practice");
@@ -162,6 +177,29 @@
             newPracticeForm.style.display = "none";
             originalForm.style.display = "block";
         });
+
+        // form submission validation
+        practiceForm.addEventListener('submit', (e) => {
+            // check if original form or new practice form is being used
+            if (originalForm.style.display === "block") {
+                // if original form is being used, check if user selected a practice
+                if (document.getElementById("practice-name-select").value === "empty") {
+                    e.preventDefault();
+                    alert("Please select a practice or add a new one.");
+                }
+            } else {
+                // if new practice form is being used, check if all fields are filled out
+                if (document.getElementById("practice-name").value === "" ||
+                    document.getElementById("practice-type").value === "" ||
+                    document.getElementById("practice-specialty").value === "" ||
+                    document.getElementById("practice-email").value === "" ||
+                    document.getElementById("practice-address").value === "" ||
+                    document.getElementById("practice-phone").value === "") {
+                    e.preventDefault();
+                    alert("Please fill out all fields.");
+                }
+            }
+        })
     </script>
 
 </body>
