@@ -7,7 +7,7 @@ CREATE TABLE medical_practice (
   medical_practice_id INT AUTO_INCREMENT PRIMARY KEY,
   medical_practice_name VARCHAR(255) NOT NULL,
   medical_practice_type VARCHAR(255) NOT NULL,
-  medical_pratice_specialty VARCHAR(255) NOT NULL,
+  medical_practice_specialty VARCHAR(255) NOT NULL,
   medical_practice_email VARCHAR(255) NOT NULL,
   medical_practice_address VARCHAR(255) NOT NULL,
   medical_practice_phone_number VARCHAR(20) NOT NULL
@@ -40,6 +40,7 @@ CREATE TABLE medical_company (
 );
 
 select * from medical_professional;
+select * from medical_practice;
 select * from medical_company;
 
  SELECT medical_professional_email AS email FROM medical_professional WHERE medical_professional_email = "ccc@email.com" UNION SELECT medical_company_email AS email FROM medical_company WHERE medical_company_email = "ccc@email.com";

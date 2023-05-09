@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $medCompSignup->signupUser();
 
         // if medical_professional, redirect to initial practice page, else redirect to homepage
-        header("location: ../initial-practice.php");
+        header("location: ../signin.php");
     }
 
 }

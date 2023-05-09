@@ -11,8 +11,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $practice_name = $_POST['practice_name_select'];
    
         include "../classes/dbh.classes.php";
-        include "../classes/initial-practice.classes.php";
-        include "../classes/initial-practice.contr.classes.php";
+        include "../classes/practice.classes.php";
+        include "../classes/practice.contr.classes.php";
 
         $initPractice = new PracticeContr($practice_name, $userId);
 
@@ -32,8 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $practice_phone = $_POST['practice_phone'];
        
             include "../classes/dbh.classes.php";
-            include "../classes/initial-practice.classes.php";
-            include "../classes/initial-practice.contr.classes.php";
+            include "../classes/practice.classes.php";
+            include "../classes/practice.contr.classes.php";
     
             $initPractice = new PracticeContr($practice_name, $userId, $practice_type, $practice_specialty, $practice_email, $practice_address, $practice_phone);
             

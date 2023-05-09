@@ -111,4 +111,28 @@ class Practice extends Dbh
 
         $stmt = null;
     }
+
+    // see if practice exists by practice name
+    protected function practiceExists($practiceName)
+    {
+        $sql = "SELECT * FROM medical_practice WHERE medical_practice_name = ?;";
+
+        $stmt = $this->connect()->prepare($sql);
+        if (!$stmt->execute(array($practiceName))) {
+            $stmt = null;
+            $error = "stmtfailed";
+            $url = $_SERVER['REQUEST_URI'] . "?error=$error";
+            header("Location: ../$url");
+            exit();
+        }
+
+        if($stmt->rowCount() == 0) {
+            $stmt = null;
+            return false;
+        } else {
+            $stmt = null;
+            return true;
+        }
+    }
+
 }

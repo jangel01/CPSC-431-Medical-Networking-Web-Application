@@ -49,12 +49,8 @@ class PracticeContr extends Practice {
     // check if practice exist in medical_practice table by practice name
     private function checkPracticeExist() {
         if ($this->practiceName != null) {
-            $results = $this->getPracticeByPracticeName($this->practiceName);
-            if (empty($results)) {
-                return true;
-            } else {
-                return false;
-            }
+            $bool = $this->practiceExists($this->practiceName);
+            return $bool;
         }
     }       
 }

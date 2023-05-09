@@ -1,13 +1,13 @@
 <?php 
 
-include "../classes/dbh.classes.php";
-include "../classes/initial-practice.classes.php";
-include "../classes/initial-practice.view.classes.php";
+// include "classes/dbh.classes.php";
+// include "classes/practice.classes.php";
+// include "classes/practice.view.classes.php";
 
-$practices = new PracticeView();
+// $practices = new PracticeView();
 
-// get all practices
-$allPractices = $practices->getAllPracticesView();
+// // get all practices
+// $allPractices = $practices->getAllPracticesView();
 ?>
 <!doctype html>
 <html lang="en">
