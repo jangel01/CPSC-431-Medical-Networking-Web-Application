@@ -1,6 +1,7 @@
 <?php
 
-class PracticeContr extends Practice {
+class PracticeContr extends Practice
+{
     private $practiceName;
     private $practiceType;
     private $practiceSpecialty;
@@ -10,7 +11,8 @@ class PracticeContr extends Practice {
     private $userId;
 
     // intitialize constructor, set default values to null
-    public function __construct($practiceName = null, $userId = null, $practiceType = null, $practiceSpecialty = null, $practiceEmail = null, $practiceAddress = null, $practicePhone = null) {
+    public function __construct($practiceName = null, $userId = null, $practiceType = null, $practiceSpecialty = null, $practiceEmail = null, $practiceAddress = null, $practicePhone = null)
+    {
         $this->practiceName = $practiceName;
         $this->practiceType = $practiceType;
         $this->practiceSpecialty = $practiceSpecialty;
@@ -21,24 +23,27 @@ class PracticeContr extends Practice {
     }
 
     // add practice to medical_practice table 
-    public function addNewPracticeContr() {
+    public function addNewPracticeContr()
+    {
         if (!$this->emptyValuesAll() && !$this->checkPracticeExist()) {
             $this->addNewPractice($this->practiceName, $this->practiceType, $this->practiceSpecialty, $this->practiceEmail, $this->practiceAddress, $this->practicePhone);
         } else {
             $error = "emptyvalues";
-            $url = $_SERVER['REQUEST_URI'] . "?error=$error";
-            header("Location: ../$url");
+            $url = $_SERVER['HTTP_REFERER'] . "?error=" . urlencode($error);
+            header("Location: " . $url);
             exit();
         }
     }
 
     // associate practice with user
-    public function associatePracticeContr() {
+    public function associatePracticeContr()
+    {
         $this->associatePractice($this->practiceName, $this->userId);
     }
 
     // check for empty values when all values are given
-    private function emptyValuesAll() {
+    private function emptyValuesAll()
+    {
         if (empty($this->practiceName) || empty($this->practiceType) || empty($this->practiceSpecialty) || empty($this->practiceEmail) || empty($this->practiceAddress) || empty($this->practicePhone) || empty($this->userId)) {
             return true;
         } else {
@@ -47,10 +52,11 @@ class PracticeContr extends Practice {
     }
 
     // check if practice exist in medical_practice table by practice name
-    private function checkPracticeExist() {
+    private function checkPracticeExist()
+    {
         if ($this->practiceName != null) {
             $bool = $this->practiceExists($this->practiceName);
             return $bool;
         }
-    }       
+    }
 }

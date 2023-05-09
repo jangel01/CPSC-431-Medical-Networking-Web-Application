@@ -11,14 +11,13 @@ class Practice extends Dbh
         if (!$stmt->execute()) {
             $stmt = null;
             $error = "stmtfailed";
-            $url = $_SERVER['REQUEST_URI'] . "?error=$error";
-            header("Location: ../$url");
+            $url = $_SERVER['HTTP_REFERER'] . "?error=" . urlencode($error);
+            header("Location: " . $url);
             exit();
         }
 
         if($stmt->rowCount() == 0) {
             $stmt = null;
-            exit();
         } else {
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $results;
@@ -34,16 +33,16 @@ class Practice extends Dbh
         if (!$stmt->execute(array($practiceName))) {
             $stmt = null;
             $error = "stmtfailed";
-            $url = $_SERVER['REQUEST_URI'] . "?error=$error";
-            header("Location: ../$url");
+            $url = $_SERVER['HTTP_REFERER'] . "?error=" . urlencode($error);
+            header("Location: " . $url);
             exit();
         }
 
         if($stmt->rowCount() == 0) {
             $stmt = null;
             $error = "practicenotfound";
-            $url = $_SERVER['REQUEST_URI'] . "?error=$error";
-            header("Location: ../$url");
+            $url = $_SERVER['HTTP_REFERER'] . "?error=" . urlencode($error);
+            header("Location: " . $url);
             exit();
         } else {
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -60,16 +59,16 @@ class Practice extends Dbh
         if (!$stmt->execute(array($userId))) {
             $stmt = null;
             $error = "stmtfailed";
-            $url = $_SERVER['REQUEST_URI'] . "?error=$error";
-            header("Location: ../$url");
+            $url = $_SERVER['HTTP_REFERER'] . "?error=" . urlencode($error);
+            header("Location: " . $url);
             exit();
         }
 
         if($stmt->rowCount() == 0) {
             $stmt = null;
             $error = "practicenotfound";
-            $url = $_SERVER['REQUEST_URI'] . "?error=$error";
-            header("Location: ../$url");
+            $url = $_SERVER['HTTP_REFERER'] . "?error=" . urlencode($error);
+            header("Location: " . $url);
             exit();
         } else {
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -87,8 +86,8 @@ class Practice extends Dbh
         if (!$stmt->execute(array($practiceName, $practiceType, $practiceSpecialty, $practiceEmail, $practiceAddress, $practicePhone))) {
             $stmt = null;
             $error = "stmtfailed";
-            $url = $_SERVER['REQUEST_URI'] . "?error=$error";
-            header("Location: ../$url");
+            $url = $_SERVER['HTTP_REFERER'] . "?error=" . urlencode($error);
+            header("Location: " . $url);
             exit();
         }
 
@@ -104,8 +103,8 @@ class Practice extends Dbh
         if (!$stmt->execute(array($practiceName, $userId))) {
             $stmt = null;
             $error = "stmtfailed";
-            $url = $_SERVER['REQUEST_URI'] . "?error=$error";
-            header("Location: ../$url");
+            $url = $_SERVER['HTTP_REFERER'] . "?error=" . urlencode($error);
+            header("Location: " . $url);
             exit();
         }
 
@@ -121,8 +120,8 @@ class Practice extends Dbh
         if (!$stmt->execute(array($practiceName))) {
             $stmt = null;
             $error = "stmtfailed";
-            $url = $_SERVER['REQUEST_URI'] . "?error=$error";
-            header("Location: ../$url");
+            $url = $_SERVER['HTTP_REFERER'] . "?error=" . urlencode($error);
+            header("Location: " . $url);
             exit();
         }
 

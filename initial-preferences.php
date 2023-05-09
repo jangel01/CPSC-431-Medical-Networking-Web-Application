@@ -88,7 +88,7 @@
 <body class="text-center text-bg-dark">
 
     <main class="form-signin w-100 m-auto">
-        <form>
+        <form id = "preferences-form" method = "POST" action = "includes/initial.preferences.php">
             <img class="bi me-2 mb-2" width="60" src="https://www.svgrepo.com/show/38705/location-pin.svg" style="filter: invert(1);">
             <h1 class="h3 mb-3 fw-normal">Availability and food preferences</h1>
 
@@ -102,46 +102,47 @@
                 - Saturday
                 - Sunday
             -->
+
             <div class="mb-3">
                 <label for="availability" class="form-label">Availability</label>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="availability1" value="Monday" id="availability1">
+                    <input class="form-check-input" type="checkbox" name="availability[]" value="Monday" id="availability1">
                     <label class="form-check-label" for="availability1">
                         Monday
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="availability2" value="Tuesday" id="availability2">
+                    <input class="form-check-input" type="checkbox" name="availability[]" value="Tuesday" id="availability2">
                     <label class="form-check-label" for="availability2">
                         Tuesday
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="availability3" value="Wednesday" id="availability3">
+                    <input class="form-check-input" type="checkbox" name="availability[]" value="Wednesday" id="availability3">
                     <label class="form-check-label" for="availability3">
                         Wednesday
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="availability4" value="Thursday" id="availability4">
+                    <input class="form-check-input" type="checkbox" name="availability[]" value="Thursday" id="availability4">
                     <label class="form-check-label" for="availability4">
                         Thursday
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="availability5" value="Friday" id="availability5">
+                    <input class="form-check-input" type="checkbox" name="availability[]" value="Friday" id="availability5">
                     <label class="form-check-label" for="availability5">
                         Friday
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="availability6" value="Saturday" id="availability6">
+                    <input class="form-check-input" type="checkbox" name="availability[]" value="Saturday" id="availability6">
                     <label class="form-check-label" for="availability6">
                         Saturday
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="availability7" value="Sunday" id="availability7">
+                    <input class="form-check-input" type="checkbox" name="availability[]" value="Sunday" id="availability7">
                     <label class="form-check-label" for="availability7">
                         Sunday
                     </label>
@@ -162,43 +163,43 @@
             <div class="mb-3">
                 <label for="availability" class="form-label">Food preferences</label>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="food1" value="Vegetarian" id="food1">
+                    <input class="form-check-input" type="checkbox" name="food[]" value="Vegetarian" id="food1">
                     <label class="form-check-label" for="food1">
                         Vegetarian
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="food2" value="Vegan" id="food2">
+                    <input class="form-check-input" type="checkbox" name="food[]" value="Vegan" id="food2">
                     <label class="form-check-label" for="food2">
                         Vegan
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="food3" value="Gluten-free" id="food3">
+                    <input class="form-check-input" type="checkbox" name="food[]" value="Gluten-free" id="food3">
                     <label class="form-check-label" for="food3">
                         Gluten-free
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="food4" value="Dairy-free" id="food4">
+                    <input class="form-check-input" type="checkbox" name="food[]" value="Dairy-free" id="food4">
                     <label class="form-check-label" for="food4">
                         Dairy-free
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="food5" value="Seafood-free" id="food5">
+                    <input class="form-check-input" type="checkbox" name="food[]" value="Seafood-free" id="food5">
                     <label class="form-check-label" for="food5">
                         Seafood-free
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="food6" value="Nut-free" id="food6">
+                    <input class="form-check-input" type="checkbox" name="food[]" value="Nut-free" id="food6">
                     <label class="form-check-label" for="food6">
                         Nut-free
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="food7" value="Organic" id="food7">
+                    <input class="form-check-input" type="checkbox" name="food[]" value="Organic" id="food7">
                     <label class="form-check-label" for="food7">
                         Organic
                     </label>

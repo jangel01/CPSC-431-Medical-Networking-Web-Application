@@ -23,6 +23,8 @@ CREATE TABLE medical_professional (
   medical_professional_specialty VARCHAR(255) NOT NULL,
   medical_professional_license_number VARCHAR(50) NOT NULL,
   medical_professional_role VARCHAR(50) NOT NULL,
+  medical_professional_food_preferences varchar(255),
+  medical_professional_availability_preferences varchar(255),
   medical_practice_id INT,
   FOREIGN KEY (medical_practice_id) REFERENCES medical_practice(medical_practice_id)
 );
@@ -36,14 +38,15 @@ CREATE TABLE medical_company (
   medical_company_phone_number VARCHAR(20) NOT NULL,
   medical_company_address VARCHAR(255) NOT NULL,
   medical_company_sector VARCHAR(255) NOT NULL,
-  medical_company_specialty VARCHAR(255) NOT NULL
+  medical_company_specialty VARCHAR(255) NOT NULL,
+  medical_company_food_preferences varchar(255),
+  medical_company_availability_preferences varchar(255)
 );
 
 select * from medical_professional;
 select * from medical_practice;
 select * from medical_company;
 
- SELECT medical_professional_email AS email FROM medical_professional WHERE medical_professional_email = "ccc@email.com" UNION SELECT medical_company_email AS email FROM medical_company WHERE medical_company_email = "ccc@email.com";
 
 
 

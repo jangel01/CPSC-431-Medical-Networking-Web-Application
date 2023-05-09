@@ -1,13 +1,13 @@
 <?php 
 
-// include "classes/dbh.classes.php";
-// include "classes/practice.classes.php";
-// include "classes/practice.view.classes.php";
+include "classes/dbh.classes.php";
+include "classes/practice.classes.php";
+include "classes/practice.view.classes.php";
 
-// $practices = new PracticeView();
+$practices = new PracticeView();
 
-// // get all practices
-// $allPractices = $practices->getAllPracticesView();
+// get all practices
+$allPractices = $practices->getAllPracticesView();
 ?>
 <!doctype html>
 <html lang="en">
@@ -111,7 +111,7 @@
                         <?php
                         // loop through all practices and display them as options
                         foreach ($allPractices as $practice) {
-                            echo "<option value='" . $practice['practice_name'] . "'>" . $practice['practice_name'] . "</option>";
+                            echo "<option value='" . $practice['medical_practice_name'] . "'>" . $practice['medical_practice_name'] . "</option>";
                         }
                         ?>
                     </select>
@@ -161,6 +161,13 @@
         const newPracticeForm = document.getElementById("new-practice-form");
         const addPractice = document.getElementById("add-practice");
         const back = document.getElementById("back");
+        const practiceNameSelect = document.getElementById("practice-name-select");
+        const practiceName = document.getElementById("practice-name");
+        const practiceType = document.getElementById("practice-type");
+        const practiceSpecialty = document.getElementById("practice-specialty");
+        const practiceEmail = document.getElementById("practice-email");
+        const practiceAddress = document.getElementById("practice-address");
+        const practicePhone = document.getElementById("practice-phone");
 
         // hide new practice form
         newPracticeForm.style.display = "none";
@@ -169,7 +176,7 @@
         addPractice.addEventListener("click", function() {
             newPracticeForm.style.display = "block";
             originalForm.style.display = "none";
-            document.getElementById("practice-name-select").value = "empty";
+            practiceNameSelect.value = "empty";
         });
 
         // if back is clicked, show original form
@@ -181,20 +188,20 @@
         // form submission validation
         practiceForm.addEventListener('submit', (e) => {
             // check if original form or new practice form is being used
-            if (originalForm.style.display === "block") {
+            if (getComputedStyle(newPracticeForm).display === "none" && getComputedStyle(originalForm).display === "block") {
                 // if original form is being used, check if user selected a practice
-                if (document.getElementById("practice-name-select").value === "empty") {
+                if (practiceNameSelect.value === "empty") {
                     e.preventDefault();
                     alert("Please select a practice or add a new one.");
                 }
             } else {
                 // if new practice form is being used, check if all fields are filled out
-                if (document.getElementById("practice-name").value === "" ||
-                    document.getElementById("practice-type").value === "" ||
-                    document.getElementById("practice-specialty").value === "" ||
-                    document.getElementById("practice-email").value === "" ||
-                    document.getElementById("practice-address").value === "" ||
-                    document.getElementById("practice-phone").value === "") {
+                if (practiceName.value === "" ||
+                    practiceType.value === "" ||
+                    practiceSpecialty.value === "" ||
+                    practiceEmail.value === "" ||
+                    practiceAddress.value === "" ||
+                    practicePhone.value === "") {
                     e.preventDefault();
                     alert("Please fill out all fields.");
                 }
