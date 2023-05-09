@@ -9,6 +9,14 @@ include 'classes/user.details.view.classes.php';
 // get user details
 $userDetailsView = new UserDetailsView($_SESSION['user_id'], $_SESSION['user_type']);
 $userDetails = $userDetailsView->showUserDetails();
+
+// get current url
+$url = $_SERVER['REQUEST_URI'];
+$query_string = parse_url($url, PHP_URL_QUERY);
+
+// parse the query string to get the parameters as an array
+parse_str($query_string, $params);
+
 ?>
 <div class="container text-center mt-5 mb-5">
     <div class="row">
@@ -48,19 +56,22 @@ $userDetails = $userDetailsView->showUserDetails();
                             echo "<p><strong>Availability Preferences:</strong> " . $userDetails[0]['medical_company_availability_preferences'] . "</p>";
                         }
                         ?>
-
-                        <!-- <p><strong>Name:</strong>  John Doe</p>
-                        <p><strong>Specialty:</strong> Cardiology</p>
-                        <p><strong>Role/Sector:</strong> Doctor</p>
-                        <p><strong>Email:</strong> john.doe@example.com</p>
-                        <p><strong>Phone Number:</strong> (123) 456-7890</p> -->
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 
+    <div class = "row">
+        <div class = "col">
+            <!-- see if user is the user associated with the page and if so display a button that sends them to edit details page-->
+            <?php
+            if ($_SESSION['user_id'] == $params['id']) {
+                echo "<a href='edit-user-details.php?user_id=" . $params['id'] . "' class='btn btn-dark'>Edit Details</a>";
+            }
+            ?>
+        </div>
+    </div>
 </div>
 
 
