@@ -72,7 +72,7 @@ $user_details_url = "user-details.php?user_type=" . $_SESSION['user_type'] . "&u
                     <li><a id="homepage" href="homepage.php" class="nav-link px-2 text-white">Home</a></li>
                     <li><a id="connect" href="connect.php" class="nav-link px-2 text-white">Connect</a></li>
                     <li><a id="manage-meetings" href="manage-meetings.php" class="nav-link px-2 text-white">Manage Meetings</a></li>
-                    <li><a id="manage-preferences?" href="<?php echo $user_details_url; ?>" class="nav-link px-2 text-white">Manage Preferences</a></li>
+                    <li><a id="manage-preferences?" href="<?php echo $user_details_url; ?>" class="nav-link px-2 text-white">Edit Profile</a></li>
                 </ul>
 
                 <!-- Login and Sign-up buttons -->
