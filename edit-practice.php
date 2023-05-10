@@ -5,11 +5,26 @@
 if ($_SESSION['user_type'] != 'medical_professional') {
     header("Location: $user_details_url");
 }
+
+// get practice and practice view
+include 'classes/practice.classes.php';
+include 'classes/practice.view.classes.php';
+
+// initialize practice view
+$practiceView = new PracticeView();
+
+// get all practices
+$allPractices = $practiceView->getAllPracticesView();
+
+// get current user practice
+$currentUserPracticeView = new PracticeView(null, $_SESSION['user_id']);
+$currentUserPractice = $currentUserPracticeView->getPracticeByUserIdView();
+
 ?>
 
 <div class="container">
 
-    <form id="practice-form" method="POST" action="includes/initial.practice.inc.php">
+    <form id="practice-form" method="POST" action="includes/edit.practice.inc.php">
         <img class="bi me-2 mb-2" width="60" src="https://www.svgrepo.com/show/38705/location-pin.svg" style="filter: invert(1);">
         <h1 class="h3 mb-3 fw-normal">Practice</h1>
 
@@ -20,8 +35,12 @@ if ($_SESSION['user_type'] != 'medical_professional') {
                     <option value="empty">--</option>
                     <?php
                     // loop through all practices and display them as options
+                    // foreach ($allPractices as $practice) {
+                    //     echo "<option value='" . $practice['medical_practice_name'] . "'>" . $practice['medical_practice_name'] . "</option>";
+                    // }
                     foreach ($allPractices as $practice) {
-                        echo "<option value='" . $practice['medical_practice_name'] . "'>" . $practice['medical_practice_name'] . "</option>";
+                        $selected = ($practice['medical_practice_name'] == $currentUserPractice[0]['medical_practice_name']) ? 'selected' : '';
+                        echo "<option value='" . $practice['medical_practice_name'] . "' $selected>" . $practice['medical_practice_name'] . "</option>";
                     }
                     ?>
                 </select>
