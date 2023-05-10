@@ -53,7 +53,7 @@ $user_details_url = "user-details.php?user_type=" . $_SESSION['user_type'] . "&u
 
 </head>
 
-<body>
+<body class = "d-flex flex-column min-vh-100">
     <!-- Header -->
     <header class="p-3 text-bg-dark">
         <div class="container">
