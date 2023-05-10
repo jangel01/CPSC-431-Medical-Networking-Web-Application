@@ -1,5 +1,16 @@
 <?php 
 
+session_start();
+
+// check if user is logged in and there is a user type
+if (!isset($_SESSION["user_id"]) || !isset($_SESSION["user_type"])) {
+    header("Location: signin.php");
+    exit();
+} else if ($_SESSION["user_type"] != "medical_professional") {
+    header("Location: homepage.php");
+    exit();
+}
+
 include "classes/dbh.classes.php";
 include "classes/practice.classes.php";
 include "classes/practice.view.classes.php";
@@ -99,10 +110,11 @@ $allPractices = $practices->getAllPracticesView();
 <body class="text-center text-bg-dark">
 
     <main class="form-signin w-100 m-auto">
-        <form id="practice-form" method="POST" action="includes/initial-practice.inc.php">
+        <form id="practice-form" method="POST" action="includes/initial.practice.inc.php">
             <img class="bi me-2 mb-2" width="60" src="https://www.svgrepo.com/show/38705/location-pin.svg" style="filter: invert(1);">
             <h1 class="h3 mb-3 fw-normal">Practice</h1>
 
+            <a href = "includes/logout.inc.php" class = "text-light">Log out</a>
             <div id="original-form">
                 <div class=" mt-3 mb-3">
                     <label for="practice-name" class="form-label mb-2 fw-bold">Practice Name</label>

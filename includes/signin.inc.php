@@ -15,5 +15,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $signin->signinUser();
 
     // redirect to next page
-    header("location: ../initial-practice.php");
+    header("location: ../homepage.php");
 }

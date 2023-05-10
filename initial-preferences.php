@@ -1,3 +1,15 @@
+<?php
+
+// check if user is logged in
+session_start();
+
+// check if user is logged in and there is a user type
+if (!isset($_SESSION["user_id"]) || !isset($_SESSION["user_type"])) {
+    header("Location: signin.php");
+    exit();
+}
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -88,11 +100,11 @@
 <body class="text-center text-bg-dark">
 
     <main class="form-signin w-100 m-auto">
-        <form id = "preferences-form" method = "POST" action = "includes/initial.preferences.php">
+        <form id="preferences-form" method="POST" action="includes/initial.preferences.php">
             <img class="bi me-2 mb-2" width="60" src="https://www.svgrepo.com/show/38705/location-pin.svg" style="filter: invert(1);">
             <h1 class="h3 mb-3 fw-normal">Availability and food preferences</h1>
 
-
+            <a href="includes/logout.inc.php" class="text-light">Log out</a>
             <!-- form field for availability times (vertical checkbox of the days in the week):
                 - Monday
                 - Tuesday
@@ -103,7 +115,7 @@
                 - Sunday
             -->
 
-            <div class="mb-3">
+            <div class="mt-3 mb-3">
                 <label for="availability" class="form-label">Availability</label>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" name="availability[]" value="Monday" id="availability1">

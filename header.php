@@ -1,6 +1,8 @@
 <?php
 session_start();
-if (!isset($_SESSION['user_id'])) {
+
+// check if user is logged in and there is a user type
+if (!isset($_SESSION["user_id"]) || !isset($_SESSION["user_type"])) {
     header("Location: signin.php");
     exit();
 }

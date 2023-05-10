@@ -43,8 +43,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Running error handlers and user signup
         $medCompSignup->signupUser();
 
-        // if medical_professional, redirect to initial practice page, else redirect to homepage
         header("location: ../signin.php");
     }
-
 }
