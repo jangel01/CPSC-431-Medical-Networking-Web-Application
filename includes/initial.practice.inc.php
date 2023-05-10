@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $initPractice->associatePracticeContr();
 
         // set medical practice exist to true
-        $currentUser = new UserDetailsContr($userType, $userId);
+        $currentUser = new UserDetailsContr($userType, $userId, null, null, null, null, null, null, null, null);
         $currentUser->setPracticeExistBoolContr(1);
 
         // redirect to next page
@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $initPractice->associatePracticeContr();
 
             // set medical practice exist to true
-            $currentUser = new UserDetailsContr($userType, $userId);
+            $currentUser = new UserDetailsContr($userType, $userId, null, null, null, null, null, null, null, null);
             $currentUser->setPracticeExistBoolContr(1);
 
             // redirect to next page

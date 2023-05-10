@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // set preferences exist to true
-    $currentUser = new UserDetailsContr($userType, $userId);
+    $currentUser = new UserDetailsContr($userType, $userId, null, null, null, null, null, null, null, null);
     $currentUser->setPreferencesExistBoolContr(1);
 
     // redirect to next page
