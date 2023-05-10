@@ -136,7 +136,7 @@ if ($params['user_type'] == "medical_professional") {
     if ($params['user_type'] == "medical_professional" && $_SESSION['user_type'] == $params['user_type'] && $_SESSION['user_id'] == $params['user_id']) {
         echo "<div class='row'>";
         echo "<div class='col'>";
-        echo "<a href='medical-practice-edit.php?user_type=" . $_SESSION['user_type'] . "&user_id=" . $_SESSION['user_id'] . "' class='btn btn-dark'>Edit medical practice details</a>";
+        echo "<a href='edit-practice.php' class='btn btn-dark'>Edit medical practice details</a>";
         echo "</div>";
         echo "</div>";
     }

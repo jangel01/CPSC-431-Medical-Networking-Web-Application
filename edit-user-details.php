@@ -54,7 +54,7 @@
                 <input name="medical_company_specialty" type="text" class="form-control" id="medical-company-specialty" value="<?php echo $currentUserDetails[0]["medical_company_specialty"] ?>" required>
             </div>
         <?php } ?>
-        <button type="submit" class="btn btn-dark mb-5">Submit</button>
+        <button type="submit" class="btn btn-lg btn-dark mb-5">Submit</button>
     </form>
 </div>
 
