@@ -102,7 +102,7 @@ if ($params['user_type'] == "medical_professional") {
             <!-- see if the user matches the user type and user id in the url -->
             <?php
             if ($_SESSION['user_type'] == $params['user_type'] && $_SESSION['user_id'] == $params['user_id']) {
-                echo "<a href='edit-user-details.php' class='btn btn-dark'>Edit preferences</a>";
+                echo "<a href='edit-preferences.php' class='btn btn-dark'>Edit preferences</a>";
             }
             ?>
         </div>
