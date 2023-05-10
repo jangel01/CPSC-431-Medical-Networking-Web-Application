@@ -1,10 +1,35 @@
 <?php
 session_start();
 
+include "classes/dbh.classes.php";
+include "classes/user.details.classes.php";
+include "classes/user.details.view.classes.php";
+
 // check if user is logged in and there is a user type
 if (!isset($_SESSION["user_id"]) || !isset($_SESSION["user_type"])) {
     header("Location: signin.php");
     exit();
+}
+
+// check if user has completed initial setup 
+$currentUser = new UserDetailsView($_SESSION["user_type"], $_SESSION["user_id"]);
+$currentUserDetails = $currentUser->showUserDetails();
+
+if ($_SESSION["user_type"] == "medical_professional") {
+    if ($currentUserDetails[0]["medical_professional_practice_exist"] == 0) {
+        header("Location: initial-practice.php");
+        exit();
+    }
+    if ($currentUserDetails[0]["medical_professional_preferences_exist"] == 0) {
+        header("Location: initial-preferences.php");
+        exit();
+    }
+} else {
+    // medical company
+    if ($currentUserDetails[0]["medical_company_preferences_exist"] == 0) {
+        header("Location: initial-preferences.php");
+        exit();
+    }
 }
 
 // user details url -- user_type and user_id are passed as parameters

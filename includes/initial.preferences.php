@@ -6,6 +6,8 @@ $userType = $_SESSION['user_type'];
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     include "../classes/dbh.classes.php";
+    include "../classes/user.details.classes.php";
+    include "../classes/user.details.contr.classes.php";
     include "../classes/preferences.classes.php";
     include "../classes/preferences.contr.classes.php";
 
@@ -41,6 +43,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // set food preferences
         $initPreferences->setFoodPreferencesContr();
     }
+
+    // set preferences exist to true
+    $currentUser = new UserDetailsContr($userType, $userId);
+    $currentUser->setPreferencesExistBoolContr(1);
 
     // redirect to next page
     header("location: ../homepage.php");

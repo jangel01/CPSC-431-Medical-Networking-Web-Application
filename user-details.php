@@ -1,11 +1,6 @@
 <?php include_once 'header.php'; ?>
 
 <?php
-
-include 'classes/dbh.classes.php';
-include 'classes/user.details.classes.php';
-include 'classes/user.details.view.classes.php';
-
 // get current url
 $url = $_SERVER['REQUEST_URI'];
 $query_string = parse_url($url, PHP_URL_QUERY);

@@ -1,6 +1,7 @@
 <?php 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    include "../classes/dbh.classes.php";
     // check if medical professional or medical company by seeing value of radio-group
     if ($_POST['radio_group'] == 'medical_professional') {
         // grab the relevant data from the form
@@ -13,7 +14,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $medProfRole = $_POST['medical_professional_role'];
 
         // instantiate SignupController object
-        include "../classes/dbh.classes.php";
         include "../classes/medProf.signup.classes.php";
         include "../classes/medProf.signup.contr.classes.php";
         $medProfSignup = new MedProfSignUpContr($medProfEmail, $medProfPassword, $medProfName, $medProfPhone, $medProfSpecialty, $medProfLicense, $medProfRole);
@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $medProfSignup->signupUser();
 
         // redirect to next page
-        header("location: ../initial-practice.php");
+        header("location: ../signin.php");
     } else {
         // grab the relevant data from the form
         $medCompEmail = $_POST['medical_company_email'];
@@ -34,10 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $medCompSpecialty = $_POST['medical_company_specialty'];
 
         // instantiate SignupController object
-        include "../classes/dbh.classes.php";
         include "../classes/medComp.signup.classes.php";
         include "../classes/medComp.signup.contr.classes.php";
-
         $medCompSignup = new MedCompSignUpContr($medCompEmail, $medCompPassword, $medCompName, $medCompPhone, $medCompAddress, $medCompSector, $medCompSpecialty);
 
         // Running error handlers and user signup

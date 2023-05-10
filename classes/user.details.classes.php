@@ -54,4 +54,52 @@ class UserDetails extends Dbh
             }
         }
     }
+
+    // set medical professional practice exist boolean
+    protected function setPracticeExistBool($userId, $bool) {
+        $sql = "UPDATE medical_professional SET medical_professional_practice_exist = ? WHERE medical_professional_id = ?;";
+
+        $stmt = $this->connect()->prepare($sql);
+        if (!$stmt->execute(array($bool, $userId))) {
+            $stmt = null;
+            $error = "stmtfailed";
+            $url = $_SERVER['HTTP_REFERER'] . "?error=" . urlencode($error);
+            header("Location: " . $url);
+            exit();
+        }
+
+        $stmt = null;
+    }
+
+    // set preferences exist boolean for both medical professional and medical company
+    protected function setPreferencesExistBool($userId, $userType, $bool) {
+        if ($userType == "medical_professional") {
+            $sql = "UPDATE medical_professional SET medical_professional_preferences_exist = ? WHERE medical_professional_id = ?;";
+
+            $stmt = $this->connect()->prepare($sql);
+            if (!$stmt->execute(array($bool, $userId))) {
+                $stmt = null;
+                $error = "stmtfailed";
+                $url = $_SERVER['HTTP_REFERER'] . "?error=" . urlencode($error);
+                header("Location: " . $url);
+                exit();
+            }
+
+            $stmt = null;
+        } else {
+            $sql = "UPDATE medical_company SET medical_company_preferences_exist = ? WHERE medical_company_id = ?;";
+
+            $stmt = $this->connect()->prepare($sql);
+            if (!$stmt->execute(array($bool, $userId))) {
+                $stmt = null;
+                $error = "stmtfailed";
+                $url = $_SERVER['HTTP_REFERER'] . "?error=" . urlencode($error);
+                header("Location: " . $url);
+                exit();
+            }
+
+            $stmt = null;
+        }
+    }
 }
+

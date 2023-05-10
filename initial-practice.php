@@ -15,6 +15,17 @@ include "classes/dbh.classes.php";
 include "classes/practice.classes.php";
 include "classes/practice.view.classes.php";
 
+include "classes/user.details.classes.php";
+include "classes/user.details.view.classes.php";
+
+$currentUser = new UserDetailsView($_SESSION["user_type"], $_SESSION["user_id"]);
+$currentUserDetails = $currentUser->showUserDetails();
+
+if ($currentUserDetails[0]["medical_professional_practice_exist"] == 1) {
+    header("Location: homepage.php");
+    exit();
+}
+
 $practices = new PracticeView();
 
 // get all practices

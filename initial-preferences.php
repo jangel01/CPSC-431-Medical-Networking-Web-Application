@@ -8,6 +8,26 @@ if (!isset($_SESSION["user_id"]) || !isset($_SESSION["user_type"])) {
     header("Location: signin.php");
     exit();
 }
+
+include "classes/dbh.classes.php";
+include "classes/user.details.classes.php";
+include "classes/user.details.view.classes.php";
+
+$currentUser = new UserDetailsView($_SESSION["user_type"], $_SESSION["user_id"]);
+$currentUserDetails = $currentUser->showUserDetails();
+
+if ($_SESSION["user_type"] == "medical_professional") {
+    if ($currentUserDetails[0]["medical_professional_preferences_exist"] == 1) {
+        header("Location: homepage.php");
+        exit();
+    }
+} else {
+    // medical company
+    if ($currentUserDetails[0]["medical_company_preferences_exist"] == 1) {
+        header("Location: homepage.php");
+        exit();
+    }
+}
 ?>
 
 <!doctype html>
