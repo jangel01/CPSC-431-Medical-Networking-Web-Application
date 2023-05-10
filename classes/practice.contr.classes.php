@@ -28,7 +28,7 @@ class PracticeContr extends Practice
         if (!$this->emptyValuesAll() && !$this->checkPracticeExist()) {
             $this->addNewPractice($this->practiceName, $this->practiceType, $this->practiceSpecialty, $this->practiceEmail, $this->practiceAddress, $this->practicePhone);
         } else {
-            $error = "emptyvalues";
+            $error = "practiceexists";
             $url = $_SERVER['HTTP_REFERER'] . "?error=" . urlencode($error);
             header("Location: " . $url);
             exit();

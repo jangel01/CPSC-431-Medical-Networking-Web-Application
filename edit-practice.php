@@ -4,6 +4,7 @@
 
 if ($_SESSION['user_type'] != 'medical_professional') {
     header("Location: $user_details_url");
+    exit();
 }
 
 // get practice and practice view
@@ -34,10 +35,6 @@ $currentUserPractice = $currentUserPracticeView->getPracticeByUserIdView();
                 <select class="form-select" id="practice-name-select" name="practice_name_select">
                     <option value="empty">--</option>
                     <?php
-                    // loop through all practices and display them as options
-                    // foreach ($allPractices as $practice) {
-                    //     echo "<option value='" . $practice['medical_practice_name'] . "'>" . $practice['medical_practice_name'] . "</option>";
-                    // }
                     foreach ($allPractices as $practice) {
                         $selected = ($practice['medical_practice_name'] == $currentUserPractice[0]['medical_practice_name']) ? 'selected' : '';
                         echo "<option value='" . $practice['medical_practice_name'] . "' $selected>" . $practice['medical_practice_name'] . "</option>";
