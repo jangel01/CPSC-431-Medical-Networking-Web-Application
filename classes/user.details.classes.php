@@ -1,6 +1,150 @@
 <?php
 class UserDetails extends Dbh
 {
+    // get all users
+    protected function getAllMedicalProfessionals()
+    {
+        $sql = "SELECT * FROM medical_professional;";
+        $stmt = $this->connect()->prepare($sql);
+
+        if (!$stmt->execute()) {
+            $stmt = null;
+            $error = "getAllMedProfStmtFailed";
+            $url = $_SERVER['HTTP_REFERER'] . "?error=" . urlencode($error);
+            header("Location: " . $url);
+            exit();
+        }
+
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $results;
+    }
+
+    // get all medical companies
+    protected function getAllMedicalCompanies()
+    {
+        $sql = "SELECT * FROM medical_company;";
+        $stmt = $this->connect()->prepare($sql);
+
+        if (!$stmt->execute()) {
+            $stmt = null;
+            $error = "getAllMedCompStmtFailed";
+            $url = $_SERVER['HTTP_REFERER'] . "?error=" . urlencode($error);
+            header("Location: " . $url);
+            exit();
+        }
+
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $results;
+    }
+
+    // get medical professionals matching (using like) search term by specialty
+    protected function getMedicalProfessionalsBySpecialty($searchTerm)
+    {
+        $sql = "SELECT * FROM medical_professional WHERE medical_professional_specialty LIKE ?;";
+        $stmt = $this->connect()->prepare($sql);
+
+        if (!$stmt->execute(array("%" . $searchTerm . "%"))) {
+            $stmt = null;
+            $error = "getMedProfBySpecStmtFailed";
+            $url = $_SERVER['HTTP_REFERER'] . "?error=" . urlencode($error);
+            header("Location: " . $url);
+            exit();
+        }
+
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $results;
+    }
+
+    // get medical companies matching (using like) search term by specialty
+    protected function getMedicalCompaniesBySpecialty($searchTerm)
+    {
+        $sql = "SELECT * FROM medical_company WHERE medical_company_specialty LIKE ?;";
+        $stmt = $this->connect()->prepare($sql);
+
+        if (!$stmt->execute(array("%" . $searchTerm . "%"))) {
+            $stmt = null;
+            $error = "getMedCompBySpecStmtFailed";
+            $url = $_SERVER['HTTP_REFERER'] . "?error=" . urlencode($error);
+            header("Location: " . $url);
+            exit();
+        }
+
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $results;
+    }
+
+    // get medical professionals matching (using like) search term by name
+    protected function getMedicalProfessionalsByName($searchTerm)
+    {
+        $sql = "SELECT * FROM medical_professional WHERE medical_professional_name LIKE ?;";
+        $stmt = $this->connect()->prepare($sql);
+
+        if (!$stmt->execute(array("%" . $searchTerm . "%"))) {
+            $stmt = null;
+            $error = "getMedProfByNameStmtFailed";
+            $url = $_SERVER['HTTP_REFERER'] . "?error=" . urlencode($error);
+            header("Location: " . $url);
+            exit();
+        }
+
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $results;
+    }
+
+    // get medical companies matching (using like) search term by name
+    protected function getMedicalCompaniesByName($searchTerm)
+    {
+        $sql = "SELECT * FROM medical_company WHERE medical_company_name LIKE ?;";
+        $stmt = $this->connect()->prepare($sql);
+
+        if (!$stmt->execute(array("%" . $searchTerm . "%"))) {
+            $stmt = null;
+            $error = "getMedCompByNameStmtFailed";
+            $url = $_SERVER['HTTP_REFERER'] . "?error=" . urlencode($error);
+            header("Location: " . $url);
+            exit();
+        }
+
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $results;
+    }
+
+    // get medical professionals matching (using like) search term by location
+    protected function getMedicalProfessionalsByLocation($searchTerm)
+    {
+        $sql = "SELECT * FROM medical_professional WHERE medical_professional_location LIKE ?;";
+        $stmt = $this->connect()->prepare($sql);
+
+        if (!$stmt->execute(array("%" . $searchTerm . "%"))) {
+            $stmt = null;
+            $error = "getMedProfByLocStmtFailed";
+            $url = $_SERVER['HTTP_REFERER'] . "?error=" . urlencode($error);
+            header("Location: " . $url);
+            exit();
+        }
+
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $results;
+    }
+
+    // get medical companies matching (using like) search term by location
+    protected function getMedicalCompaniesByLocation($searchTerm)
+    {
+        $sql = "SELECT * FROM medical_company WHERE medical_company_location LIKE ?;";
+        $stmt = $this->connect()->prepare($sql);
+
+        if (!$stmt->execute(array("%" . $searchTerm . "%"))) {
+            $stmt = null;
+            $error = "getMedCompByLocStmtFailed";
+            $url = $_SERVER['HTTP_REFERER'] . "?error=" . urlencode($error);
+            header("Location: " . $url);
+            exit();
+        }
+
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $results;
+    }
+    
     // get user details -- user id and user type
     protected function getUserDetails($userType, $userId)
     {
@@ -123,12 +267,13 @@ class UserDetails extends Dbh
     }
 
     // edit user details -- medical company (name, email, phone, address, sector, specialty)
-    protected function editMedCompUserDetails($name, $email, $phone, $address, $sector, $specialty, $userId) {
+    protected function editMedCompUserDetails($name, $email, $phone, $address, $sector, $specialty, $userId)
+    {
         $sql = "UPDATE medical_company SET medical_company_name = ?, medical_company_email = ?, medical_company_phone_number = ?, medical_company_address = ?, medical_company_sector = ?, medical_company_specialty = ? WHERE medical_company_id = ?;";
 
         $stmt = $this->connect()->prepare($sql);
         if (!$stmt->execute(array($name, $email, $phone, $address, $sector, $specialty, $userId))) {
-            
+
             $stmt = null;
             $error = "editMedCompDtsStmtFailed";
             $url = $_SERVER['HTTP_REFERER'] . "?error=" . urlencode($error);
