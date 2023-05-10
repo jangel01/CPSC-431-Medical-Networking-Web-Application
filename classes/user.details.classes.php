@@ -109,10 +109,14 @@ class UserDetails extends Dbh
         return $results;
     }
 
-    // get medical professionals matching (using like) search term by location
+    // get medical professionals matching (using like) search term by location, join medical practice to get practice location
     protected function getMedicalProfessionalsByLocation($searchTerm)
     {
-        $sql = "SELECT * FROM medical_professional WHERE medical_professional_location LIKE ?;";
+        $sql = "SELECT medical_professional.medical_professional_id, medical_professional.medical_professional_name, medical_practice.medical_practice_name, medical_practice.medical_practice_address
+        FROM medical_professional
+        INNER JOIN medical_practice ON medical_professional.medical_practice_id = medical_practice.medical_practice_id
+        WHERE medical_practice.medical_practice_address LIKE ?;";
+
         $stmt = $this->connect()->prepare($sql);
 
         if (!$stmt->execute(array("%" . $searchTerm . "%"))) {
@@ -130,7 +134,7 @@ class UserDetails extends Dbh
     // get medical companies matching (using like) search term by location
     protected function getMedicalCompaniesByLocation($searchTerm)
     {
-        $sql = "SELECT * FROM medical_company WHERE medical_company_location LIKE ?;";
+        $sql = "SELECT * FROM medical_company WHERE medical_company_address LIKE ?;";
         $stmt = $this->connect()->prepare($sql);
 
         if (!$stmt->execute(array("%" . $searchTerm . "%"))) {
@@ -144,7 +148,7 @@ class UserDetails extends Dbh
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $results;
     }
-    
+
     // get user details -- user id and user type
     protected function getUserDetails($userType, $userId)
     {
