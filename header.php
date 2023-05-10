@@ -51,9 +51,14 @@ $user_details_url = "user-details.php?user_type=" . $_SESSION['user_type'] . "&u
 
     <script src="navbar.js" defer></script>
 
+    <style>
+        td a {
+            display: block;
+        }
+    </style>
 </head>
 
-<body class = "d-flex flex-column min-vh-100">
+<body class="d-flex flex-column min-vh-100">
     <!-- Header -->
     <header class="p-3 text-bg-dark">
         <div class="container">

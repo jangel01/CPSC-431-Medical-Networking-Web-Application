@@ -24,7 +24,7 @@
                     <div class="col-9">
                         <div class="input-group">
                             <input type="text" name="search" class="form-control" id="search" placeholder="Search...">
-                            <button type="button" class="btn btn-dark">Search</button>
+                            <button type="submit" class="btn btn-dark">Search</button>
                         </div>
                     </div>
                 </div>
@@ -72,13 +72,16 @@
             echo '                <tbody>';
 
             foreach ($results as $result) {
-                echo '                <tr class="text-decoration-underline" style="cursor:pointer;">';
-                echo '                    <td>' . $result['medical_professional_name'] . '</td>';
-                echo '                    <td>' . $result['medical_professional_role'] . '</td>';
-                echo '                    <td class="bg-warning-subtle">' . $result['medical_professional_specialty'] . '</td>';
+                $userType = 'medical_company'; 
+                $userID = $result['medical_professional_id']; 
+            
+                echo '                <tr>';
+                echo '                    <td><a class="text-dark" href="user-details.php?user_type=' . $userType . '&user_id=' . $userID . '">' . $result['medical_professional_name'] . '</a></td>';
+                echo '                    <td><a class="text-dark" href="user-details.php?user_type=' . $userType . '&user_id=' . $userID . '">' . $result['medical_professional_role'] . '</a></td>';
+                echo '                    <td class="bg-warning-subtle"><a class="text-dark" href="user-details.php?user_type=' . $userType . '&user_id=' . $userID . '">' . $result['medical_professional_specialty'] . '</a></td>';
                 echo '                </tr>';
             }
-
+            
             echo '                </tbody>';
             echo '            </table>';
             echo '        </div>';
@@ -128,81 +131,6 @@
         }
     }
     ?>
-
-    <!-- <div class="row">
-        <div class="col-12">
-            <h4> Medical Professionals</h4>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-12">
-            <div class="table-responsive mb-3" style="overflow-x: auto;">
-                <table class="table table-striped table-bordered">
-                    <thead class="text-bg-dark">
-                        <tr>
-                            <th>Name</th>
-                            <th>Role</th>
-                            <th>Speciality</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="text-decoration-underline" style="cursor:pointer;">
-                            <td>Placeholder text</td>
-                            <td class="bg-warning-subtle">Placeholder text</td>
-                            <td>Placeholder text</td>
-                        </tr>
-                        <tr class="text-decoration-underline" style="cursor:pointer;">
-                            <td>Placeholder text</td>
-                            <td class="bg-warning-subtle">Placeholder text</td>
-                            <td>Placeholder text</td>
-                        </tr>
-                        <tr class="text-decoration-underline" style="cursor:pointer;">
-                            <td>Placeholder text</td>
-                            <td class="bg-warning-subtle">Placeholder text</td>
-                            <td>Placeholder text</td>
-                        </tr>
-
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div> -->
-
-    <!-- <div class="row">
-        <div class="col-12">
-            <h4> Medical Companies</h4>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-12">
-            <div class="table-responsive" style="overflow-x: auto;">
-                <table class="table table-striped table-bordered">
-                    <thead class="text-bg-dark">
-                        <tr>
-                            <th>Company Name</th>
-                            <th>Speciality</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="text-decoration-underline" style="cursor:pointer;">
-                            <td>Placeholder text</td>
-                            <td class="bg-warning-subtle">Placeholder text</td>
-                        </tr>
-                        <tr class="text-decoration-underline" style="cursor:pointer;">
-                            <td>Placeholder text</td>
-                            <td class="bg-warning-subtle">Placeholder text</td>
-                        </tr>
-                        <tr class="text-decoration-underline" style="cursor:pointer;">
-                            <td>Placeholder text</td>
-                            <td class="bg-warning-subtle">Placeholder text</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div> -->
 </div>
 
 <?php include_once 'footer.php'; ?>
