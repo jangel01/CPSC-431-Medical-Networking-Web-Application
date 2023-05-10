@@ -65,23 +65,22 @@
             echo '                <thead class="text-bg-dark">';
             echo '                    <tr>';
             echo '                        <th>Name</th>';
-            echo '                        <th>Role</th>';
             echo '                        <th>Speciality</th>';
             echo '                    </tr>';
             echo '                </thead>';
             echo '                <tbody>';
 
             foreach ($results as $result) {
-                $userType = 'medical_company'; 
-                $userID = $result['medical_professional_id']; 
-            
+                $userType = 'medical_professional';
+                $userID = $result['medical_professional_id'];
+
                 echo '                <tr>';
                 echo '                    <td><a class="text-dark" href="user-details.php?user_type=' . $userType . '&user_id=' . $userID . '">' . $result['medical_professional_name'] . '</a></td>';
-                echo '                    <td><a class="text-dark" href="user-details.php?user_type=' . $userType . '&user_id=' . $userID . '">' . $result['medical_professional_role'] . '</a></td>';
                 echo '                    <td class="bg-warning-subtle"><a class="text-dark" href="user-details.php?user_type=' . $userType . '&user_id=' . $userID . '">' . $result['medical_professional_specialty'] . '</a></td>';
+
                 echo '                </tr>';
             }
-            
+
             echo '                </tbody>';
             echo '            </table>';
             echo '        </div>';
@@ -103,17 +102,19 @@
             echo '                <thead class="text-bg-dark">';
             echo '                    <tr>';
             echo '                        <th>Company Name</th>';
-            echo '                        <th>Sector</th>';
             echo '                        <th>Speciality</th>';
+
             echo '                    </tr>';
             echo '                </thead>';
             echo '                <tbody>';
 
             foreach ($results as $result) {
-                echo '                <tr class="text-decoration-underline" style="cursor:pointer;">';
-                echo '                    <td>' . $result['medical_company_name'] . '</td>';
-                echo '                    <td>' . $result['medical_company_sector'] . '</td>';
-                echo '                    <td class="bg-warning-subtle">' . $result['medical_company_specialty'] . '</td>';
+                $userType = 'medical_company';
+                $userID = $result['medical_company_id'];
+
+                echo '                <tr>';
+                echo '                    <td><a class="text-dark" href="user-details.php?user_type=' . $userType . '&user_id=' . $userID . '">' . $result['medical_company_name'] . '</a></td>';
+                echo '                    <td class="bg-warning-subtle"><a class="text-dark" href="user-details.php?user_type=' . $userType . '&user_id=' . $userID . '">' . $result['medical_company_specialty'] . '</a></td>';
                 echo '                </tr>';
             }
 

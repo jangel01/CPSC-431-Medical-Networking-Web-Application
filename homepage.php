@@ -1,6 +1,6 @@
 <?php include_once 'header.php'; ?>
 
-<div class="container mt-5 mb-5">
+<!-- <div class="container mt-5 mb-5">
     <div class="row gx-3">
         <div class="col-10">
             <h2> Upcoming Meetings</h2>
@@ -112,7 +112,7 @@
             </ul>
         </div>
     </div>
-</div>
+</div> -->
 
 
 <?php include_once 'footer.php'; ?>
