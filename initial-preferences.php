@@ -124,6 +124,7 @@ if ($_SESSION["user_type"] == "medical_professional") {
             <img class="bi me-2 mb-2" width="60" src="https://www.svgrepo.com/show/38705/location-pin.svg" style="filter: invert(1);">
             <h1 class="h3 mb-3 fw-normal">Availability and food preferences</h1>
 
+            <p> Note: you can edit your preferences later</p>
             <a href="includes/logout.inc.php" class="text-light">Log out</a>
             <!-- form field for availability times (vertical checkbox of the days in the week):
                 - Monday

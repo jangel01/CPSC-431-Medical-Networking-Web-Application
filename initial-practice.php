@@ -125,6 +125,7 @@ $allPractices = $practices->getAllPracticesView();
             <img class="bi me-2 mb-2" width="60" src="https://www.svgrepo.com/show/38705/location-pin.svg" style="filter: invert(1);">
             <h1 class="h3 mb-3 fw-normal">Practice</h1>
 
+            <p> Note: you can edit your practice later</p>
             <a href = "includes/logout.inc.php" class = "text-light">Log out</a>
             <div id="original-form">
                 <div class=" mt-3 mb-3">
