@@ -23,7 +23,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // redirect to next page
         header("location: ../homepage.php");
     } else {
-        $initPreferences = new PreferencesContr($userId, $userType, null);
+        $availability = "None";
+        $initPreferences = new PreferencesContr($userId, $userType, $availability);
 
         // set availability preferences
         $initPreferences->setAvailabilityPreferencesContr();
@@ -38,7 +39,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // set food preferences
         $initPreferences->setFoodPreferencesContr();
     } else {
-        $initPreferences = new PreferencesContr($userId, $userType, null, null);
+        $food = "None";
+        $initPreferences = new PreferencesContr($userId, $userType, null, $food);
 
         // set food preferences
         $initPreferences->setFoodPreferencesContr();

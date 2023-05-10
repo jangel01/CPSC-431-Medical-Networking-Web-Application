@@ -23,8 +23,8 @@ class PracticeView extends Practice {
     }
 
     // get practice from user id
-    public function getPracticeByUserIdView($userId) {
-        $results = $this->getPracticeByUserId($userId);
+    public function getPracticeByUserIdView() {
+        $results = $this->getPracticeByUserId($this->userId);
         return $results;
     }
 }
