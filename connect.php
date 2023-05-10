@@ -76,7 +76,7 @@
 
                 echo '                <tr>';
                 echo '                    <td><a class="text-dark" href="user-details.php?user_type=' . $userType . '&user_id=' . $userID . '">' . $result['medical_professional_name'] . '</a></td>';
-                echo '                    <td class="bg-warning-subtle"><a class="text-dark" href="user-details.php?user_type=' . $userType . '&user_id=' . $userID . '">' . $result['medical_professional_specialty'] . '</a></td>';
+                echo '                    <td><a class="text-dark" href="user-details.php?user_type=' . $userType . '&user_id=' . $userID . '">' . $result['medical_professional_specialty'] . '</a></td>';
 
                 echo '                </tr>';
             }
@@ -114,7 +114,7 @@
 
                 echo '                <tr>';
                 echo '                    <td><a class="text-dark" href="user-details.php?user_type=' . $userType . '&user_id=' . $userID . '">' . $result['medical_company_name'] . '</a></td>';
-                echo '                    <td class="bg-warning-subtle"><a class="text-dark" href="user-details.php?user_type=' . $userType . '&user_id=' . $userID . '">' . $result['medical_company_specialty'] . '</a></td>';
+                echo '                    <td><a class="text-dark" href="user-details.php?user_type=' . $userType . '&user_id=' . $userID . '">' . $result['medical_company_specialty'] . '</a></td>';
                 echo '                </tr>';
             }
 

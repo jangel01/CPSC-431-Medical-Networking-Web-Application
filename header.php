@@ -52,6 +52,10 @@ $user_details_url = "user-details.php?user_type=" . $_SESSION['user_type'] . "&u
     <script src="navbar.js" defer></script>
 
     <style>
+        /* hover */
+        tr:hover {
+            background-color: #fff3cd;
+        }
         td a {
             display: block;
         }
