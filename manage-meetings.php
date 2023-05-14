@@ -32,6 +32,49 @@ if ($_SESSION['user_type'] == "medical_professional") {
 
     <div class="row">
         <div class="col-12">
+            <h2 class="mb-5 text-decoration-underline">Accepted Meetings</h2>
+
+            <!-- Calendar Navigation -->
+            <div class="row mb-3">
+                <div class="col-6">
+                    <button id="prevMonthBtn" class="btn btn-secondary">&lt;</button>
+                </div>
+                <div class="col-6 text-end">
+                    <button id="nextMonthBtn" class="btn btn-secondary">&gt;</button>
+                </div>
+            </div>
+
+            <!-- Calendar Month and Year -->
+            <div id="calendarMonthYear" class="mb-3"></div>
+
+            <!-- Calendar Content -->
+            <div id="calendarContainer" class="table-responsive mb-4" style="overflow-x: auto;">
+                <table class="table table-striped table-bordered">
+                    <!-- Table Header -->
+                    <thead class="text-bg-dark">
+                        <tr>
+                            <th>Sun</th>
+                            <th>Mon</th>
+                            <th>Tue</th>
+                            <th>Wed</th>
+                            <th>Thu</th>
+                            <th>Fri</th>
+                            <th>Sat</th>
+                        </tr>
+                    </thead>
+                    <!-- Table Body -->
+                    <tbody id="calendarBody">
+                        <!-- Calendar body rows will be dynamically generated here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-12">
             <h2 class="mb-5 text-decoration-underline"> Accepted Meetings</h2>
 
             <div class="table-responsive mb-4" style="overflow-x: auto;">
@@ -80,6 +123,7 @@ if ($_SESSION['user_type'] == "medical_professional") {
             </div>
         </div>
     </div>
+
 
     <hr class="mt-4 mb-4">
 
@@ -219,7 +263,115 @@ if ($_SESSION['user_type'] == "medical_professional") {
             </div>
         </div>
     </div>
-
 </div>
+
+<script>
+    $(document).ready(function() {
+        // Get the current date
+        var currentDate = new Date();
+
+        // Populate the calendar on page load
+        populateCalendar(currentDate);
+
+        // Handle previous month button click
+        $('#prevMonthBtn').on('click', function() {
+            currentDate.setMonth(currentDate.getMonth() - 1);
+            populateCalendar(currentDate);
+        });
+
+        // Handle next month button click
+        $('#nextMonthBtn').on('click', function() {
+            currentDate.setMonth(currentDate.getMonth() + 1);
+            populateCalendar(currentDate);
+        });
+
+        // Function to populate the calendar
+        function populateCalendar(date) {
+            // Clear previous calendar content
+            $('#calendarBody').empty();
+
+            // Get the year and month from the selected date
+            var year = date.getFullYear();
+            var month = date.getMonth();
+
+            // Get the number of days in the month
+            var daysInMonth = new Date(year, month + 1, 0).getDate();
+
+            // Get the accepted meetings for the selected month
+            var acceptedMeetings = <?php echo json_encode($acceptedMeetings); ?>;
+
+            // Generate calendar body
+            var calendarBody = $('#calendarBody');
+            var calendarRow = $('<tr class="text-decoration-underline" style="cursor:pointer;"></tr>');
+
+            // Add empty cells for the days before the first day of the month
+            var firstDay = new Date(year, month, 1).getDay();
+            for (var i = 0; i < firstDay; i++) {
+                calendarRow.append('<td></td>');
+            }
+
+            // Generate calendar cells for each day in the month
+            for (var i = 1; i <= daysInMonth; i++) {
+                var dayOfWeek = new Date(year, month, i).getDay();
+
+                // Start a new row on Sundays (dayOfWeek = 0)
+                if (dayOfWeek === 0 && i !== 1) {
+                    calendarBody.append(calendarRow);
+                    calendarRow = $('<tr class="text-decoration-underline" style="cursor:pointer;"></tr>');
+                }
+
+                // Check if there are meetings on this day
+                var meetingsOnDay = acceptedMeetings.filter(function(meeting) {
+                    var meetingDateParts = meeting['meeting_date'].split('-');
+                    var meetingYear = parseInt(meetingDateParts[0]);
+                    var meetingMonth = parseInt(meetingDateParts[1]) - 1; // Adjust for zero-based month
+                    var meetingDay = parseInt(meetingDateParts[2]);
+                    return meetingYear === year && meetingMonth === month && meetingDay === i;
+                });
+
+
+                var dayCell = '<td>' + i + '<br>';
+                meetingsOnDay.forEach(function(meeting) {
+                    var organizerName = '';
+                    var meetingId = meeting['meeting_id'];
+
+                    // Determine the organizer type and get the organizer name
+                    if (meeting.hasOwnProperty('medical_professional_requester_id')) {
+                        organizerName = meeting['medical_professional_name'];
+                    } else if (meeting.hasOwnProperty('medical_company_requester_id')) {
+                        organizerName = meeting['medical_company_name'];
+                    } else if (meeting.hasOwnProperty('medical_professional_requestee_id')) {
+                        organizerName = meeting['medical_professional_name'];
+                    } else if (meeting.hasOwnProperty('medical_company_requestee_id')) {
+                        organizerName = meeting['medical_company_name'];
+                    } else {
+                        organizerName = '';
+                    }
+
+                    // Append the meeting details to the day cell
+                    dayCell += '<a class="text-dark" href="meeting-details.php?meeting_id=' + meetingId + '">' + organizerName + '</a><br>';
+                });
+                dayCell += '</td>';
+
+                calendarRow.append(dayCell);
+            }
+
+            // Add empty cells for the remaining days in the last week
+            var lastDay = new Date(year, month, daysInMonth).getDay();
+            for (var i = lastDay + 1; i < 7; i++) {
+                calendarRow.append('<td></td>');
+            }
+
+            // Append the last row to the calendar body
+            calendarBody.append(calendarRow);
+            // Display the month and year
+            var monthName = new Intl.DateTimeFormat('en-US', {
+                month: 'long'
+            }).format(date);
+            $('#calendarMonthYear').text(monthName + ' ' + year);
+        }
+    });
+</script>
+
 
 <?php include_once 'footer.php'; ?>
