@@ -46,9 +46,38 @@ CREATE TABLE medical_company (
   medical_company_availability_preferences varchar(255)
 );
 
+-- Table to track meetings
+DROP TABLE IF EXISTS meetings;
+CREATE TABLE meetings (
+  meeting_id INT AUTO_INCREMENT PRIMARY KEY,
+  medical_professional_requester_id INT,
+  medical_company_requester_id INT,
+  medical_professional_requestee_id INT,
+  medical_company_requestee_id INT,
+  meeting_status ENUM('Pending', 'Approved', 'Denied') NOT NULL DEFAULT 'Pending',
+  meeting_location VARCHAR(255) NOT NULL,
+  meeting_date DATE NOT NULL,
+  meeting_start_time TIME NOT NULL,
+  meeting_end_time TIME NOT NULL,
+  meeting_message TEXT NOT NULL,
+  FOREIGN KEY (medical_professional_requester_id) REFERENCES medical_professional(medical_professional_id),
+  FOREIGN KEY (medical_company_requester_id) REFERENCES medical_company(medical_company_id),
+  FOREIGN KEY (medical_professional_requestee_id) REFERENCES medical_professional(medical_professional_id),
+  FOREIGN KEY (medical_company_requestee_id) REFERENCES medical_company(medical_company_id),
+  CONSTRAINT chk_requester_type CHECK (
+    (medical_professional_requester_id IS NOT NULL AND medical_company_requester_id IS NULL)
+    OR (medical_professional_requester_id IS NULL AND medical_company_requester_id IS NOT NULL)
+  ),
+  CONSTRAINT chk_requestee_type CHECK (
+    (medical_professional_requestee_id IS NOT NULL AND medical_company_requestee_id IS NULL)
+    OR (medical_professional_requestee_id IS NULL AND medical_company_requestee_id IS NOT NULL)
+  )
+);
+
 select * from medical_professional;
 select * from medical_practice;
 select * from medical_company;
 
+select * from meetings;
 
 
