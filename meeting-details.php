@@ -28,7 +28,9 @@ if ($_SESSION['user_type'] == 'medical_professional') {
             $requestee_id = $meetingDetails['medical_professional_requestee_id'];
             $requestee_type = "medical_professional";
         }
-    } else if (isset($meetingDetails['medical_professional_requester_id'])) {
+    }
+
+    if (isset($meetingDetails['medical_professional_requester_id'])) {
         if ($meetingDetails['medical_professional_requester_id'] == $_SESSION['user_id']) {
             $requester = true;
             $requester_id = $meetingDetails['medical_professional_requester_id'];
@@ -37,6 +39,7 @@ if ($_SESSION['user_type'] == 'medical_professional') {
     }
 }
 
+
 if ($_SESSION['user_type'] == 'medical_company') {
     if (isset($meetingDetails['medical_company_requestee_id'])) {
         if ($meetingDetails['medical_company_requestee_id'] == $_SESSION['user_id']) {
@@ -44,7 +47,9 @@ if ($_SESSION['user_type'] == 'medical_company') {
             $requestee_id = $meetingDetails['medical_company_requestee_id'];
             $requestee_type = "medical_company";
         }
-    } else if (isset($meetingDetails['medical_company_requester_id'])) {
+    }
+    
+    if (isset($meetingDetails['medical_company_requester_id'])) {
         if ($meetingDetails['medical_company_requester_id'] == $_SESSION['user_id']) {
             $requester = true;
             $requester_id = $meetingDetails['medical_company_requester_id'];
@@ -108,6 +113,7 @@ $requester_name = $requesterUser->showUserDetails();
                         <p><b>Meeting start time:</b> <?php echo $meetingDetails['meeting_start_time'] ?></p>
                         <p><b>Meeting end time:</b> <?php echo $meetingDetails['meeting_end_time'] ?></p>
                         <p><b>Meeting location: </b><?php echo $meetingDetails['meeting_location'] ?></p>
+                        <p><b>Meeting status: </b><?php echo $meetingDetails['meeting_status'] ?></p>
                     </div>
                 </div>
             </div>
@@ -131,7 +137,7 @@ $requester_name = $requesterUser->showUserDetails();
     </div>
 
 
-    <?php if ($_SESSION['user_id'] == $requestee_id && $_SESSION['user_type'] == $requestee_type) {
+    <?php if ($_SESSION['user_id'] == $requestee_id && $_SESSION['user_type'] == $requestee_type && $meetingDetails['meeting_status'] == 'Pending') {
     ?>
         <div class="row">
             <div class="col-12">

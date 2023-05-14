@@ -46,37 +46,35 @@ if ($_SESSION['user_type'] == "medical_professional") {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="text-decoration-underline" style="cursor:pointer;">
-                            <!-- for each loop check the type the requestee is (the organizer)-->
-                            <?php foreach ($acceptedMeetings as $meeting) {
-                                // see who is the organizer
-                                $organizer_type = null;
-                                $organizer_name = null;
-                                if (isset($meeting['medical_professional_requester_id'])) {
-                                    $organizer_type = $meeting['medical_professional_requester_id'];
+                        <!-- for each loop check the type the requestee is (the organizer)-->
+                        <?php foreach ($acceptedMeetings as $meeting) {
+                            // see who is the organizer
+                            $organizer_type = null;
+                            $organizer_name = null;
+                            if (isset($meeting['medical_professional_requester_id'])) {
+                                $organizer_type = $meeting['medical_professional_requester_id'];
 
-                                    // get organizer name
-                                    $organizerUser = new UserDetailsView("medical_professional", $meeting['medical_professional_requester_id']);
-                                    $organizerDetails = $organizerUser->showUserDetails();
-                                    $organizer_name = $organizerDetails[0]["medical_professional_name"];
-                                } else {
-                                    $organizer_type = $meeting['medical_company_requester_id'];
+                                // get organizer name
+                                $organizerUser = new UserDetailsView("medical_professional", $meeting['medical_professional_requester_id']);
+                                $organizerDetails = $organizerUser->showUserDetails();
+                                $organizer_name = $organizerDetails[0]["medical_professional_name"];
+                            } else {
+                                $organizer_type = $meeting['medical_company_requester_id'];
 
-                                    // get organizer name
-                                    $organizerUser = new UserDetailsView("medical_company", $meeting['medical_company_requester_id']);
-                                    $organizerDetails = $organizerUser->showUserDetails();
-                                    $organizer_name = $organizerDetails[0]["medical_company_name"];
-                                }
-                            ?>
+                                // get organizer name
+                                $organizerUser = new UserDetailsView("medical_company", $meeting['medical_company_requester_id']);
+                                $organizerDetails = $organizerUser->showUserDetails();
+                                $organizer_name = $organizerDetails[0]["medical_company_name"];
+                            }
+                        ?>
+                            <tr class="text-decoration-underline" style="cursor:pointer;">
                                 <td> <a class="text-dark" href="meeting-details.php?meeting_id=<?php echo $meeting['meeting_id']; ?>"><?php echo $organizer_name; ?></a></td>
                                 <td><a class="text-dark" href="meeting-details.php?meeting_id=<?php echo $meeting['meeting_id']; ?>"><?php echo $meeting['meeting_date']; ?></a></td>
                                 <td><a class="text-dark" href="meeting-details.php?meeting_id=<?php echo $meeting['meeting_id']; ?>"><?php echo $meeting['meeting_start_time']; ?></a></td>
                                 <td><a class="text-dark" href="meeting-details.php?meeting_id=<?php echo $meeting['meeting_id']; ?>"><?php echo $meeting['meeting_end_time']; ?></a></td>
                                 <td><a class="text-dark" href="meeting-details.php?meeting_id=<?php echo $meeting['meeting_id']; ?>"><?php echo $meeting['meeting_location']; ?></a></td>
-
-                            <?php } ?>
-                        </tr>
-
+                            </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>
@@ -101,36 +99,35 @@ if ($_SESSION['user_type'] == "medical_professional") {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="text-decoration-underline" style="cursor:pointer;">
-                            <!-- for each loop check the type the requestee is (the organizer)-->
-                            <?php foreach ($incomingRequests as $request) {
-                                // see who is the organizer
-                                $organizer_type = null;
-                                $organizer_name = null;
-                                if (isset($request['medical_professional_requester_id'])) {
-                                    $organizer_type = $request['medical_professional_requester_id'];
+                        <!-- for each loop check the type the requestee is (the organizer)-->
+                        <?php foreach ($incomingRequests as $request) {
+                            // see who is the organizer
+                            $organizer_type = null;
+                            $organizer_name = null;
+                            if (isset($request['medical_professional_requester_id'])) {
+                                $organizer_type = $request['medical_professional_requester_id'];
 
-                                    // get organizer name
-                                    $organizerUser = new UserDetailsView("medical_professional", $request['medical_professional_requester_id']);
-                                    $organizerDetails = $organizerUser->showUserDetails();
-                                    $organizer_name = $organizerDetails[0]["medical_professional_name"];
-                                } else {
-                                    $organizer_type = $request['medical_company_requester_id'];
+                                // get organizer name
+                                $organizerUser = new UserDetailsView("medical_professional", $request['medical_professional_requester_id']);
+                                $organizerDetails = $organizerUser->showUserDetails();
+                                $organizer_name = $organizerDetails[0]["medical_professional_name"];
+                            } else {
+                                $organizer_type = $request['medical_company_requester_id'];
 
-                                    // get organizer name
-                                    $organizerUser = new UserDetailsView("medical_company", $request['medical_company_requester_id']);
-                                    $organizerDetails = $organizerUser->showUserDetails();
-                                    $organizer_name = $organizerDetails[0]["medical_company_name"];
-                                }
-                            ?>
+                                // get organizer name
+                                $organizerUser = new UserDetailsView("medical_company", $request['medical_company_requester_id']);
+                                $organizerDetails = $organizerUser->showUserDetails();
+                                $organizer_name = $organizerDetails[0]["medical_company_name"];
+                            }
+                        ?>
+                            <tr class="text-decoration-underline" style="cursor:pointer;">
                                 <td> <a class="text-dark" href="meeting-details.php?meeting_id=<?php echo $request['meeting_id']; ?>"><?php echo $organizer_name; ?></a></td>
                                 <td><a class="text-dark" href="meeting-details.php?meeting_id=<?php echo $request['meeting_id']; ?>"><?php echo $request['meeting_date']; ?></a></td>
                                 <td><a class="text-dark" href="meeting-details.php?meeting_id=<?php echo $request['meeting_id']; ?>"><?php echo $request['meeting_start_time']; ?></a></td>
                                 <td><a class="text-dark" href="meeting-details.php?meeting_id=<?php echo $request['meeting_id']; ?>"><?php echo $request['meeting_end_time']; ?></a></td>
                                 <td><a class="text-dark" href="meeting-details.php?meeting_id=<?php echo $request['meeting_id']; ?>"><?php echo $request['meeting_location']; ?></a></td>
-                            <?php } ?>
-                        </tr>
-
+                            </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>
@@ -155,17 +152,16 @@ if ($_SESSION['user_type'] == "medical_professional") {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="text-decoration-underline" style="cursor:pointer;">
-                            <!-- for each loop check the type the requestee is (the organizer)-->
-                            <?php foreach ($outgoingRequests as $request) { ?>
+                        <!-- for each loop check the type the requestee is (the organizer)-->
+                        <?php foreach ($outgoingRequests as $request) { ?>
+                            <tr class="text-decoration-underline" style="cursor:pointer;">
                                 <td> <a class="text-dark" href="meeting-details.php?meeting_id=<?php echo $request['meeting_id']; ?>"><?php echo $currentUserName; ?></a></td>
                                 <td><a class="text-dark" href="meeting-details.php?meeting_id=<?php echo $request['meeting_id']; ?>"><?php echo $request['meeting_date']; ?></a></td>
                                 <td><a class="text-dark" href="meeting-details.php?meeting_id=<?php echo $request['meeting_id']; ?>"><?php echo $request['meeting_start_time']; ?></a></td>
                                 <td><a class="text-dark" href="meeting-details.php?meeting_id=<?php echo $request['meeting_id']; ?>"><?php echo $request['meeting_end_time']; ?></a></td>
                                 <td><a class="text-dark" href="meeting-details.php?meeting_id=<?php echo $request['meeting_id']; ?>"><?php echo $request['meeting_location']; ?></a></td>
-                            <?php } ?>
-                        </tr>
-
+                            </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>
@@ -189,36 +185,35 @@ if ($_SESSION['user_type'] == "medical_professional") {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="text-decoration-underline" style="cursor:pointer;">
-                            <!-- for each loop check the type the requestee is (the organizer)-->
-                            <?php foreach ($declinedRequests as $meeting) {
-                                // see who is the organizer
-                                $organizer_type = null;
-                                $organizer_name = null;
-                                if (isset($meeting['medical_professional_requester_id'])) {
-                                    $organizer_type = $meeting['medical_professional_requester_id'];
+                        <!-- for each loop check the type the requestee is (the organizer)-->
+                        <?php foreach ($declinedRequests as $meeting) {
+                            // see who is the organizer
+                            $organizer_type = null;
+                            $organizer_name = null;
+                            if (isset($meeting['medical_professional_requester_id'])) {
+                                $organizer_type = $meeting['medical_professional_requester_id'];
 
-                                    // get organizer name
-                                    $organizerUser = new UserDetailsView("medical_professional", $meeting['medical_professional_requester_id']);
-                                    $organizerDetails = $organizerUser->showUserDetails();
-                                    $organizer_name = $organizerDetails[0]["medical_professional_name"];
-                                } else {
-                                    $organizer_type = $meeting['medical_company_requester_id'];
+                                // get organizer name
+                                $organizerUser = new UserDetailsView("medical_professional", $meeting['medical_professional_requester_id']);
+                                $organizerDetails = $organizerUser->showUserDetails();
+                                $organizer_name = $organizerDetails[0]["medical_professional_name"];
+                            } else {
+                                $organizer_type = $meeting['medical_company_requester_id'];
 
-                                    // get organizer name
-                                    $organizerUser = new UserDetailsView("medical_company", $meeting['medical_company_requester_id']);
-                                    $organizerDetails = $organizerUser->showUserDetails();
-                                    $organizer_name = $organizerDetails[0]["medical_company_name"];
-                                }
-                            ?>
+                                // get organizer name
+                                $organizerUser = new UserDetailsView("medical_company", $meeting['medical_company_requester_id']);
+                                $organizerDetails = $organizerUser->showUserDetails();
+                                $organizer_name = $organizerDetails[0]["medical_company_name"];
+                            }
+                        ?>
+                            <tr class="text-decoration-underline" style="cursor:pointer;">
                                 <td> <a class="text-dark" href="meeting-details.php?meeting_id=<?php echo $meeting['meeting_id']; ?>"><?php echo $organizer_name; ?></a></td>
                                 <td><a class="text-dark" href="meeting-details.php?meeting_id=<?php echo $meeting['meeting_id']; ?>"><?php echo $meeting['meeting_date']; ?></a></td>
                                 <td><a class="text-dark" href="meeting-details.php?meeting_id=<?php echo $meeting['meeting_id']; ?>"><?php echo $meeting['meeting_start_time']; ?></a></td>
                                 <td><a class="text-dark" href="meeting-details.php?meeting_id=<?php echo $meeting['meeting_id']; ?>"><?php echo $meeting['meeting_end_time']; ?></a></td>
                                 <td><a class="text-dark" href="meeting-details.php?meeting_id=<?php echo $meeting['meeting_id']; ?>"><?php echo $meeting['meeting_location']; ?></a></td>
-                            <?php } ?>
-                        </tr>
-
+                            </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>
