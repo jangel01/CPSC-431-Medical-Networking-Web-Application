@@ -131,14 +131,22 @@ $requester_name = $requesterUser->showUserDetails();
     </div>
 
 
-    <div class="row">
-        <div class="col-12">
-            <button type="button" class="btn btn-lg btn-dark mb-5">Button</button>
+    <?php if ($_SESSION['user_id'] == $requestee_id && $_SESSION['user_type'] == $requestee_type) {
+    ?>
+        <div class="row">
+            <div class="col-12">
+                <form id="approval-form" method="POST" action="includes/approval.inc.php?meeting_id=<?php echo $params['meeting_id'] ?>">
+                    <button type="submit" class="btn btn-lg btn-dark mb-5 mx-5" name="approval" value="Approve">Approve</button>
+                    <button type="submit" class="btn btn-lg btn-dark mb-5 mx-5" name="approval" value="Reject">Reject</button>
+                </form>
+            </div>
         </div>
-    </div>
+
+
+    <?php } ?>
+
 
 </div>
-
 
 
 

@@ -130,7 +130,7 @@ class Meeting extends Dbh
     protected function getAcceptedMeetings($user_id, $user_type)
     {
         if ($user_type == "medical_professional") {
-            $sql = "SELECT * FROM meetings WHERE (medical_professional_requestee_id = ? OR medical_professional_requester_id = ?) AND meeting_status = 'Accepted';";
+            $sql = "SELECT * FROM meetings WHERE (medical_professional_requestee_id = ? OR medical_professional_requester_id = ?) AND meeting_status = 'Approved';";
             $stmt = $this->connect()->prepare($sql);
             if (!$stmt->execute(array($user_id, $user_id))) {
                 $stmt = null;
@@ -143,7 +143,7 @@ class Meeting extends Dbh
             $stmt = null;
             return $result;
         } else if ($user_type == "medical_company") {
-            $sql = "SELECT * FROM meetings WHERE (medical_company_requestee_id = ? OR medical_company_requester_id = ?) AND meeting_status = 'Accepted';";
+            $sql = "SELECT * FROM meetings WHERE (medical_company_requestee_id = ? OR medical_company_requester_id = ?) AND meeting_status = 'Approved';";
             $stmt = $this->connect()->prepare($sql);
             if (!$stmt->execute(array($user_id, $user_id))) {
                 $stmt = null;
@@ -162,7 +162,7 @@ class Meeting extends Dbh
     protected function getDeclinedMeetings($user_id, $user_type)
     {
         if ($user_type == "medical_professional") {
-            $sql = "SELECT * FROM meetings WHERE (medical_professional_requestee_id = ? OR medical_professional_requester_id = ?) AND meeting_status = 'Declined';";
+            $sql = "SELECT * FROM meetings WHERE (medical_professional_requestee_id = ? OR medical_professional_requester_id = ?) AND meeting_status = 'Denied';";
             $stmt = $this->connect()->prepare($sql);
             if (!$stmt->execute(array($user_id, $user_id))) {
                 $stmt = null;
@@ -175,7 +175,7 @@ class Meeting extends Dbh
             $stmt = null;
             return $result;
         } else if ($user_type == "medical_company") {
-            $sql = "SELECT * FROM meetings WHERE (medical_company_requestee_id = ? OR medical_company_requester_id = ?) AND meeting_status = 'Declined';";
+            $sql = "SELECT * FROM meetings WHERE (medical_company_requestee_id = ? OR medical_company_requester_id = ?) AND meeting_status = 'Denied';";
             $stmt = $this->connect()->prepare($sql);
             if (!$stmt->execute(array($user_id, $user_id))) {
                 $stmt = null;
@@ -222,11 +222,11 @@ class Meeting extends Dbh
     protected function acceptMeeting($meetingId, $userId, $userType)
     {
         if ($userType == "medical_professional") {
-            $sql = "UPDATE meetings SET meeting_status = 'Accepted' WHERE meeting_id = ? AND medical_professional_requestee_id = ?;";
+            $sql = "UPDATE meetings SET meeting_status = 'Approved' WHERE meeting_id = ? AND medical_professional_requestee_id = ?;";
             $stmt = $this->connect()->prepare($sql);
             if (!$stmt->execute(array($meetingId, $userId))) {
                 $stmt = null;
-                $error = "stmtfailed";
+                $error = "acctMtStmtFailed";
                 $url = $_SERVER['HTTP_REFERER'] . "?error=" . urlencode($error);
                 header("Location: " . $url);
                 exit();
@@ -235,11 +235,11 @@ class Meeting extends Dbh
             $stmt = null;
         } else {
             // medical company
-            $sql = "UPDATE meetings SET meeting_status = 'Accepted' WHERE meeting_id = ? AND medical_company_requestee_id = ?;";
+            $sql = "UPDATE meetings SET meeting_status = 'Approved' WHERE meeting_id = ? AND medical_company_requestee_id = ?;";
             $stmt = $this->connect()->prepare($sql);
             if (!$stmt->execute(array($meetingId, $userId))) {
                 $stmt = null;
-                $error = "stmtfailed";
+                $error = "acctMtRowStmtFailed";
                 $url = $_SERVER['HTTP_REFERER'] . "?error=" . urlencode($error);
                 header("Location: " . $url);
                 exit();
@@ -253,11 +253,11 @@ class Meeting extends Dbh
     protected function declineMeeting($meetingId, $userId, $userType)
     {
         if ($userType == "medical_professional") {
-            $sql = "UPDATE meetings SET meeting_status = 'Declined' WHERE meeting_id = ? AND medical_professional_requestee_id = ?;";
+            $sql = "UPDATE meetings SET meeting_status = 'Denied' WHERE meeting_id = ? AND medical_professional_requestee_id = ?;";
             $stmt = $this->connect()->prepare($sql);
             if (!$stmt->execute(array($meetingId, $userId))) {
                 $stmt = null;
-                $error = "stmtfailed";
+                $error = "decMtStmtFailed";
                 $url = $_SERVER['HTTP_REFERER'] . "?error=" . urlencode($error);
                 header("Location: " . $url);
                 exit();
@@ -266,11 +266,11 @@ class Meeting extends Dbh
             $stmt = null;
         } else {
             // medical company
-            $sql = "UPDATE meetings SET meeting_status = 'Declined' WHERE meeting_id = ? AND medical_company_requestee_id = ?;";
+            $sql = "UPDATE meetings SET meeting_status = 'Denied' WHERE meeting_id = ? AND medical_company_requestee_id = ?;";
             $stmt = $this->connect()->prepare($sql);
             if (!$stmt->execute(array($meetingId, $userId))) {
                 $stmt = null;
-                $error = "stmtfailed";
+                $error = "decMtRowStmtFailed";
                 $url = $_SERVER['HTTP_REFERER'] . "?error=" . urlencode($error);
                 header("Location: " . $url);
                 exit();
