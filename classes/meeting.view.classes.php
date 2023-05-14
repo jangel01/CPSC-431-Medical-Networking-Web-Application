@@ -20,4 +20,9 @@ class MeetingView extends Meeting {
     public function getDeclinedRequestsContr($user_id, $user_type) {
         return $this->getDeclinedMeetings($user_id, $user_type);
     }
+
+    // get meeting by id
+    public function getMeetingContr($meeting_id) {
+        return $this->getMeeting($meeting_id);
+    }
 }

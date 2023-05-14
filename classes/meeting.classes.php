@@ -189,4 +189,94 @@ class Meeting extends Dbh
             return $result;
         }
     }
+
+    // get meeting by meeting id
+    protected function getMeeting($meetingId)
+    {
+        $sql = "SELECT * FROM meetings WHERE meeting_id = ?;";
+
+        $stmt = $this->connect()->prepare($sql);
+
+        if (!$stmt->execute(array($meetingId))) {
+            $stmt = null;
+            $error = "stmtfailed";
+            $url = $_SERVER['HTTP_REFERER'] . "?error=" . urlencode($error);
+            header("Location: " . $url);
+            exit();
+        }
+
+        // check if no results
+        if ($stmt->rowCount() == 0) {
+            $stmt = null;
+            $error = "stmtfailed";
+            $url = $_SERVER['HTTP_REFERER'] . "?error=" . urlencode($error);
+            header("Location: " . $url);
+            exit();
+        }
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    // change meeting status to accept
+    protected function acceptMeeting($meetingId, $userId, $userType)
+    {
+        if ($userType == "medical_professional") {
+            $sql = "UPDATE meetings SET meeting_status = 'Accepted' WHERE meeting_id = ? AND medical_professional_requestee_id = ?;";
+            $stmt = $this->connect()->prepare($sql);
+            if (!$stmt->execute(array($meetingId, $userId))) {
+                $stmt = null;
+                $error = "stmtfailed";
+                $url = $_SERVER['HTTP_REFERER'] . "?error=" . urlencode($error);
+                header("Location: " . $url);
+                exit();
+            }
+
+            $stmt = null;
+        } else {
+            // medical company
+            $sql = "UPDATE meetings SET meeting_status = 'Accepted' WHERE meeting_id = ? AND medical_company_requestee_id = ?;";
+            $stmt = $this->connect()->prepare($sql);
+            if (!$stmt->execute(array($meetingId, $userId))) {
+                $stmt = null;
+                $error = "stmtfailed";
+                $url = $_SERVER['HTTP_REFERER'] . "?error=" . urlencode($error);
+                header("Location: " . $url);
+                exit();
+            }
+
+            $stmt = null;
+        }
+    }
+
+    // decline meeting
+    protected function declineMeeting($meetingId, $userId, $userType)
+    {
+        if ($userType == "medical_professional") {
+            $sql = "UPDATE meetings SET meeting_status = 'Declined' WHERE meeting_id = ? AND medical_professional_requestee_id = ?;";
+            $stmt = $this->connect()->prepare($sql);
+            if (!$stmt->execute(array($meetingId, $userId))) {
+                $stmt = null;
+                $error = "stmtfailed";
+                $url = $_SERVER['HTTP_REFERER'] . "?error=" . urlencode($error);
+                header("Location: " . $url);
+                exit();
+            }
+
+            $stmt = null;
+        } else {
+            // medical company
+            $sql = "UPDATE meetings SET meeting_status = 'Declined' WHERE meeting_id = ? AND medical_company_requestee_id = ?;";
+            $stmt = $this->connect()->prepare($sql);
+            if (!$stmt->execute(array($meetingId, $userId))) {
+                $stmt = null;
+                $error = "stmtfailed";
+                $url = $_SERVER['HTTP_REFERER'] . "?error=" . urlencode($error);
+                header("Location: " . $url);
+                exit();
+            }
+
+            $stmt = null;
+        }
+    }
 }
