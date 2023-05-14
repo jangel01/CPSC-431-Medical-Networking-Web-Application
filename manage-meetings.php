@@ -68,11 +68,12 @@ if ($_SESSION['user_type'] == "medical_professional") {
                                     $organizer_name = $organizerDetails[0]["medical_company_name"];
                                 }
                             ?>
-                                <td><?php echo $organizer_name ?></td>
-                                <td><?php echo $meeting['meeting_date'] ?></td>
-                                <td><?php echo $meeting['meeting_start_time'] ?></td>
-                                <td><?php echo $meeting['meeting_end_time'] ?></td>
-                                <td><?php echo $meeting['meeting_location'] ?></td>
+                                <td> <a class="text-dark" href="meeting-details.php?meeting_id=<?php echo $meeting['meeting_id']; ?>"><?php echo $organizer_name; ?></a></td>
+                                <td><a class="text-dark" href="meeting-details.php?meeting_id=<?php echo $meeting['meeting_id']; ?>"><?php echo $meeting['meeting_date']; ?></a></td>
+                                <td><a class="text-dark" href="meeting-details.php?meeting_id=<?php echo $meeting['meeting_id']; ?>"><?php echo $meeting['meeting_start_time']; ?></a></td>
+                                <td><a class="text-dark" href="meeting-details.php?meeting_id=<?php echo $meeting['meeting_id']; ?>"><?php echo $meeting['meeting_end_time']; ?></a></td>
+                                <td><a class="text-dark" href="meeting-details.php?meeting_id=<?php echo $meeting['meeting_id']; ?>"><?php echo $meeting['meeting_location']; ?></a></td>
+
                             <?php } ?>
                         </tr>
 
@@ -122,11 +123,11 @@ if ($_SESSION['user_type'] == "medical_professional") {
                                     $organizer_name = $organizerDetails[0]["medical_company_name"];
                                 }
                             ?>
-                                <td><?php echo $organizer_name ?></td>
-                                <td><?php echo $request['meeting_date'] ?></td>
-                                <td><?php echo $request['meeting_start_time'] ?></td>
-                                <td><?php echo $request['meeting_end_time'] ?></td>
-                                <td><?php echo $request['meeting_location'] ?></td>
+                                <td> <a class="text-dark" href="meeting-details.php?meeting_id=<?php echo $request['meeting_id']; ?>"><?php echo $organizer_name; ?></a></td>
+                                <td><a class="text-dark" href="meeting-details.php?meeting_id=<?php echo $request['meeting_id']; ?>"><?php echo $request['meeting_date']; ?></a></td>
+                                <td><a class="text-dark" href="meeting-details.php?meeting_id=<?php echo $request['meeting_id']; ?>"><?php echo $request['meeting_start_time']; ?></a></td>
+                                <td><a class="text-dark" href="meeting-details.php?meeting_id=<?php echo $request['meeting_id']; ?>"><?php echo $request['meeting_end_time']; ?></a></td>
+                                <td><a class="text-dark" href="meeting-details.php?meeting_id=<?php echo $request['meeting_id']; ?>"><?php echo $request['meeting_location']; ?></a></td>
                             <?php } ?>
                         </tr>
 
@@ -157,11 +158,11 @@ if ($_SESSION['user_type'] == "medical_professional") {
                         <tr class="text-decoration-underline" style="cursor:pointer;">
                             <!-- for each loop check the type the requestee is (the organizer)-->
                             <?php foreach ($outgoingRequests as $request) { ?>
-                                <td><?php echo $currentUserName ?></td>
-                                <td><?php echo $request['meeting_date'] ?></td>
-                                <td><?php echo $request['meeting_start_time'] ?></td>
-                                <td><?php echo $request['meeting_end_time'] ?></td>
-                                <td><?php echo $request['meeting_location'] ?></td>
+                                <td> <a class="text-dark" href="meeting-details.php?meeting_id=<?php echo $request['meeting_id']; ?>"><?php echo $currentUserName; ?></a></td>
+                                <td><a class="text-dark" href="meeting-details.php?meeting_id=<?php echo $request['meeting_id']; ?>"><?php echo $request['meeting_date']; ?></a></td>
+                                <td><a class="text-dark" href="meeting-details.php?meeting_id=<?php echo $request['meeting_id']; ?>"><?php echo $request['meeting_start_time']; ?></a></td>
+                                <td><a class="text-dark" href="meeting-details.php?meeting_id=<?php echo $request['meeting_id']; ?>"><?php echo $request['meeting_end_time']; ?></a></td>
+                                <td><a class="text-dark" href="meeting-details.php?meeting_id=<?php echo $request['meeting_id']; ?>"><?php echo $request['meeting_location']; ?></a></td>
                             <?php } ?>
                         </tr>
 
@@ -210,11 +211,11 @@ if ($_SESSION['user_type'] == "medical_professional") {
                                     $organizer_name = $organizerDetails[0]["medical_company_name"];
                                 }
                             ?>
-                                <td><?php echo $organizer_name ?></td>
-                                <td><?php echo $meeting['meeting_date'] ?></td>
-                                <td><?php echo $meeting['meeting_start_time'] ?></td>
-                                <td><?php echo $meeting['meeting_end_time'] ?></td>
-                                <td><?php echo $meeting['meeting_location'] ?></td>
+                                <td> <a class="text-dark" href="meeting-details.php?meeting_id=<?php echo $meeting['meeting_id']; ?>"><?php echo $organizer_name; ?></a></td>
+                                <td><a class="text-dark" href="meeting-details.php?meeting_id=<?php echo $meeting['meeting_id']; ?>"><?php echo $meeting['meeting_date']; ?></a></td>
+                                <td><a class="text-dark" href="meeting-details.php?meeting_id=<?php echo $meeting['meeting_id']; ?>"><?php echo $meeting['meeting_start_time']; ?></a></td>
+                                <td><a class="text-dark" href="meeting-details.php?meeting_id=<?php echo $meeting['meeting_id']; ?>"><?php echo $meeting['meeting_end_time']; ?></a></td>
+                                <td><a class="text-dark" href="meeting-details.php?meeting_id=<?php echo $meeting['meeting_id']; ?>"><?php echo $meeting['meeting_location']; ?></a></td>
                             <?php } ?>
                         </tr>
 
