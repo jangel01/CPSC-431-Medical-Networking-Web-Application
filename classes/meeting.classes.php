@@ -61,4 +61,132 @@ class Meeting extends Dbh
             $stmt = null;
         }
     }
+
+    // get incoming requests
+    protected function getIncomingRequests($user_id, $user_type)
+    {
+        if ($user_type == "medical_professional") {
+            $sql = "SELECT * FROM meetings WHERE medical_professional_requestee_id = ? AND meeting_status = 'Pending';";
+            $stmt = $this->connect()->prepare($sql);
+            if (!$stmt->execute(array($user_id))) {
+                $stmt = null;
+                $error = "stmtfailed";
+                $url = $_SERVER['HTTP_REFERER'] . "?error=" . urlencode($error);
+                header("Location: " . $url);
+                exit();
+            }
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $stmt = null;
+            return $result;
+        } else if ($user_type == "medical_company") {
+            $sql = "SELECT * FROM meetings WHERE medical_company_requestee_id = ? AND meeting_status = 'Pending';";
+            $stmt = $this->connect()->prepare($sql);
+            if (!$stmt->execute(array($user_id))) {
+                $stmt = null;
+                $error = "stmtfailed";
+                $url = $_SERVER['HTTP_REFERER'] . "?error=" . urlencode($error);
+                header("Location: " . $url);
+                exit();
+            }
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $stmt = null;
+            return $result;
+        }
+    }
+
+    // get outgoing requests
+    protected function getOutgoingRequests($user_id, $user_type)
+    {
+        if ($user_type == "medical_professional") {
+            $sql = "SELECT * FROM meetings WHERE medical_professional_requester_id = ? AND meeting_status = 'Pending';";
+            $stmt = $this->connect()->prepare($sql);
+            if (!$stmt->execute(array($user_id))) {
+                $stmt = null;
+                $error = "stmtfailed";
+                $url = $_SERVER['HTTP_REFERER'] . "?error=" . urlencode($error);
+                header("Location: " . $url);
+                exit();
+            }
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $stmt = null;
+            return $result;
+        } else if ($user_type == "medical_company") {
+            $sql = "SELECT * FROM meetings WHERE medical_company_requester_id = ? AND meeting_status = 'Pending';";
+            $stmt = $this->connect()->prepare($sql);
+            if (!$stmt->execute(array($user_id))) {
+                $stmt = null;
+                $error = "stmtfailed";
+                $url = $_SERVER['HTTP_REFERER'] . "?error=" . urlencode($error);
+                header("Location: " . $url);
+                exit();
+            }
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $stmt = null;
+            return $result;
+        }
+    }
+
+    // get meetings for the user that have a status of accepted, both incoming and outgoing
+    protected function getAcceptedMeetings($user_id, $user_type)
+    {
+        if ($user_type == "medical_professional") {
+            $sql = "SELECT * FROM meetings WHERE (medical_professional_requestee_id = ? OR medical_professional_requester_id = ?) AND meeting_status = 'Accepted';";
+            $stmt = $this->connect()->prepare($sql);
+            if (!$stmt->execute(array($user_id, $user_id))) {
+                $stmt = null;
+                $error = "stmtfailed";
+                $url = $_SERVER['HTTP_REFERER'] . "?error=" . urlencode($error);
+                header("Location: " . $url);
+                exit();
+            }
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $stmt = null;
+            return $result;
+        } else if ($user_type == "medical_company") {
+            $sql = "SELECT * FROM meetings WHERE (medical_company_requestee_id = ? OR medical_company_requester_id = ?) AND meeting_status = 'Accepted';";
+            $stmt = $this->connect()->prepare($sql);
+            if (!$stmt->execute(array($user_id, $user_id))) {
+                $stmt = null;
+                $error = "stmtfailed";
+                $url = $_SERVER['HTTP_REFERER'] . "?error=" . urlencode($error);
+                header("Location: " . $url);
+                exit();
+            }
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $stmt = null;
+            return $result;
+        }
+    }
+
+    // get meetings for the user that have a status of declined, both incoming and outgoing
+    protected function getDeclinedMeetings($user_id, $user_type)
+    {
+        if ($user_type == "medical_professional") {
+            $sql = "SELECT * FROM meetings WHERE (medical_professional_requestee_id = ? OR medical_professional_requester_id = ?) AND meeting_status = 'Declined';";
+            $stmt = $this->connect()->prepare($sql);
+            if (!$stmt->execute(array($user_id, $user_id))) {
+                $stmt = null;
+                $error = "stmtfailed";
+                $url = $_SERVER['HTTP_REFERER'] . "?error=" . urlencode($error);
+                header("Location: " . $url);
+                exit();
+            }
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $stmt = null;
+            return $result;
+        } else if ($user_type == "medical_company") {
+            $sql = "SELECT * FROM meetings WHERE (medical_company_requestee_id = ? OR medical_company_requester_id = ?) AND meeting_status = 'Declined';";
+            $stmt = $this->connect()->prepare($sql);
+            if (!$stmt->execute(array($user_id, $user_id))) {
+                $stmt = null;
+                $error = "stmtfailed";
+                $url = $_SERVER['HTTP_REFERER'] . "?error=" . urlencode($error);
+                header("Location: " . $url);
+                exit();
+            }
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $stmt = null;
+            return $result;
+        }
+    }
 }
