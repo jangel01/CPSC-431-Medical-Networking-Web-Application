@@ -185,5 +185,19 @@ if (mysqli_query($conn, $sql)) {
     echo "Could not populate medical company table: " . mysqli_error($conn);
 }
 
+$sql = "INSERT INTO meetings (medical_professional_requester_id, medical_company_requester_id, medical_professional_requestee_id, medical_company_requestee_id, meeting_status, meeting_location, meeting_date, meeting_start_time, meeting_end_time, meeting_message)
+VALUES
+    (6, NULL, 1, NULL, 'Approved', 'Fullerton', '2023-05-25', '17:00:00', '20:00:00', 'Message test'),
+    (4, NULL, 1, NULL, 'Pending', 'Long Beach', '2023-05-28', '18:00:00', '20:00:00', 'Message test'),
+    (1, NULL, 2, NULL, 'Pending', 'Los Angeles', '2023-06-11', '10:00:00', '13:00:00', 'Message test'),
+    (NULL, 2, 1, NULL, 'Denied', 'San Francisco', '2023-06-07', '12:00:00', '13:00:00', 'Message test')
+    ;
+";
+if (mysqli_query($conn, $sql)) {
+    echo "Meetings table populated successfully. <br/>";
+} else {
+    echo "Could not populate meetings table: " . mysqli_error($conn);
+}
+
 mysqli_close($conn);
 ?>

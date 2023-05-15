@@ -140,7 +140,7 @@ if ($_SESSION['user_type'] == "medical_professional") {
     <?php if (count($incomingRequests) > 0) { ?>
         <div class="row">
             <div class="col-12">
-                <h2 class="mb-5 text-decoration-underline"> Incoming requests</h2>
+                <h2 class="mb-5 text-decoration-underline"> Incoming Requests</h2>
 
                 <div class="table-responsive mb-4" style="overflow-x: auto;">
                     <table class="table table-striped table-bordered">
@@ -191,7 +191,7 @@ if ($_SESSION['user_type'] == "medical_professional") {
     <?php } else { ?>
         <div class="row">
             <div class="col-12">
-                <h2 class="mb-5 text-decoration-underline"> Incoming requests</h2>
+                <h2 class="mb-5 text-decoration-underline"> Incoming Requests</h2>
                 <p class="text-center">You have no incoming requests.</p>
             </div>
         </div>
