@@ -297,11 +297,6 @@ if ($_SESSION['user_type'] == "medical_professional") {
             // Get the number of days in the month
             var daysInMonth = new Date(year, month + 1, 0).getDate();
 
-            // Get the accepted meetings for the selected month
-            var acceptedMeetings = <?php echo json_encode($acceptedMeetings); ?>;
-            // Get the organizer details array
-            var organizerDetails = <?php echo json_encode($organizerDetails); ?>;
-
             // Generate calendar body
             var calendarBody = $('#calendarBody');
             var calendarRow = $('<tr style="cursor:pointer;"></tr>');
@@ -322,30 +317,7 @@ if ($_SESSION['user_type'] == "medical_professional") {
                     calendarRow = $('<tr style="cursor:pointer;"></tr>');
                 }
 
-                // Check if there are meetings on this day
-                var meetingsOnDay = acceptedMeetings.filter(function(meeting) {
-                    var meetingDateParts = meeting['meeting_date'].split('-');
-                    var meetingYear = parseInt(meetingDateParts[0]);
-                    var meetingMonth = parseInt(meetingDateParts[1]) - 1; // Adjust for zero-based month
-                    var meetingDay = parseInt(meetingDateParts[2]);
-                    return meetingYear === year && meetingMonth === month && meetingDay === i;
-                });
-
                 var dayCell = $('<td></td>').text(i).addClass('calendar-cell');
-                meetingsOnDay.forEach(function(meeting) {
-                    var meetingId = meeting['meeting_id'];
-                    var location = meeting['meeting_location'];
-                    var startTime = meeting['meeting_start_time'];
-                    var endTime = meeting['meeting_end_time'];
-
-                    var meetingLink = $('<a></a>')
-                        .addClass('text-dark')
-                        .attr('href', 'meeting-details.php?meeting_id=' + meetingId)
-                        .text(location + ' -- ' + startTime + ' to ' + endTime);
-
-                    var meetingDetails = $('<div></div>').append(meetingLink);
-                    dayCell.append(meetingDetails);
-                });
 
                 calendarRow.append(dayCell);
             }
@@ -365,6 +337,33 @@ if ($_SESSION['user_type'] == "medical_professional") {
             }).format(date);
             $('#calendarMonthYear').text(monthName + ' ' + year);
 
+            // Get the accepted meetings for the selected month
+            var acceptedMeetings = <?php echo json_encode($acceptedMeetings); ?>;
+
+            // Add meetings to the calendar
+            acceptedMeetings.forEach(function(meeting) {
+                var meetingDateParts = meeting['meeting_date'].split('-');
+                var meetingYear = parseInt(meetingDateParts[0]);
+                var meetingMonth = parseInt(meetingDateParts[1]) - 1; // Adjust for zero-based month
+                var meetingDay = parseInt(meetingDateParts[2]);
+
+                if (meetingYear === year && meetingMonth === month) {
+                    var dayCell = calendarBody.find('td').eq(meetingDay + firstDay - 1);
+
+                    var meetingId = meeting['meeting_id'];
+                    var location = meeting['meeting_location'];
+                    var startTime = meeting['meeting_start_time'];
+                    var endTime = meeting['meeting_end_time'];
+                    var meetingLink = $('<a></a>')
+                        .addClass('text-dark')
+                        .attr('href', 'meeting-details.php?meeting_id=' + meetingId)
+                        .text(location + ' -- ' + startTime + ' to ' + endTime);
+
+                    var meetingDetails = $('<div></div>').append(meetingLink);
+                    dayCell.append(meetingDetails);
+                }
+            });
+
             // Add hover effect to calendar cells
             $('.calendar-cell').hover(
                 function() {
@@ -374,10 +373,10 @@ if ($_SESSION['user_type'] == "medical_professional") {
                     $(this).removeClass('hovered');
                 }
             );
-
         }
     });
 </script>
+
 
 
 <?php include_once 'footer.php'; ?>
