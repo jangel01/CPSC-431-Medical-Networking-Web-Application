@@ -62,7 +62,11 @@ $user_details_url = "user-details.php?user_type=" . $_SESSION['user_type'] . "&u
             display: block;
         }
 
-        
+        /* Custom CSS for Calendar */
+        .calendar-cell:hover {
+            background-color: #fff3cd;
+            cursor: pointer;
+        }
     </style>
 </head>
 

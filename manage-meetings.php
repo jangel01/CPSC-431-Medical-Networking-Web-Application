@@ -32,15 +32,15 @@ if ($_SESSION['user_type'] == "medical_professional") {
 
     <div class="row">
         <div class="col-12">
-            <h2 class="mb-5 text-decoration-underline">Accepted Meetings</h2>
+            <h2 class="mb-5">Calendar</h2>
 
             <!-- Calendar Navigation -->
             <div class="row mb-3">
                 <div class="col-6">
-                    <button id="prevMonthBtn" class="btn btn-secondary">&lt;</button>
+                    <button id="prevMonthBtn" class="btn btn-dark">&lt;</button>
                 </div>
                 <div class="col-6 text-end">
-                    <button id="nextMonthBtn" class="btn btn-secondary">&gt;</button>
+                    <button id="nextMonthBtn" class="btn btn-dark">&gt;</button>
                 </div>
             </div>
 
@@ -71,7 +71,7 @@ if ($_SESSION['user_type'] == "medical_professional") {
         </div>
     </div>
 
-
+    <hr class="mt-4 mb-4">
 
     <div class="row">
         <div class="col-12">
@@ -304,7 +304,7 @@ if ($_SESSION['user_type'] == "medical_professional") {
 
             // Generate calendar body
             var calendarBody = $('#calendarBody');
-            var calendarRow = $('<tr class="text-decoration-underline" style="cursor:pointer;"></tr>');
+            var calendarRow = $('<tr style="cursor:pointer;"></tr>');
 
             // Add empty cells for the days before the first day of the month
             var firstDay = new Date(year, month, 1).getDay();
@@ -319,7 +319,7 @@ if ($_SESSION['user_type'] == "medical_professional") {
                 // Start a new row on Sundays (dayOfWeek = 0)
                 if (dayOfWeek === 0 && i !== 1) {
                     calendarBody.append(calendarRow);
-                    calendarRow = $('<tr class="text-decoration-underline" style="cursor:pointer;"></tr>');
+                    calendarRow = $('<tr style="cursor:pointer;"></tr>');
                 }
 
                 // Check if there are meetings on this day
@@ -331,23 +331,21 @@ if ($_SESSION['user_type'] == "medical_professional") {
                     return meetingYear === year && meetingMonth === month && meetingDay === i;
                 });
 
-
-                var dayCell = '<td>' + i + '<br>';
+                var dayCell = $('<td></td>').text(i).addClass('calendar-cell');
                 meetingsOnDay.forEach(function(meeting) {
                     var meetingId = meeting['meeting_id'];
-                    // get location
                     var location = meeting['meeting_location'];
-                    // get start time
                     var startTime = meeting['meeting_start_time'];
-                    // get end time
                     var endTime = meeting['meeting_end_time'];
 
+                    var meetingLink = $('<a></a>')
+                        .addClass('text-dark')
+                        .attr('href', 'meeting-details.php?meeting_id=' + meetingId)
+                        .text(location + ' -- ' + startTime + ' to ' + endTime);
 
-                    // Append the meeting details to the day cell -- location, start time, end time
-                    dayCell += '<a class="text-dark" href="meeting-details.php?meeting_id=' + meetingId + '">' + location +  " --  " + startTime + " to " + endTime + '</a><br>';
-
+                    var meetingDetails = $('<div></div>').append(meetingLink);
+                    dayCell.append(meetingDetails);
                 });
-                dayCell += '</td>';
 
                 calendarRow.append(dayCell);
             }
@@ -360,11 +358,23 @@ if ($_SESSION['user_type'] == "medical_professional") {
 
             // Append the last row to the calendar body
             calendarBody.append(calendarRow);
+
             // Display the month and year
             var monthName = new Intl.DateTimeFormat('en-US', {
                 month: 'long'
             }).format(date);
             $('#calendarMonthYear').text(monthName + ' ' + year);
+
+            // Add hover effect to calendar cells
+            $('.calendar-cell').hover(
+                function() {
+                    $(this).addClass('hovered');
+                },
+                function() {
+                    $(this).removeClass('hovered');
+                }
+            );
+
         }
     });
 </script>
