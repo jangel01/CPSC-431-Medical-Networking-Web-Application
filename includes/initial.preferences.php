@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $initPreferences->setAvailabilityPreferencesContr();
 
         // redirect to next page
-        header("location: ../homepage.php");
+        header("location: ../connect.php");
     } else {
         $availability = "None";
         $initPreferences = new PreferencesContr($userId, $userType, $availability);
@@ -51,5 +51,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $currentUser->setPreferencesExistBoolContr(1);
 
     // redirect to next page
-    header("location: ../homepage.php");
+    header("location: ../connect.php");
 }
