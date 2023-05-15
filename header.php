@@ -67,6 +67,11 @@ $user_details_url = "user-details.php?user_type=" . $_SESSION['user_type'] . "&u
             background-color: #fff3cd;
             cursor: pointer;
         }
+
+        /* make hr thicker and make the color black */
+        hr {
+            border-top: 5px solid black;
+        }
     </style>
 </head>
 
