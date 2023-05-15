@@ -299,6 +299,8 @@ if ($_SESSION['user_type'] == "medical_professional") {
 
             // Get the accepted meetings for the selected month
             var acceptedMeetings = <?php echo json_encode($acceptedMeetings); ?>;
+            // Get the organizer details array
+            var organizerDetails = <?php echo json_encode($organizerDetails); ?>;
 
             // Generate calendar body
             var calendarBody = $('#calendarBody');
@@ -332,24 +334,18 @@ if ($_SESSION['user_type'] == "medical_professional") {
 
                 var dayCell = '<td>' + i + '<br>';
                 meetingsOnDay.forEach(function(meeting) {
-                    var organizerName = '';
                     var meetingId = meeting['meeting_id'];
+                    // get location
+                    var location = meeting['meeting_location'];
+                    // get start time
+                    var startTime = meeting['meeting_start_time'];
+                    // get end time
+                    var endTime = meeting['meeting_end_time'];
 
-                    // Determine the organizer type and get the organizer name
-                    if (meeting.hasOwnProperty('medical_professional_requester_id')) {
-                        organizerName = meeting['medical_professional_name'];
-                    } else if (meeting.hasOwnProperty('medical_company_requester_id')) {
-                        organizerName = meeting['medical_company_name'];
-                    } else if (meeting.hasOwnProperty('medical_professional_requestee_id')) {
-                        organizerName = meeting['medical_professional_name'];
-                    } else if (meeting.hasOwnProperty('medical_company_requestee_id')) {
-                        organizerName = meeting['medical_company_name'];
-                    } else {
-                        organizerName = '';
-                    }
 
-                    // Append the meeting details to the day cell
-                    dayCell += '<a class="text-dark" href="meeting-details.php?meeting_id=' + meetingId + '">' + organizerName + '</a><br>';
+                    // Append the meeting details to the day cell -- location, start time, end time
+                    dayCell += '<a class="text-dark" href="meeting-details.php?meeting_id=' + meetingId + '">' + location +  " --  " + startTime + " to " + endTime + '</a><br>';
+
                 });
                 dayCell += '</td>';
 
