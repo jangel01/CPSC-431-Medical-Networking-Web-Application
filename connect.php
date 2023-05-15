@@ -14,10 +14,10 @@
                     <div class="col-3 mb-2">
                         <div class="input-group">
                             <select class="form-select select-styling" id="search-filter" name="search_filter">
-                                <option value="specialty">Speciality</option>
-                                <option value="medical_professional_name">Medical professional name</option>
-                                <option value="medical_company_name">Medical Company name</option>
-                                <option value="location">Location</option>
+                                <option value="specialty" <?php if (isset($_POST['search_filter']) && $_POST['search_filter'] === 'specialty') echo 'selected'; ?>>Speciality</option>
+                                <option value="medical_professional_name" <?php if (isset($_POST['search_filter']) && $_POST['search_filter'] === 'medical_professional_name') echo 'selected'; ?>>Medical professional name</option>
+                                <option value="medical_company_name" <?php if (isset($_POST['search_filter']) && $_POST['search_filter'] === 'medical_company_name') echo 'selected'; ?>>Medical Company name</option>
+                                <option value="location" <?php if (isset($_POST['search_filter']) && $_POST['search_filter'] === 'location') echo 'selected'; ?>>Location</option>
                             </select>
                         </div>
                     </div>
@@ -71,18 +71,18 @@
                 echo '                    </tr>';
                 echo '                </thead>';
                 echo '                <tbody>';
-    
+
                 foreach ($results as $result) {
                     $userType = 'medical_professional';
                     $userID = $result['medical_professional_id'];
-    
+
                     echo '                <tr>';
                     echo '                    <td><a class="text-dark" href="user-details.php?user_type=' . $userType . '&user_id=' . $userID . '">' . $result['medical_professional_name'] . '</a></td>';
                     echo '                    <td><a class="text-dark" href="user-details.php?user_type=' . $userType . '&user_id=' . $userID . '">' . $result['medical_professional_specialty'] . '</a></td>';
-    
+
                     echo '                </tr>';
                 }
-    
+
                 echo '                </tbody>';
                 echo '            </table>';
                 echo '        </div>';
@@ -106,7 +106,7 @@
             echo '</div>';
 
             if (!empty($results)) {
-    
+
                 echo '<div class="row">';
                 echo '    <div class="col-12">';
                 echo '        <div class="table-responsive mb-3" style="overflow-x: auto;">';
@@ -115,21 +115,21 @@
                 echo '                    <tr>';
                 echo '                        <th>Company Name</th>';
                 echo '                        <th>Speciality</th>';
-    
+
                 echo '                    </tr>';
                 echo '                </thead>';
                 echo '                <tbody>';
-    
+
                 foreach ($results as $result) {
                     $userType = 'medical_company';
                     $userID = $result['medical_company_id'];
-    
+
                     echo '                <tr>';
                     echo '                    <td><a class="text-dark" href="user-details.php?user_type=' . $userType . '&user_id=' . $userID . '">' . $result['medical_company_name'] . '</a></td>';
                     echo '                    <td><a class="text-dark" href="user-details.php?user_type=' . $userType . '&user_id=' . $userID . '">' . $result['medical_company_specialty'] . '</a></td>';
                     echo '                </tr>';
                 }
-    
+
                 echo '                </tbody>';
                 echo '            </table>';
                 echo '        </div>';
@@ -162,16 +162,16 @@
                 echo '                    </tr>';
                 echo '                </thead>';
                 echo '                <tbody>';
-    
+
                 foreach ($results as $result) {
                     $userType = 'medical_professional';
                     $userID = $result['medical_professional_id'];
-    
+
                     echo '                <tr>';
                     echo '                    <td><a class="text-dark" href="user-details.php?user_type=' . $userType . '&user_id=' . $userID . '">' . $result['medical_professional_name'] . '</a></td>';
                     echo '                </tr>';
                 }
-    
+
                 echo '                </tbody>';
                 echo '            </table>';
                 echo '        </div>';
@@ -201,20 +201,20 @@
                 echo '                <thead class="text-bg-dark">';
                 echo '                    <tr>';
                 echo '                        <th>Company Name</th>';
-    
+
                 echo '                    </tr>';
                 echo '                </thead>';
                 echo '                <tbody>';
-    
+
                 foreach ($results as $result) {
                     $userType = 'medical_company';
                     $userID = $result['medical_company_id'];
-    
+
                     echo '                <tr>';
                     echo '                    <td><a class="text-dark" href="user-details.php?user_type=' . $userType . '&user_id=' . $userID . '">' . $result['medical_company_name'] . '</a></td>';
                     echo '                </tr>';
                 }
-    
+
                 echo '                </tbody>';
                 echo '            </table>';
                 echo '        </div>';
@@ -227,7 +227,6 @@
                 echo '    </div>';
                 echo '</div>';
             }
-
         } else if ($searchFilter == "location") {
             $results = $userDetailsView->showMedicalProfessionalsByLocation($searchQuery);
 
@@ -250,18 +249,18 @@
                 echo '                    </tr>';
                 echo '                </thead>';
                 echo '                <tbody>';
-    
+
                 foreach ($results as $result) {
                     $userType = 'medical_professional';
                     $userID = $result['medical_professional_id'];
-    
+
                     echo '                <tr>';
                     echo '                    <td><a class="text-dark" href="user-details.php?user_type=' . $userType . '&user_id=' . $userID . '">' . $result['medical_professional_name'] . '</a></td>';
                     echo '                    <td><a class="text-dark" href="user-details.php?user_type=' . $userType . '&user_id=' . $userID . '">' . $result['medical_practice_name'] . '</a></td>';
                     echo '                    <td><a class="text-dark" href="user-details.php?user_type=' . $userType . '&user_id=' . $userID . '">' . $result['medical_practice_address'] . '</a></td>';
                     echo '                </tr>';
                 }
-    
+
                 echo '                </tbody>';
                 echo '            </table>';
                 echo '        </div>';
@@ -293,21 +292,21 @@
                 echo '                    <tr>';
                 echo '                        <th>Company Name</th>';
                 echo '                        <th>Company Location</th>';
-    
+
                 echo '                    </tr>';
                 echo '                </thead>';
                 echo '                <tbody>';
-    
+
                 foreach ($results as $result) {
                     $userType = 'medical_company';
                     $userID = $result['medical_company_id'];
-    
+
                     echo '                <tr>';
                     echo '                    <td><a class="text-dark" href="user-details.php?user_type=' . $userType . '&user_id=' . $userID . '">' . $result['medical_company_name'] . '</a></td>';
                     echo '                    <td><a class="text-dark" href="user-details.php?user_type=' . $userType . '&user_id=' . $userID . '">' . $result['medical_company_address'] . '</a></td>';
                     echo '                </tr>';
                 }
-    
+
                 echo '                </tbody>';
                 echo '            </table>';
                 echo '        </div>';
