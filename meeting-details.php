@@ -144,7 +144,7 @@ $requester_name = $requesterUser->showUserDetails();
     <?php if ($_SESSION['user_id'] == $requestee_id && $_SESSION['user_type'] == $requestee_type && $meetingDetails['meeting_status'] == 'Pending') {
     ?>
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 text-center">
                 <form id="approval-form" method="POST" action="includes/approval.inc.php?meeting_id=<?php echo $params['meeting_id'] ?>">
                     <button type="submit" class="btn btn-lg btn-dark mb-5 mx-5" name="approval" value="Approve">Approve</button>
                     <button type="submit" class="btn btn-lg btn-dark mb-5 mx-5" name="approval" value="Reject">Reject</button>
