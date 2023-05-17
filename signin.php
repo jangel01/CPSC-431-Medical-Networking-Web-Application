@@ -98,6 +98,12 @@ if (isset($_SESSION['user_id'])) {
             <img class="bi me-2 mb-2" width="60" src="https://www.svgrepo.com/show/38705/location-pin.svg" style="filter: invert(1);">
             <h1 class="h3 mb-3 fw-normal">Sign in</h1>
 
+            <?php if (isset($_GET['error'])) {
+                if ($_GET['error'] == 'usernotfound') { ?>
+                    <p class="text-danger mb-2"> Sorry, an account doesn't exist with the specificed credentials.</p>
+            <?php }
+            } ?>
+
             <p class = "mb-2"> Don't have an account? <a class = "text-white"href = "signup.php"> Sign up</a></p>
             <!-- form fields for email and password -->
             <div class="form-floating form-group mt-3 mb-3">

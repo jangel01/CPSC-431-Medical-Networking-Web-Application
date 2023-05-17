@@ -1,4 +1,4 @@
-<?php session_start(); 
+<?php session_start();
 if (isset($_SESSION['user_id'])) {
     header("location: homepage.php");
     exit();
@@ -92,20 +92,26 @@ if (isset($_SESSION['user_id'])) {
 <body class="text-center text-bg-dark">
 
     <main class="form-signin w-100 m-auto">
-        <form id = "reg-form" method = "POST" action = "includes/signup.inc.php">
+        <form id="reg-form" method="POST" action="includes/signup.inc.php">
             <img class="bi me-2 mb-2" width="60" src="https://www.svgrepo.com/show/38705/location-pin.svg" style="filter: invert(1);">
             <h1 class="h3 mb-3 fw-normal">Sign up</h1>
+            <?php if (isset($_GET['error'])) {
+                if ($_GET['error'] == 'emailtaken') { ?>
+                    <p class="text-danger mb-2"> Sorry, that eamil is already taken</p>
+            <?php }
+            } ?>
+
+            <p class="mb-2"> Already have an account? <a class="text-white" href="signin.php"> Sign in</a></p>
             <!-- radio button for type of user-->
-            <p class = "mb-2"> Already have an account? <a class = "text-white"href = "signin.php"> Sign in</a></p>
             <p class="mb-2"> I am a... </p>
             <div class="form-check">
-                <input class="form-check-input bg-dark" type="radio" name="radio_group" id="medical-radio" value = "medical_professional"checked>
+                <input class="form-check-input bg-dark" type="radio" name="radio_group" id="medical-radio" value="medical_professional" checked>
                 <label class="form-check-label" for="medical-radio">
                     Medical Professional
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input bg-dark" type="radio" name="radio_group" id="company-radio" value = "medical_company">
+                <input class="form-check-input bg-dark" type="radio" name="radio_group" id="company-radio" value="medical_company">
                 <label class="form-check-label" for="company-radio">
                     Medical Company
                 </label>
@@ -191,7 +197,7 @@ if (isset($_SESSION['user_id'])) {
                 </div>
             </div>
 
-            <button class="w-100 btn btn-lg btn-warning" name = "submit" type="submit">Continue</button>
+            <button class="w-100 btn btn-lg btn-warning" name="submit" type="submit">Continue</button>
             <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
         </form>
     </main>
@@ -240,7 +246,7 @@ if (isset($_SESSION['user_id'])) {
             companyFields.style.display = "block";
         });
 
-      
+
         // handle error validation for the medical professional form and medical company form depending on which radio button is selected
         regForm.addEventListener("submit", function(e) {
             if (medicalRadio.checked) {
@@ -265,7 +271,7 @@ if (isset($_SESSION['user_id'])) {
                 } else if (medicalProfessionalRole.value === "") {
                     e.preventDefault();
                     alert("Please enter a role");
-                } 
+                }
             } else if (companyRadio.checked) {
                 if (medicalCompanyEmail.value === "") {
                     e.preventDefault();
@@ -288,10 +294,9 @@ if (isset($_SESSION['user_id'])) {
                 } else if (medicalCompanySpeciality.value === "") {
                     e.preventDefault();
                     alert("Please enter a speciality");
-                } 
+                }
             }
         });
-
     </script>
 
 </body>

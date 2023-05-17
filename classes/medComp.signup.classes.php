@@ -8,7 +8,7 @@ class MedCompSignUp extends Dbh {
         $stmt = $this->connect()->prepare($sql);
         if (!$stmt->execute(array($email, $password, $name, $phone, $address, $sector, $specialty))) {
             $stmt = null;
-            header("location: ../signup.php?error=stmtfailed");
+            header("location: ../signup.php?error=medCompSetUserStmtFailed");
             exit();
         }
 
@@ -21,7 +21,7 @@ class MedCompSignUp extends Dbh {
         $stmt = $this->connect()->prepare($sql);
         if (!$stmt->execute(array($email, $email))) {
             $stmt = null;
-            header("location: ../signup.php?error=stmtfailed");
+            header("location: ../signup.php?error=checkUserStmtFailed");
             exit();
         }
 

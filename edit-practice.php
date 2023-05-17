@@ -31,6 +31,11 @@ $currentUserPractice = $currentUserPracticeView->getPracticeByUserIdView();
 
         <div id="original-form">
             <div class=" mt-3 mb-3">
+                <?php if (isset($_GET['error'])) {
+                    if ($_GET['error'] == 'practiceexists') { ?>
+                        <p class="text-danger mb-2"> Sorry, the name of that practice already exists</p>
+                <?php }
+                } ?>
                 <label for="practice-name" class="form-label mb-2 fw-bold">Practice Name</label>
                 <select class="form-select" id="practice-name-select" name="practice_name_select">
                     <option value="empty">--</option>
@@ -47,6 +52,11 @@ $currentUserPractice = $currentUserPracticeView->getPracticeByUserIdView();
 
         <!-- show form if user clicks #add-practice-->
         <div id="new-practice-form">
+            <?php if (isset($_GET['error'])) {
+                if ($_GET['error'] == 'practiceexists') { ?>
+                    <p class="text-danger mb-2"> Sorry, the name of that practice already exists</p>
+            <?php }
+            } ?>
             <p><u id="back" name="back" style="cursor:pointer;">Back </u></p>
             <div class="mt-3 mb-3">
                 <label for="practice-name" class="form-label mb-2 fw-bold">Practice Name</label>
