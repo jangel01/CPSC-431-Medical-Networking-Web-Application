@@ -43,9 +43,9 @@
         <div class="py-5">
             <h1 id="title" class="display-5 fw-bold text-white">Simplify you medical networking</h1>
             <div class="col-lg-8 mx-auto">
-                <p id="para" class="fs-5 mb-4">Say goodbye to cold-calling and back-and-forth emails. Streamline relationship building with medical providers and doctors using our scheduling platform: schedule breakfast and lunch meetings, customize food preferences, and gain access to a network of practices in your desired area. Get started today and experience the difference!</p>
+                <p id="para" class="fs-5 mb-4">Say goodbye to cold-calling and back-and-forth emails. Streamline relationship building with medical professionals and companies using our scheduling platform: schedule meetings, customize food preferences and availability times, and gain access to a network of practices in your desired area. Get started today and experience the difference!</p>
                 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                    <a href="signin.php" class="btn btn-lg btn-warning"> Get Started</a>
+                    <a href="signup.php" class="btn btn-lg btn-warning"> Get Started</a>
                 </div>
             </div>
         </div>
