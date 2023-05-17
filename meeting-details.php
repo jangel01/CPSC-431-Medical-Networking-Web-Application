@@ -48,7 +48,7 @@ if ($_SESSION['user_type'] == 'medical_company') {
             $requestee_type = "medical_company";
         }
     }
-    
+
     if (isset($meetingDetails['medical_company_requester_id'])) {
         if ($meetingDetails['medical_company_requester_id'] == $_SESSION['user_id']) {
             $requester = true;
@@ -90,10 +90,10 @@ $requestee_name = $requesteeUser->showUserDetails();
 $requester_name = $requesterUser->showUserDetails();
 
 ?>
-<div class="container text-center mt-5 mb-5">
+<div class="container mt-5 mb-5">
     <div class="row">
         <div class="col-12">
-            <div class="card mb-5">
+            <div class="card mb-5 text-center">
                 <div class="card-header">
                     Meeting Details
                 </div>
@@ -124,10 +124,14 @@ $requester_name = $requesterUser->showUserDetails();
     <div class="row">
         <div class="col-12 mb-5">
             <div class="card">
-                <div class="card-header text-center">
-                    Message
+                <div class="card-header px-5">
+                   <p class = "m-0"> Message from <?php if ($requester_type == "medical_professional") {
+                                        echo $requester_name[0]['medical_professional_name'];
+                                    } else {
+                                        echo $requester_name[0]['medical_company_name'];
+                                    } ?></p>
                 </div>
-                <div class="card-body">
+                <div class="card-body px-5 text-wrap">
                     <div>
                         <p><?php echo $meetingDetails['meeting_message'] ?></p>
                     </div>
