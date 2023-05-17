@@ -1,8 +1,8 @@
-<?php session_start(); 
+<?php session_start();
 if (isset($_SESSION['user_id'])) {
-    header("location: homepage.php");
+    header("location: connect.php");
     exit();
-} 
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -94,17 +94,20 @@ if (isset($_SESSION['user_id'])) {
 <body class="text-center text-bg-dark">
 
     <main class="form-signin w-100 m-auto">
-        <form id = "signin-form" method = "POST" action = "includes/signin.inc.php">
+        <form id="signin-form" method="POST" action="includes/signin.inc.php">
             <img class="bi me-2 mb-2" width="60" src="https://www.svgrepo.com/show/38705/location-pin.svg" style="filter: invert(1);">
             <h1 class="h3 mb-3 fw-normal">Sign in</h1>
 
             <?php if (isset($_GET['error'])) {
                 if ($_GET['error'] == 'usernotfound') { ?>
-                    <p class="text-danger mb-2"> Sorry, an account doesn't exist with the specificed credentials.</p>
-            <?php }
+                    <p class="text-danger mb-2"> Sorry, an account doesn't exist with the specificed email.</p>
+                <?php } else if ($_GET['error'] == 'wrongpassword') { ?>
+                    <p class="text-danger mb-2"> Please enter the correct password.</p>
+            <?php
+                }
             } ?>
 
-            <p class = "mb-2"> Don't have an account? <a class = "text-white"href = "signup.php"> Sign up</a></p>
+            <p class="mb-2"> Don't have an account? <a class="text-white" href="signup.php"> Sign up</a></p>
             <!-- form fields for email and password -->
             <div class="form-floating form-group mt-3 mb-3">
                 <label for="email"> Email Address</label>
@@ -140,7 +143,6 @@ if (isset($_SESSION['user_id'])) {
             }
 
         });
-
     </script>
 
 </body>

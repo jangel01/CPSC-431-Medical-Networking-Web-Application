@@ -7,7 +7,7 @@ if (!isset($_SESSION["user_id"]) || !isset($_SESSION["user_type"])) {
     header("Location: signin.php");
     exit();
 } else if ($_SESSION["user_type"] != "medical_professional") {
-    header("Location: homepage.php");
+    header("Location: connect.php");
     exit();
 }
 
@@ -22,7 +22,7 @@ $currentUser = new UserDetailsView($_SESSION["user_type"], $_SESSION["user_id"])
 $currentUserDetails = $currentUser->showUserDetails();
 
 if ($currentUserDetails[0]["medical_professional_practice_exist"] == 1) {
-    header("Location: homepage.php");
+    header("Location: connect.php");
     exit();
 }
 

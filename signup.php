@@ -1,6 +1,6 @@
 <?php session_start();
 if (isset($_SESSION['user_id'])) {
-    header("location: homepage.php");
+    header("location: connect.php");
     exit();
 }
 ?>

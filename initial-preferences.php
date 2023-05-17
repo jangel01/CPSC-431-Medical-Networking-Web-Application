@@ -18,13 +18,13 @@ $currentUserDetails = $currentUser->showUserDetails();
 
 if ($_SESSION["user_type"] == "medical_professional") {
     if ($currentUserDetails[0]["medical_professional_preferences_exist"] == 1) {
-        header("Location: homepage.php");
+        header("Location: connect.php");
         exit();
     }
 } else {
     // medical company
     if ($currentUserDetails[0]["medical_company_preferences_exist"] == 1) {
-        header("Location: homepage.php");
+        header("Location: connect.php");
         exit();
     }
 }
