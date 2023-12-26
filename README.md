@@ -43,6 +43,9 @@ company. So for example company1@example.com ‘s password is company.
 
 # Project
 
+## Landing Page
+![Screenshot 2023-12-26 at 15-30-34 Document](https://github.com/jangel01/CPSC-431-project/assets/60250253/34cdcbd5-b9a0-45f0-82f8-9585dbabd3d2)
+
 ## Signup
 ![image21](https://github.com/jangel01/CPSC-431-project/assets/60250253/38c07e68-1eb2-4286-832d-aa170ef8370c)
 ![image18](https://github.com/jangel01/CPSC-431-project/assets/60250253/a1703f4f-3b00-4d86-8e56-72311c69bc65)
