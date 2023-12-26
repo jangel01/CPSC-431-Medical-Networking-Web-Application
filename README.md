@@ -1,15 +1,20 @@
 # Assignment Prompt
+## Context
+As you probably know, in the medical community, in order to get to know providers in your area to both refer your patients, but also to get referrals from (to grow your practice), breakfast and lunch meetings are a common way to formalize those relationships.
 
-Develop an application to enhance physician-company relationships, addressing the current challenge of inefficient networking through meals for practice growth. The project involves designing a scheduling platform where medical offices can list available times, food preferences, and manage meeting requests efficiently. Evaluation criteria include requirements fulfillment, application versatility, implementation effectiveness, visual appeal, comprehensive test cases, and detailed documentation. The project can be done individually or in groups with an expected effort of 20-25 hours per student, due in the last week of the class.
+Its a way to get to know the other providers on a personal level, provide them and their stuff with a nice meal, and basically the go to route for growing you practice.
 
-Requirement breakdown:
+## Problem
+The way this is currently done is by either cold calling or emailing the front office of medical practices in your area you think might be a good fit.
 
-- Writing the requirements (diagram, text, etc) - 10%
-- Application versatility - 10%
-- Implementation (based on the requirements) - 50%
-- Visual appealing - 10%
-- Testing Cases - 10%
-- Documentation (including comments) - 10%
+This takes a lot of time, and the conversion ratio from solicitation to actual setting up a meeting is probably <10%.
+
+Once the contact is made, and meeting is set up, there is this inevitable back and forth about organizing what day and time to meet, where to meet, what food to order for the practice to bring for lunch or breakfast. All of these obstacles add up to an enormous amount of time wasted for providers looking to build these relationships, but also office managers who are fielding these calls/emails and setting up these meetings.
+
+## Solution
+Create a scheduling platform where medical offices can customize dates/times their providers are available for meetings, the foods they would prefer, and a way to easily approve or not approve people that sign up for those availabilities.
+
+On the other end, doctors wishing to grow their practices, medical device companies, pharmaceutical companies all could gain access to this scheduling software for a fee to find practices in a desired area and rather than going through the laborious work of cold calling or emailing all these practices, can simply sign up for practices with only a few clicks of button.
 
 # Set up
 (This project requires XAMPP)
@@ -42,7 +47,6 @@ Similar to medical professionals, the passwords for these accounts are the name 
 company. So for example company1@example.com ‘s password is company.
 
 # Project
-
 ## Landing Page
 ![Screenshot 2023-12-26 at 15-30-34 Document](https://github.com/jangel01/CPSC-431-project/assets/60250253/34cdcbd5-b9a0-45f0-82f8-9585dbabd3d2)
 
