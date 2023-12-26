@@ -39,4 +39,11 @@ is johndoe
 - company3@example.com
 
 Similar to medical professionals, the passwords for these accounts are the name of the
-company. So for example company1@example.com ‘s password is company
+company. So for example company1@example.com ‘s password is company.
+
+# Project
+
+## Signup
+![image21](https://github.com/jangel01/CPSC-431-project/assets/60250253/38c07e68-1eb2-4286-832d-aa170ef8370c)
+![image18](https://github.com/jangel01/CPSC-431-project/assets/60250253/a1703f4f-3b00-4d86-8e56-72311c69bc65)
+Successful sign ups will redirect to another page depending on the user type. Medical professionals will be redirected to a page where they have to select their practice. Medical companies will be redirected to a page where they have to select their time and availability preferences.
