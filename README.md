@@ -15,8 +15,8 @@ Requirement breakdown:
 1. Set up database and populate. Simply navigate to /init-database.php on your browser like this (your url will be different depending on your root path):
 ![Screenshot 2023-12-25 173130](https://github.com/jangel01/CPSC-431-project/assets/60250253/15841db3-c722-43ad-8030-32cf6d9663f9)
 
-  You should see a page that displays everything was successful:
-  ![Screenshot 2023-12-25 173236](https://github.com/jangel01/CPSC-431-project/assets/60250253/3f2370d0-0f4e-4df3-bd6f-f6d689875917)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; You should see a page that displays everything was successful:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ![Screenshot 2023-12-25 173236](https://github.com/jangel01/CPSC-431-project/assets/60250253/3f2370d0-0f4e-4df3-bd6f-f6d689875917)
 
 2. You can exit the init-database.php and now start up the site (go to index.php)
 
