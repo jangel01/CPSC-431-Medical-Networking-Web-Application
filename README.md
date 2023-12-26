@@ -93,3 +93,10 @@ This functionality operates the same for both types of users.
 
 Having nothing for the search query will simply yield all the results with the selected filter.
 
+## Schedule Meeting
+![image16](https://github.com/jangel01/CPSC-431-project/assets/60250253/8456bcf6-74a1-4b28-b462-13447938449b)
+![image6](https://github.com/jangel01/CPSC-431-project/assets/60250253/afafb7fa-6126-497f-8a3b-bba5d488cd2e)
+![image3](https://github.com/jangel01/CPSC-431-project/assets/60250253/c61328f9-7813-4596-b9b7-186d61ce7601)
+
+The organizer is whoever initiated the meeting. The requestee is who we want to have a meeting with.
+
