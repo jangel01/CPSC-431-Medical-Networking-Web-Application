@@ -51,20 +51,21 @@ company. So for example company1@example.com ‘s password is company.
 ![Screenshot 2023-12-26 at 15-30-34 Document](https://github.com/jangel01/CPSC-431-project/assets/60250253/34cdcbd5-b9a0-45f0-82f8-9585dbabd3d2)
 
 ## Signup
+### Account creation
 ![image21](https://github.com/jangel01/CPSC-431-project/assets/60250253/38c07e68-1eb2-4286-832d-aa170ef8370c)
 ![image18](https://github.com/jangel01/CPSC-431-project/assets/60250253/a1703f4f-3b00-4d86-8e56-72311c69bc65)
 
 Successful sign ups will redirect to another page depending on the user type. Medical professionals will be redirected to a page where they have to select their practice. Medical companies will be redirected to a page where they have to select their time and availability preferences.
 
-## Medical Professional – Adding practice
+### Adding practice (medical professional only)
 You can select an existing practice or add a new one. Adding an existing practice will prompt an error: 
 
 ![image1](https://github.com/jangel01/CPSC-431-project/assets/60250253/a5e983fc-2617-403e-adeb-7424ecb4c994)
 ![image15](https://github.com/jangel01/CPSC-431-project/assets/60250253/3e957da1-f653-4aa8-86c7-b2e8f2cfc9fc)
 
-If you select a practice from the list or create a practice with a name that doesn’t exist, you will be redirected to the page where you select your preferences. 
+After you select a practice from the list or create a practice that doesn’t exist, you will be redirected to the page where you select your preferences. 
 
-## Adding preferences
+### Adding preferences
 ![Screenshot 2023-12-26 153428](https://github.com/jangel01/CPSC-431-project/assets/60250253/c4060a22-d708-4a20-b101-b8eb69ff0ef4)
 
 Both medical professionals and companies can set their own preferences.
@@ -106,20 +107,21 @@ Medical companies do not have a practice. And If they were to navigate to edit-p
 
 Having nothing for the search query will simply yield all the results with the selected filter.
 
-## Schedule Meeting
+## Meetings
+### Schedule Meeting
 ![image16](https://github.com/jangel01/CPSC-431-project/assets/60250253/8456bcf6-74a1-4b28-b462-13447938449b)
 ![image6](https://github.com/jangel01/CPSC-431-project/assets/60250253/afafb7fa-6126-497f-8a3b-bba5d488cd2e)
 ![image3](https://github.com/jangel01/CPSC-431-project/assets/60250253/c61328f9-7813-4596-b9b7-186d61ce7601)
 
 The organizer is whoever initiated the meeting. The requestee is who we want to have a meeting with.
 
-## Approving a Meeting
+### Approving a Meeting
 ![image4](https://github.com/jangel01/CPSC-431-project/assets/60250253/31653064-b453-4866-a275-b37cd9f8a6f4)
 ![image25](https://github.com/jangel01/CPSC-431-project/assets/60250253/5725904f-330d-4354-9907-698e29c826ae)
 ![image12](https://github.com/jangel01/CPSC-431-project/assets/60250253/bcc26902-d20c-4cc5-bc90-83e19b686456)
 ![image8](https://github.com/jangel01/CPSC-431-project/assets/60250253/57bc4aca-a3ca-4497-b524-3e27adc74891)
 
-## Rejecting Meeting
+### Rejecting Meeting
 ![image2](https://github.com/jangel01/CPSC-431-project/assets/60250253/9ca35a70-a64c-4215-8423-83f25d2502e1)
 ![image24](https://github.com/jangel01/CPSC-431-project/assets/60250253/00089e64-bd7c-4884-93a4-02fe4697e345)
 ![image5](https://github.com/jangel01/CPSC-431-project/assets/60250253/5e3f465e-14b4-46c9-a831-ec511fa3bbd7)
