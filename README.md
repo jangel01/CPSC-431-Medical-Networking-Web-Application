@@ -57,6 +57,13 @@ You can select an existing practice or add a new one. Adding an existing practic
 
 If you select a practice from the list or create a practice with a name that doesn’t exist, you will be redirected to the page where you select your preferences. 
 
+## Medical Professional - Editing Practice
+![image13](https://github.com/jangel01/CPSC-431-project/assets/60250253/ade8ab16-e349-4b6b-851a-c87316a2c63b)
+![image26](https://github.com/jangel01/CPSC-431-project/assets/60250253/74056c3c-1f40-4dda-a6b1-0c79888d4ece)
+![image28](https://github.com/jangel01/CPSC-431-project/assets/60250253/624f9e5d-e21c-4562-9932-c9c17e9d9aaa)
+
+Medical companies do not have a practice. And If they were to navigate to edit-practice.php they will simply be redirected to their profile details page.
+
 ## Profile Details
 ### User details 
 
@@ -70,4 +77,4 @@ Note: Medical professionals and companies have different fields.
 ![image19](https://github.com/jangel01/CPSC-431-project/assets/60250253/f25110c2-56c0-4c94-94fc-2e1f48e27ce7)
 ![image7](https://github.com/jangel01/CPSC-431-project/assets/60250253/c0249754-66c5-456c-b857-d94c8f65275b)
 
-This functionality operates the same for both types of users
+This functionality operates the same for both types of users.
