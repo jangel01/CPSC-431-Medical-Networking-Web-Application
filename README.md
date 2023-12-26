@@ -66,4 +66,8 @@ If you select a practice from the list or create a practice with a name that doe
 Note: Medical professionals and companies have different fields.
 
 ### Food and availability preferences:
+![image10](https://github.com/jangel01/CPSC-431-project/assets/60250253/ad3a6b5f-1474-45cf-b170-af7e5d00d8d4)
+![image19](https://github.com/jangel01/CPSC-431-project/assets/60250253/f25110c2-56c0-4c94-94fc-2e1f48e27ce7)
+![image7](https://github.com/jangel01/CPSC-431-project/assets/60250253/c0249754-66c5-456c-b857-d94c8f65275b)
 
+This functionality operates the same for both types of users
