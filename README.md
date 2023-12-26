@@ -78,3 +78,18 @@ Note: Medical professionals and companies have different fields.
 ![image7](https://github.com/jangel01/CPSC-431-project/assets/60250253/c0249754-66c5-456c-b857-d94c8f65275b)
 
 This functionality operates the same for both types of users.
+
+## Search
+### Speciality
+![image14](https://github.com/jangel01/CPSC-431-project/assets/60250253/9ca69b1d-4ea1-461f-a3f3-c108a62a7eb1)
+### Medical Professional Name
+![image27](https://github.com/jangel01/CPSC-431-project/assets/60250253/7e6c84e0-bfd6-4b03-812c-3c02d103db97)
+### Medical Company Name
+![image22](https://github.com/jangel01/CPSC-431-project/assets/60250253/ae005af9-8a34-46e4-9007-94da47e084fa)
+### Location
+![image11](https://github.com/jangel01/CPSC-431-project/assets/60250253/0ce0790e-0e69-41c2-b82f-ca5fa4022065)
+### No search query
+![image23](https://github.com/jangel01/CPSC-431-project/assets/60250253/ecd9c7a3-9fe0-4074-b7d6-013c9c104430)
+
+Having nothing for the search query will simply yield all the results with the selected filter.
+
