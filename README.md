@@ -100,3 +100,8 @@ Having nothing for the search query will simply yield all the results with the s
 
 The organizer is whoever initiated the meeting. The requestee is who we want to have a meeting with.
 
+## Approving a Meeting
+![image4](https://github.com/jangel01/CPSC-431-project/assets/60250253/31653064-b453-4866-a275-b37cd9f8a6f4)
+![image25](https://github.com/jangel01/CPSC-431-project/assets/60250253/5725904f-330d-4354-9907-698e29c826ae)
+![image12](https://github.com/jangel01/CPSC-431-project/assets/60250253/bcc26902-d20c-4cc5-bc90-83e19b686456)
+![image8](https://github.com/jangel01/CPSC-431-project/assets/60250253/57bc4aca-a3ca-4497-b524-3e27adc74891)
