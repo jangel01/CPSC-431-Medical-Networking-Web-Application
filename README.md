@@ -110,3 +110,7 @@ The organizer is whoever initiated the meeting. The requestee is who we want to 
 ![image2](https://github.com/jangel01/CPSC-431-project/assets/60250253/9ca35a70-a64c-4215-8423-83f25d2502e1)
 ![image24](https://github.com/jangel01/CPSC-431-project/assets/60250253/00089e64-bd7c-4884-93a4-02fe4697e345)
 ![image5](https://github.com/jangel01/CPSC-431-project/assets/60250253/5e3f465e-14b4-46c9-a831-ec511fa3bbd7)
+
+## Calendar
+![Screenshot 2023-12-26 152810](https://github.com/jangel01/CPSC-431-project/assets/60250253/40af8f56-9b43-4111-a664-c02f0e4a6b91)
+
