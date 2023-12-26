@@ -12,6 +12,8 @@ Requirement breakdown:
 - Documentation (including comments) - 10%
 
 # Set up
+(This project requires XAMPP)
+
 1. Set up database and populate. Simply navigate to /init-database.php on your browser like this (your url will be different depending on your root path):
 ![Screenshot 2023-12-25 173130](https://github.com/jangel01/CPSC-431-project/assets/60250253/15841db3-c722-43ad-8030-32cf6d9663f9)
 
