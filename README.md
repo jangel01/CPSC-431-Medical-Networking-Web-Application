@@ -46,4 +46,24 @@ company. So for example company1@example.com ‘s password is company.
 ## Signup
 ![image21](https://github.com/jangel01/CPSC-431-project/assets/60250253/38c07e68-1eb2-4286-832d-aa170ef8370c)
 ![image18](https://github.com/jangel01/CPSC-431-project/assets/60250253/a1703f4f-3b00-4d86-8e56-72311c69bc65)
+
 Successful sign ups will redirect to another page depending on the user type. Medical professionals will be redirected to a page where they have to select their practice. Medical companies will be redirected to a page where they have to select their time and availability preferences.
+
+## Medical Professional – Adding practice
+You can select an existing practice or add a new one. Adding an existing practice will prompt an error: 
+
+![image1](https://github.com/jangel01/CPSC-431-project/assets/60250253/a5e983fc-2617-403e-adeb-7424ecb4c994)
+![image15](https://github.com/jangel01/CPSC-431-project/assets/60250253/3e957da1-f653-4aa8-86c7-b2e8f2cfc9fc)
+
+If you select a practice from the list or create a practice with a name that doesn’t exist, you will be redirected to the page where you select your preferences. 
+
+## Profile Details
+### User details 
+
+![image17](https://github.com/jangel01/CPSC-431-project/assets/60250253/f3bb1beb-1fb6-4532-8aae-c4e86a674afd)
+![image20](https://github.com/jangel01/CPSC-431-project/assets/60250253/53df4d83-c68f-4422-a19c-f4a09d58178c)
+
+Note: Medical professionals and companies have different fields.
+
+### Food and availability preferences:
+
