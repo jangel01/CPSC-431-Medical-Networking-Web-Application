@@ -1,5 +1,7 @@
 # Assignment Prompt
 ## Context
+CPSC 431 - Database and Applications
+
 As you probably know, in the medical community, in order to get to know providers in your area to both refer your patients, but also to get referrals from (to grow your practice), breakfast and lunch meetings are a common way to formalize those relationships.
 
 Its a way to get to know the other providers on a personal level, provide them and their stuff with a nice meal, and basically the go to route for growing you practice.
